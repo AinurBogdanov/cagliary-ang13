@@ -1,0 +1,148 @@
+.top_footer_wrap {
+  height: 800px;
+  width: 1280px;
+  margin: 0 auto;
+}
+.footer_left {
+  margin-top: 40px;
+  float: left;
+}
+.footer_logo {
+  background-image: url(/assets/images/footer_logo.png);
+  width: 151px;
+  height: 191px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 0 40px 60px;
+}
+.btn {
+  display: block;
+  padding: 10px 30px;
+  background-color: white;
+  border: 1px solid red;
+  color: red;
+  font-size: 20px;
+  border-radius: 30px;
+}
+.btn:hover {
+  background-color: red;
+  color: white;
+}
+.btn:active {
+  background-color: white;
+  border: none;
+  color: red;
+}
+.btn_one {
+  margin-bottom: 20px;
+}
+
+/* footer left-side  */
+.footer_left_midle .title {
+  font-size: 26px;
+}
+.footer_left_midle {
+  float: left;
+  margin: 40px 0 0 90px;
+  width: 190px;
+}
+.footer_left_midle ul {
+  margin: 10px 0;
+  padding: 0 0 0 15px;
+  font: 20px;
+  font-weight: normal;
+}
+.footer_left_midle li {
+  margin-bottom: 15px;
+}
+.footer_left_midle a {
+  color: black;
+}
+/* right_midle section  */
+.footer_right_midle {
+  margin: 40px 0 0 50px;
+  left: 40px;
+  width: 300px;
+  float: left;
+}
+.right_midle_title {
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+.phone_footer_one {
+  background-image: url(/assets/images/phone_footer.png);
+  background-repeat: no-repeat;
+  font-size: 25px;
+  font-weight: 600;
+  padding-left: 30px;
+}
+.phone_footer_two {
+  background-image: url(/assets/images/mobile_footer.png);
+  background-repeat: no-repeat;
+  font-size: 25px;
+  font-weight: 600;
+  padding-left: 30px;
+}
+
+.footer_adress {
+  padding-left: 33px;
+  background-image: url(/assets/images/map_pointer_footer.png);
+  background-position: center left;
+  background-repeat: no-repeat;
+  line-height: 33px;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.work_time_footer {
+  background-image: url(/assets/images/footer_clock.png);
+  background-repeat: no-repeat;
+}
+.partners {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+/* making right part of the footer  */
+.footer_right {
+  float: left;
+  margin-top: 50px;
+}
+.follow {
+  font-size: 25px;
+}
+.wk {
+  background-image: url(/assets/images/vk.png);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: contain !important;
+  width: 41px;
+  height: 41px;
+  margin: 50px 0 50px 10px;
+}
+
+.wk:hover {
+  background-image: url(/assets/images/vk2.png);
+}
+.download_btn {
+  height: 100px;
+}
+
+.db_one {
+  background-image: url(/assets/images/i_appstore.png);
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 50px;
+  background-size: contain;
+  display: block;
+  float: left;
+}
+
+.db_two {
+  background-image: url(/assets/images/i_googleplay.png);
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 50px;
+  background-size: contain;
+  display: block;
+  float: left;
+}

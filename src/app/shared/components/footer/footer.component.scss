@@ -1,7 +1,14 @@
-.top_footer_wrap {
-  height: 800px;
-  width: 1280px;
+:host {
+  display: block;
+  width: 100%;
+}
+.footer-holder {
+  width: fit-content;
   margin: 0 auto;
+}
+.top_footer_wrap {
+  height: 700px;
+  width: 1280px;
 }
 .footer_left {
   margin-top: 40px;
@@ -98,6 +105,9 @@
   background-image: url(/assets/images/footer_clock.png);
   background-repeat: no-repeat;
 }
+.work-hours {
+ padding-left: 30px; 
+}
 .partners {
   margin-top: 30px;
   margin-left: 30px;
@@ -146,3 +156,23 @@
   display: block;
   float: left;
 }
+
+.footer-bottom {
+  border-top: 1px solid rgb(158, 157, 157);
+  color: rgb(87, 87, 87);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+}
+.footer-holder .footer-link:hover {
+  color: red;
+}
+.metrika {
+  width: 50px;
+  height: 40px;
+  background-image: url(/assets/images/metrika.jpg);
+  background-repeat: no-repeat;
+
+}
+

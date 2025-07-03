@@ -1,5 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(./_reset.scss);
+@import url(./margins.scss);
+@import url(./_variables.scss);
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(/assets/fonts/Open_Sans/OpenSans-Medium.woff);
+
+}
+
 body {
   overflow-x: hidden;
+  font-family: 'Open Sans';
+}
+.title {
+  text-align: center;
+  font-size: 40px;
+  color: var(--second-font-color);
+}
+.btn {
+  background-color: var(--card-btn-color);
+  border-radius: 20px;
+  height: 44px;
+  cursor: pointer;
+  padding: 9px 0 11px 0px;
+  color: white
+} 
+.btn:hover {
+  background-color: white;
+  color: var(--card-btn-color);
+  border: 1px solid var(--card-btn-color)
 }

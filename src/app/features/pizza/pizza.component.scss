@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.search-container {
+  border-bottom: 1px solid rgb(161, 161, 161);
+  width: 630px;
+  height: 35px;
+  margin: 0 auto 50px;
+  position: relative;
+}
+.search-input {
+  position: absolute;  
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 30px;
+}
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.dishes-container {
+  
+}

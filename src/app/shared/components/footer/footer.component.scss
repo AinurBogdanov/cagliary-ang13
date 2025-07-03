@@ -8,7 +8,7 @@
 }
 .top_footer_wrap {
   height: 700px;
-  width: 1280px;
+  max-width: 1280px;
 }
 .footer_left {
   margin-top: 40px;
@@ -173,6 +173,30 @@
   height: 40px;
   background-image: url(/assets/images/metrika.jpg);
   background-repeat: no-repeat;
-
 }
 
+
+@media (max-width : 1200px) {
+ .footer_right {
+  float: left;
+  margin-top: 50px;
+}
+.footer_right_midle {
+  margin: 10px 0 0 20px;
+  left: 40px;
+  width: 250px;
+  float: left;
+}
+.footer_left {
+  margin-top: 40px;
+  float: left;
+}
+.footer_left_midle {
+  float: left;
+  margin: 10px 0 0 30px;
+  width: 190px;
+}
+}
+
+@media (max-width : 1100px) {
+}

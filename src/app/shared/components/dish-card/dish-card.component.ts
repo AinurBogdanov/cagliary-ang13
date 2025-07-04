@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dish-card',
@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dish-card.component.scss']
 })
 export class DishCardComponent implements OnInit {
+  @Input() product: any
 
   constructor() { }
-
+  
   ngOnInit(): void {
   }
 

@@ -1,4 +1,4 @@
-const pizza = {
+export const fakeApiResp = {
   "timestamp": "2025-07-04T02:44:11.020Z",
   "productsCount": 38,
   "products": [
@@ -65,14 +65,14 @@ const pizza = {
           "size": "30 см",
           "weight": "740гр",
           "price": 610,
-          "active": false,
+          "active": true,
           "available": true
         },
         {
           "size": "40 см",
           "weight": "1440гр",
           "price": 880,
-          "active": true,
+          "active": false,
           "available": true
         },
         {
@@ -91,8 +91,8 @@ const pizza = {
         },
         {
           "type": "Толстое",
-          "active": true,
-          "available": true
+          "active": false,
+          "available": false
         }
       ]
     },
@@ -112,14 +112,14 @@ const pizza = {
           "size": "30 см",
           "weight": "540гр",
           "price": 530,
-          "active": true,
+          "active": false,
           "available": true
         },
         {
           "size": "40 см",
           "weight": "960гр",
           "price": 700,
-          "active": false,
+          "active": true,
           "available": true
         },
         {
@@ -1073,8 +1073,8 @@ const pizza = {
       "doughTypes": [
         {
           "type": "Традиционное",
-          "active": true,
-          "available": true
+          "active": false,
+          "available": false
         },
         {
           "type": "Толстое",

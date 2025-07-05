@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { fakeApiResp } from 'src/app/core/data/data';
+import { Product } from 'src/app/core/data/interfaces';
 
 @Component({
   selector: 'app-pizza',
@@ -11,5 +13,6 @@ export class PizzaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  products: Product[] = fakeApiResp.products
 
 }

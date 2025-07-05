@@ -4,5 +4,13 @@
   <img class="search-icon" src="/assets/images/search-icon.png" alt="">
 </div>
 <div class="dishes-container">
-<app-dish-card></app-dish-card>
+  <ng-container
+    *ngIf="products"  
+  >
+    <ng-container 
+    *ngFor="let product of products | formatData"
+    >
+      <app-dish-card [product]="product"></app-dish-card>
+    </ng-container>
+  </ng-container> 
 </div>

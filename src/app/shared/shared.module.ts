@@ -3,20 +3,22 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DishCardComponent } from './components/dish-card/dish-card.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    DishCardComponent
+    DishCardComponent,
+    PageTitleComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    DishCardComponent
+    DishCardComponent,
+    PageTitleComponent,
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule, AppRoutingModule],
 })
-export class SharedModule { }
+export class SharedModule {}

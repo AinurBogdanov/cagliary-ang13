@@ -1,19 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { HomeComponent } from './features/home/home.component';
 import { PizzaComponent } from './features/pizza/pizza.component';
+import { CartComponent } from './features/cart/cart.component';
 
 const routes: Routes = [
   {
-   path: '', component: HomeComponent
-  },{
-    path: 'pizza', component: PizzaComponent
-  }
+    path: 'pizza',
+    component: PizzaComponent,
+  },
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      enableTracing: false, // Для отладки (можно отключить в продакшене)
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -191,17 +191,18 @@ li {
   text-decoration: none;
   font-weight: bold;
   float: left;
+  cursor: pointer;
 }
 .header_menu a:hover {
   color: rgb(67, 151, 67);
 }
 
-.no-backgound {
+.no-background {
   background-image: none;
   height: 230px;
 }
 
-@media (max-width : 1250px) {
+@media (max-width: 1250px) {
   .left-section {
     margin: 24px 0 0 0px;
   }
@@ -223,9 +224,9 @@ li {
   // }
 }
 
-@media (max-width : 1100px) {
+@media (max-width: 1100px) {
   .left-section {
-  margin: 24px 0 0 0px;
+    margin: 24px 0 0 0px;
   }
   .header-logo {
     margin: 10px 0 0 50px;

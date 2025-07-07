@@ -6,19 +6,13 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PizzaComponent } from './features/pizza/pizza.component';
 import { CoreModule } from './core/core.module';
+import { HomeComponent } from './features/home/home.component';
+import { CartComponent } from './features/cart/cart.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PizzaComponent,
-  ],
-  imports: [
-    SharedModule,
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule
-  ],
+  declarations: [AppComponent, PizzaComponent, HomeComponent, CartComponent],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, CoreModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

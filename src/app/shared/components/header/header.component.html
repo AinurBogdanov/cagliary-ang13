@@ -1,5 +1,5 @@
 <div class="header-wrap">
-  <div class="header-baner" [class.no-backgound]="hideBackgound">
+  <div class="header-baner" [class.no-background]="hideBackground">
     <div class="header-container">
       <div class="header-info">
         <div class="left-section">
@@ -19,7 +19,7 @@
           <div class="header_reg_login">
             <a href="#">Вход</a>
           </div>
-          <a class="minicart_info" href="#">
+          <a class="minicart_info" routerLink="/cart" routerLinkActive="active">
             <div class="mc_icon">
               <div class="mc_count">0</div>
             </div>
@@ -34,7 +34,7 @@
       </div>
       <div class="header_menu">
         <ul class="menu-box">
-          <li><a href="#">Пиццы</a></li>
+          <a routerLink="/pizza" routerLinkActive="active"> Пиццы </a>
           <li><a href="#">Слоёные</a></li>
           <li><a href="#">Римская</a></li>
           <li><a href="#">Роллы</a></li>
@@ -51,4 +51,3 @@
     </div>
   </div>
 </div>
-

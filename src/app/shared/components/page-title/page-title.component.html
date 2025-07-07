@@ -1,0 +1,12 @@
+<h1 class="title mb20">{{ title }}</h1>
+
+<ng-container *ngIf="showSearch">
+  <div class="search-container">
+    <input name="search" type="text" class="search-input" />
+    <img class="search-icon" src="/assets/images/search-icon.png" alt="" />
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!showSearch">
+  <p>breadCrumbs</p>
+</ng-container>

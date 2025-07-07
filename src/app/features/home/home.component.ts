@@ -9,7 +9,8 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log('Component initialized:', this.constructor.name);
   }
 
 }

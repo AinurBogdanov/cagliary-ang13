@@ -1,16 +1,8 @@
-<h1 class="title mb20">Пиццы</h1>
-<div class="search-container">
-  <input name="search" type="text" class="search-input">
-  <img class="search-icon" src="/assets/images/search-icon.png" alt="">
-</div>
+<app-page-title [title]="'Пицца'" [showSearch]="true"></app-page-title>
 <div class="dishes-container">
-  <ng-container
-    *ngIf="products"  
-  >
-    <ng-container 
-    *ngFor="let product of products | formatData"
-    >
+  <ng-container *ngIf="products">
+    <ng-container *ngFor="let product of products | formatData">
       <app-dish-card [product]="product"></app-dish-card>
     </ng-container>
-  </ng-container> 
+  </ng-container>
 </div>

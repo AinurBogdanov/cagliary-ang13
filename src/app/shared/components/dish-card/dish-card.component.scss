@@ -12,9 +12,9 @@
 }
 .card-title {
   font-size: 23px;
-  color: var(--second-font-color)
+  color: var(--second-font-color);
 }
-.card-img img{
+.card-img img {
   height: 230px;
 }
 .card-img {
@@ -25,9 +25,9 @@
   font-size: 15px;
   color: var(--second-font-color);
   line-height: 20px;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   margin-top: 40px;
-} 
+}
 
 .bottom-card {
   display: flex;
@@ -54,7 +54,7 @@
   cursor: pointer;
 }
 .active-opt {
- background-color: var(--active-option-color);
+  background-color: var(--active-option-color);
 }
 .not-available {
   color: rgb(99, 99, 99);
@@ -79,8 +79,8 @@
 }
 .weight {
   font-size: 16px;
-  align-self:last baseline;
-  color: rgb(180, 179, 179)
+  align-self: last baseline;
+  color: rgb(180, 179, 179);
 }
 .half-choose {
   font-size: 20px;

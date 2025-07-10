@@ -1,52 +1,58 @@
 <div class="header-wrap">
   <div class="header-baner" [class.no-background]="hideBackground">
-    <div class="header-container">
-      <div class="header-info">
-        <div class="left-section">
-          <div class="header_adress-title">Доставка пиццы Димитровград</div>
-          <ul>
-            <li>Вс - чт: с 10:00 до 22:00</li>
-            <li>Пт - сб: с 10:00 до 22:30</li>
+    <div class="in">
+      <div class="header-container">
+        <div class="header-info">
+          <div class="left-section">
+            <div class="header_adress-title">Доставка пиццы Димитровград</div>
+            <ul>
+              <li>Вс - чт: с 10:00 до 22:00</li>
+              <li>Пт - сб: с 10:00 до 22:30</li>
+            </ul>
+          </div>
+          <a class="header-logo" href="#"> </a>
+          <div class="header-phone-number">
+            <a class="hf_1" href="#">+7 902 127-77-72</a>
+            <a class="hf_2" href="#">4-04-77</a>
+          </div>
+
+          <div class="header_minicart">
+            <div class="header_reg_login">
+              <a href="#">Вход</a>
+            </div>
+            <a
+              class="minicart_info"
+              routerLink="/cart"
+              routerLinkActive="active"
+            >
+              <div class="mc_icon">
+                <div class="mc_count">0</div>
+              </div>
+              <div class="mc_total_cost_wrap">
+                <div class="mc_total_cost">
+                  <span>0</span>
+                  <span class="rouble"> i</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="header_menu">
+          <ul class="menu-box">
+            <a routerLink="/pizza" routerLinkActive="active"> Пиццы </a>
+            <li><a href="#">Слоёные</a></li>
+            <li><a href="#">Римская</a></li>
+            <li><a href="#">Роллы</a></li>
+            <li><a href="#">Закуски</a></li>
+            <li><a href="#">Салаты</a></li>
+            <li><a href="#">Десерты</a></li>
+            <li><a href="#">Напитки</a></li>
+            <li><a href="#">Горячие Напитки</a></li>
+            <li><a href="#">Детское</a></li>
+            <li><a href="#">Сувениры</a></li>
+            <li><a href="#">Акции</a></li>
           </ul>
         </div>
-        <a class="header-logo" href="#"> </a>
-        <div class="header-phone-number">
-          <a class="hf_1" href="#">+7 902 127-77-72</a>
-          <a class="hf_2" href="#">4-04-77</a>
-        </div>
-
-        <div class="header_minicart">
-          <div class="header_reg_login">
-            <a href="#">Вход</a>
-          </div>
-          <a class="minicart_info" routerLink="/cart" routerLinkActive="active">
-            <div class="mc_icon">
-              <div class="mc_count">0</div>
-            </div>
-            <div class="mc_total_cost_wrap">
-              <div class="mc_total_cost">
-                <span>0</span>
-                <span class="rouble"> i</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="header_menu">
-        <ul class="menu-box">
-          <a routerLink="/pizza" routerLinkActive="active"> Пиццы </a>
-          <li><a href="#">Слоёные</a></li>
-          <li><a href="#">Римская</a></li>
-          <li><a href="#">Роллы</a></li>
-          <li><a href="#">Закуски</a></li>
-          <li><a href="#">Салаты</a></li>
-          <li><a href="#">Десерты</a></li>
-          <li><a href="#">Напитки</a></li>
-          <li><a href="#">Горячие Напитки</a></li>
-          <li><a href="#">Детское</a></li>
-          <li><a href="#">Сувениры</a></li>
-          <li><a href="#">Акции</a></li>
-        </ul>
       </div>
     </div>
   </div>

@@ -1,7 +1,10 @@
- <ng-container *ngIf="product">
+<ng-container *ngIf="product">
   <div>
     <div class="card-img">
-      <img src="/assets/images/dishes/pizz-images/{{ product.images.preview }}.jpg" alt="">  
+      <img
+        src="/assets/images/dishes/pizz-images/{{ product.images.preview }}.jpg"
+        alt=""
+      />
     </div>
     <h2 class="card-title">{{ product.name }}</h2>
   </div>
@@ -12,31 +15,39 @@
         *ngFor="let size of product.sizes; let i = index"
         class="option"
         [ngClass]="{
-        'not-available' : !size.available,
-        'active-opt' : size.active 
+          'not-available': !size.available,
+          'active-opt': size.active
         }"
-      > {{ size.size }}</p>
+      >
+        {{ size.size }}
+      </p>
     </div>
 
-    <div class="dough-choose"
+    <div
+      class="dough-choose"
       [ngClass]="{
-        'hidden': !product.doughTypes[0].available && !product.doughTypes[1].available
+        hidden:
+          !product.doughTypes[0].available && !product.doughTypes[1].available
       }"
     >
-        <p 
-          class="option"
-          [ngClass]="{
+      <p
+        class="option"
+        [ngClass]="{
           'active-opt': product.doughTypes[0].active,
           'not-available': !product.doughTypes[0].available
-          }"
-        >Традиционное</p>
-        <p 
-        class="option" 
+        }"
+      >
+        Традиционное
+      </p>
+      <p
+        class="option"
         [ngClass]="{
           'active-opt': product.doughTypes[1].active,
           'not-available': !product.doughTypes[1].available
-          }"
-        >Толстое</p>
+        }"
+      >
+        Толстое
+      </p>
     </div>
 
     <div class="card-summary">
@@ -44,6 +55,6 @@
       <span class="weight">{{ product.weight }}</span>
       <div class="half-choose">1/2</div>
     </div>
-    <button class="btn">В карзину</button>
+    <button class="btn">В корзину</button>
   </div>
 </ng-container>

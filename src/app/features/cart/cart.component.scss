@@ -80,3 +80,34 @@
   height: 23px;
   cursor: pointer;
 }
+
+//promotion
+
+.promo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.promo {
+  border: 3px red solid;
+  border-radius: 20px;
+  width: 340px;
+  height: 170px;
+  padding: 25px 20px 0;
+  &__small {
+    color: var(--light-gray-font-color);
+    font-size: 10px;
+    line-height: 10px;
+  }
+  &__text {
+    line-height: 10px;
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: 700;
+  }
+  &__check-box {
+    display: inline-block;
+  }
+  &__options {
+    color: var(--promo-font-color);
+  }
+}

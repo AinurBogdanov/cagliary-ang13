@@ -9,8 +9,12 @@
 
 <ng-container *ngIf="!showSearch">
   <div class="breadcrumbs">
-    <span class="breadcrumb">breadCrumb</span>
+    <a class="breadcrumb link" routerLink="" routerLinkActive="active"
+      >Главная</a
+    >
     <span class="separator-icon"></span>
-    <span class="breadcrumb">breadCrumb</span>
+    <ng-container *ngIf="breadCrumb === 'cart'">
+      <span class="breadcrumb">Корзина</span>
+    </ng-container>
   </div>
 </ng-container>

@@ -4,6 +4,7 @@
   border: 4px solid var(--card-btn-color);
   border-radius: 30px;
   padding: 10px 10px;
+  margin-bottom: 50px;
 }
 
 .item {
@@ -78,16 +79,4 @@
   width: 23px;
   height: 23px;
   cursor: pointer;
-}
-.plus-one-btn {
-  background-image: url(/assets/images/icons/i_plus_grey.png);
-}
-.minus-one-btn {
-  background-image: url(/assets/images/icons/minus.png);
-}
-.plus-one-btn:hover {
-  background-image: url(/assets/images/icons/i_plus_orange.png);
-}
-.minus-one-btn:hover {
-  background-image: url(/assets/images/icons/i_minus_orange.png);
 }

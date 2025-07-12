@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-title',
@@ -8,8 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PageTitleComponent implements OnInit {
   @Input() title = '';
   @Input() showSearch: boolean = false;
+  breadCrumb = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const url = this.router.url;
+    const paths = url.split('/');
+    this.breadCrumb = paths[paths.length - 1];
+  }
 }

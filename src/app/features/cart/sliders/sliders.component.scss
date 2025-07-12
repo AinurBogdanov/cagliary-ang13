@@ -1,0 +1,146 @@
+.swiper-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.title {
+  margin-bottom: 30px;
+}
+.swiper-slide {
+  border: 3px solid var(--card-btn-color);
+  border-radius: 20px;
+  position: relative;
+}
+.souse {
+  height: 310px;
+  color: var(--gray-font-color);
+  &__img {
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  &__name {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+  &__cost {
+    font-family: "Rouble";
+    font-weight: 700;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &__summary {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+.slide-bottom {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+}
+.plus-one-btn,
+.minus-one-btn {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.holder {
+  position: relative;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--card-btn-color);
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: var(--orange-color);
+}
+.swiper-button-prev {
+  left: -50px;
+}
+.swiper-button-next {
+  right: -50px;
+}
+
+//second swiper styles
+.rec {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: var(--gray-font-color);
+
+  &__img-section {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+
+  &__info {
+    width: 250px;
+    height: 100%;
+    padding: 20px 30px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__name {
+    font-weight: 600;
+  }
+  &__summary {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__cost {
+    font-family: "Rouble";
+    font-size: 24px;
+    font-weight: 700;
+  }
+  &__btn {
+    border-width: 2px;
+    padding: 1px 18px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 10px;
+    height: 35px;
+  }
+}
+
+//fade effect
+
+.fade-effect-left,
+.fade-effect-right {
+  position: absolute;
+  width: 80px;
+  height: 180px;
+  z-index: 20;
+  bottom: 0;
+}
+
+.fade-effect-left {
+  left: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 20%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+.fade-effect-right {
+  right: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 20%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}

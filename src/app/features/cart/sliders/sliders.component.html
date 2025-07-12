@@ -1,15 +1,59 @@
 <div class="in">
   <h2 class="title">Дополнительные соусы</h2>
-  <div class="souse-list">
-    <div class="swiper">
+  <div class="holder">
+    <div class="swiper-container swiper1">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
+        <ng-container *ngFor="let sauce of saucesData; trackById">
+          <div class="swiper-slide souse">
+            <img
+              class="souse__img"
+              src="assets/images/dishes/souses/souse-{{ sauce.id }}.jpg"
+              alt="souse"
+            />
+            <div class="souse__name">{{ sauce.name }}</div>
+            <div class="slide-bottom">
+              <div class="souse__cost">{{ sauce.price }}i</div>
+              <div class="souse__summary">
+                <div class="plus-one-btn"></div>
+                <div class="souse__quantity">{{ sauce.count }}</div>
+                <div class="minus-one-btn"></div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
       </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
     </div>
+    <div class="swiper-button-prev swiper1-button-prev"></div>
+    <div class="swiper-button-next swiper1-button-next"></div>
+  </div>
+
+  <h2 class="title">Рекомендуем попробовать</h2>
+  <div class="holder">
+    <div class="fade-effect-left"></div>
+    <div class="swiper-container swiper2">
+      <div class="swiper-wrapper">
+        <ng-container *ngFor="let product of rec; trackById">
+          <div class="swiper-slide rec">
+            <div class="rec__img-section">
+              <img
+                class="reс__img"
+                src="assets/images/dishes/rec/rec-{{ product.id }}.jpg"
+                alt="recommended"
+              />
+            </div>
+            <div class="rec__info">
+              <div class="rec__name">{{ product.name }}</div>
+              <div class="rec__summary">
+                <div class="rec__cost">{{ product.price }}i</div>
+                <button class="btn rec__btn">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="swiper-button-prev swiper2-button-prev"></div>
+    <div class="swiper-button-next swiper2-button-next"></div>
+    <div class="fade-effect-right"></div>
   </div>
 </div>

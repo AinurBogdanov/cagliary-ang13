@@ -87,8 +87,11 @@
   <div class="promo-wrapper">
     <fieldset class="promo">
       <div>
-        <label>
-          <input class="promo__check-box" type="radio" name="gift" checked />
+        <label
+          class="promo__main-label"
+          [class.checked]="promoSelected"
+          (click)="togglePromo($event)"
+        >
           <p class="promo__text">
             Напиток в подарок <br /><span class="promo__small"
               >*Напиток по акции кладется тот что есть в наличии</span
@@ -97,20 +100,31 @@
         </label>
       </div>
 
-      <div class="promo__options">
-        <label>
-          <input type="radio" name="drink" value="cola" />
-          Добрый cola </label
-        ><br />
-        <label>
-          <input type="radio" name="drink" value="orange" />
-          Добрый Апельсин </label
-        ><br />
-        <label>
-          <input type="radio" name="drink" value="lemon-lime" checked />
-          Добрый Лимон-Лайм </label
-        ><br />
-      </div>
+      <ng-container *ngIf="promoSelected">
+        <div class="promo__options">
+          <label
+            (click)="selectDrink('cola')"
+            [class.checked]="selectedDrink === 'cola'"
+            class="promo__label"
+          >
+            Добрый cola </label
+          ><br />
+          <label
+            (click)="selectDrink('orange')"
+            [class.checked]="selectedDrink === 'orange'"
+            class="promo__label"
+          >
+            Добрый Апельсин </label
+          ><br />
+          <label
+            (click)="selectDrink('lemon')"
+            [class.checked]="selectedDrink === 'lemon'"
+            class="promo__label"
+          >
+            Добрый Лимон-Лайм </label
+          ><br />
+        </div>
+      </ng-container>
     </fieldset>
   </div>
 </div>

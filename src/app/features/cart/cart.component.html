@@ -1,130 +1,14 @@
 <app-page-title [title]="'Корзина'"></app-page-title>
 <div class="in">
   <div class="items_list">
-    <div class="item">
-      <div class="item__img">
-        <img
-          class="item__img-content"
-          src="/assets/images/dishes/pizz-images/capriccio-preview.jpg"
-          alt="пицца"
-        />
-      </div>
-      <div class="item__info">
-        <div class="item__title">Capriccio</div>
-        <div class="item__main">
-          <div class="item__text">40 см, Традиционное</div>
-          <div class="item__souse">
-            Соусы: <span class="item__souse-name">Кетчуп томатный</span>
-          </div>
-        </div>
-      </div>
-      <div class="item__summary">
-        <div class="plus-one-btn"></div>
-        <div class="item__quantity">1</div>
-        <div class="minus-one-btn"></div>
-
-        <div class="item__cost">740 <span class="rouble">i</span></div>
-        <div class="item__delete-btn"></div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="item__img">
-        <img
-          class="item__img-content"
-          src="/assets/images/dishes/pizz-images/capriccio-preview.jpg"
-          alt="пицца"
-        />
-      </div>
-      <div class="item__info">
-        <div class="item__title">Capriccio</div>
-        <div class="item__main">
-          <div class="item__text">40 см, Традиционное</div>
-          <div class="item__souse">
-            Соусы: <span class="item__souse-name">Кетчуп томатный</span>
-          </div>
-        </div>
-      </div>
-      <div class="item__summary">
-        <div class="plus-one-btn"></div>
-        <div class="item__quantity">1</div>
-        <div class="minus-one-btn"></div>
-
-        <div class="item__cost">740 <span class="rouble">i</span></div>
-        <div class="item__delete-btn"></div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="item__img">
-        <img
-          class="item__img-content"
-          src="/assets/images/dishes/pizz-images/capriccio-preview.jpg"
-          alt="пицца"
-        />
-      </div>
-      <div class="item__info">
-        <div class="item__title">Capriccio</div>
-        <div class="item__main">
-          <div class="item__text">40 см, Традиционное</div>
-          <div class="item__souse">
-            Соусы: <span class="item__souse-name">Кетчуп томатный</span>
-          </div>
-        </div>
-      </div>
-      <div class="item__summary">
-        <div class="plus-one-btn"></div>
-        <div class="item__quantity">1</div>
-        <div class="minus-one-btn"></div>
-
-        <div class="item__cost">740 <span class="rouble">i</span></div>
-        <div class="item__delete-btn"></div>
-      </div>
-    </div>
+    <ng-container *ngFor="let item of cart$ | async">
+      <app-item-card
+        [item]="item"
+        (addPizza)="addPizza($event)"
+      ></app-item-card>
+    </ng-container>
   </div>
 
   <app-sliders></app-sliders>
-
-  <h2 class="title">Выберите акцию</h2>
-  <div class="promo-wrapper">
-    <fieldset class="promo">
-      <div>
-        <label
-          class="promo__main-label"
-          [class.checked]="promoSelected"
-          (click)="togglePromo($event)"
-        >
-          <p class="promo__text">
-            Напиток в подарок <br /><span class="promo__small"
-              >*Напиток по акции кладется тот что есть в наличии</span
-            >
-          </p>
-        </label>
-      </div>
-
-      <ng-container *ngIf="promoSelected">
-        <div class="promo__options">
-          <label
-            (click)="selectDrink('cola')"
-            [class.checked]="selectedDrink === 'cola'"
-            class="promo__label"
-          >
-            Добрый cola </label
-          ><br />
-          <label
-            (click)="selectDrink('orange')"
-            [class.checked]="selectedDrink === 'orange'"
-            class="promo__label"
-          >
-            Добрый Апельсин </label
-          ><br />
-          <label
-            (click)="selectDrink('lemon')"
-            [class.checked]="selectedDrink === 'lemon'"
-            class="promo__label"
-          >
-            Добрый Лимон-Лайм </label
-          ><br />
-        </div>
-      </ng-container>
-    </fieldset>
-  </div>
+  <!-- <app-promo></app-promo> -->
 </div>

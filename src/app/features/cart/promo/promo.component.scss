@@ -1,0 +1,84 @@
+//promotion
+
+.promo-wrapper {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.promo {
+  border: 3px rgb(230, 30, 37) solid;
+  border-radius: 30px;
+  width: 340px;
+  height: 170px;
+  padding: 30px 20px 0;
+  &__small {
+    color: var(--light-gray-font-color);
+    font-size: 8px;
+    line-height: 10px;
+  }
+  &__text {
+    line-height: 10px;
+    display: inline-block;
+    font-weight: 700;
+  }
+  &__check-box {
+    display: inline-block;
+  }
+  &__options {
+    color: var(--promo-font-color);
+  }
+  &__box {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  &__label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 40px;
+    display: inline-block;
+    margin-top: 9px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      border: 1px solid #999;
+      border-radius: 50%;
+      background: white;
+    }
+    &.checked::before {
+      background-image: url(/assets/images/icons/check-red.png);
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  &__main-label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    user-select: none;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: -5px;
+      width: 17px;
+      height: 17px;
+      border: 1px solid #999;
+      border-radius: 50%;
+      background: white;
+    }
+    &.checked::before {
+      background-image: url(/assets/images/icons/check-red.png);
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}

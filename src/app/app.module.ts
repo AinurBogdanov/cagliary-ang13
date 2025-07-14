@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { PizzaComponent } from './features/pizza/pizza.component';
+import { PizzaComponent } from './features/pizzas/pizzas.component';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './features/home/home.component';
 import { CartComponent } from './features/cart/cart.component';
 import { Sliders } from './features/cart/sliders/sliders.component';
+import { ItemCardComponent } from './features/cart/item-card/item-card.component';
+import { PromoComponent } from './features/cart/promo/promo.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { Sliders } from './features/cart/sliders/sliders.component';
     HomeComponent,
     CartComponent,
     Sliders,
+    ItemCardComponent,
+    PromoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, CoreModule],
   providers: [],

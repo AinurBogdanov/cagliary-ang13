@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { fakeApiResp } from 'src/app/core/data/data';
-import { Product } from 'src/app/core/data/interfaces';
+import { fakeApiResp } from 'src/app/core/data/pizzas';
+import { Product } from 'src/app/core/interfaces/fakeApi';
 
 @Component({
   selector: 'app-pizza',
-  templateUrl: './pizza.component.html',
-  styleUrls: ['./pizza.component.scss'],
+  templateUrl: './pizzas.component.html',
+  styleUrls: ['./pizzas.component.scss'],
 })
 export class PizzaComponent implements OnInit {
   constructor() {}

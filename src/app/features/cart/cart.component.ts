@@ -1,10 +1,8 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { cart } from 'src/app/core/data/cart';
+import { cartProduct } from 'src/app/core/interfaces/cartProduct';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,15 +10,11 @@ import {
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  selectedDrink: string = 'cola';
-  promoSelected: boolean = true;
+  cart$ = this.cartService.getCart();
 
-  selectDrink(val: string) {
-    this.selectedDrink = val;
-  }
-  togglePromo(event: Event) {
-    this.promoSelected = !this.promoSelected;
-    console.log(this.promoSelected);
-    event.stopPropagation();
+  constructor(private cartService: CartService) {}
+
+  addPizza(id: string) {
+    this.cartService.addPizza(id);
   }
 }

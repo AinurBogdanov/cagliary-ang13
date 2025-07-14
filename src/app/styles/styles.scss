@@ -55,6 +55,10 @@ body {
   text-decoration: underline;
 }
 
+.items_list app-item-card:first-child .item {
+  border: none;
+}
+
 @media (max-width: 1310px) {
   .in {
     width: 1000px;

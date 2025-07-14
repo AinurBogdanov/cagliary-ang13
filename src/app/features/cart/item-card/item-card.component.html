@@ -1,0 +1,33 @@
+<ng-container *ngIf="item">
+  <div class="item">
+    <div class="item__img">
+      <img
+        class="item__img-content"
+        src="/assets/images/dishes/pizz-images/{{ item.images.preview }}.jpg"
+        alt="пицца"
+      />
+    </div>
+    <div class="item__info">
+      <div class="item__title">{{ item.name }}</div>
+      <div class="item__main">
+        <div class="item__text">{{ item.size }}, {{ item.doughType }}</div>
+        <div *ngIf="findSauceNames(item.saucesIds)" class="item__souse">
+          Соусы:
+          <span class="item__souse-name">{{
+            findSauceNames(item.saucesIds)
+          }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="item__summary">
+      <div class="plus-one-btn" (click)="onAddPizza()"></div>
+      <div class="item__quantity">{{ item.quantity }}</div>
+      <div class="minus-one-btn"></div>
+
+      <div class="item__cost">
+        {{ item.price * item.quantity }} <span class="rouble">i</span>
+      </div>
+      <div class="item__delete-btn"></div>
+    </div>
+  </div>
+</ng-container>

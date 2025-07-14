@@ -1,0 +1,70 @@
+.item {
+  font-family: "Open Sans";
+  display: grid;
+  grid-template-columns: 165px 1fr 250px;
+  color: var(--gray-font-color);
+  font-weight: 400;
+  border-top: 1px solid var(--border-gray-color);
+  padding: 10px;
+  &__img {
+    width: 100%;
+  }
+  &__info {
+    margin-left: 14px;
+  }
+  &__title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  &__main {
+    font-size: 16px;
+  }
+  &__size {
+  }
+  &__text {
+  }
+  &__souse-name {
+    text-decoration: underline;
+    color: var(--card-btn-color);
+  }
+  &__summary {
+    padding-top: 50px;
+    display: flex;
+  }
+  &__quantity {
+    width: 40px;
+    text-align: center;
+  }
+  &__cost {
+    margin-left: 40px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  &__cost .rouble {
+    font-weight: normal;
+  }
+  &__delete-btn {
+    background-image: url(/assets/images/icons/i-cross.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  &__delete-btn:hover {
+    background-image: url(/assets/images/icons/i_cross_orange.png);
+  }
+}
+
+.plus-one-btn,
+.minus-one-btn {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+}

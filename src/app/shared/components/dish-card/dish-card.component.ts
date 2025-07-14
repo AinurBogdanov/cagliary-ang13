@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from 'src/app/core/interfaces/product';
 
 @Component({
@@ -8,8 +8,9 @@ import { Product } from 'src/app/core/interfaces/product';
 })
 export class DishCardComponent {
   @Input() product!: Product;
+  @Output() addedToCart = new EventEmitter();
 
-  ngOnChanges() {
-    console.log(this.product);
+  onAddToCart() {
+    this.addedToCart.emit(this.product);
   }
 }

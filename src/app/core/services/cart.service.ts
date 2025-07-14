@@ -18,9 +18,9 @@ export class CartService {
 
   addPizza(pizzaOrId: string | Product) {
     const items = this.cartItems$.getValue();
-    if (pizzaOrId === 'string') {
-      const pizzaId = pizzaOrId;
 
+    if (typeof pizzaOrId === 'string') {
+      const pizzaId = pizzaOrId;
       const index = items.findIndex((item) => item.id === pizzaId);
 
       if (index > -1) {
@@ -28,7 +28,11 @@ export class CartService {
       }
     } else {
       const pizza = pizzaOrId;
+      const cleanPizzaData = this.transformPizzaData(pizza);
+
+      items.push(cleanPizzaData);
     }
+
     this.cartItems$.next([...items]);
   }
 

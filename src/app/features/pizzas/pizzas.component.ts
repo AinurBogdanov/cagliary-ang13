@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { fakeApiResp } from 'src/app/core/data/pizzas';
-import { Product } from 'src/app/core/interfaces/fakeApi';
+import { fakeApiResp } from 'src/app/core/data/backData/pizzas';
+import { Product } from 'src/app/core/data/interfaces/fakeApi';
 import { CartService } from '../../core/services/cart.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CartService } from '../../core/services/cart.service';
   styleUrls: ['./pizzas.component.scss'],
 })
 export class PizzaComponent {
-  products: Product[] = fakeApiResp.products;
+  readonly products: Product[] = fakeApiResp.products;
 
   constructor(private cartService: CartService) {}
 

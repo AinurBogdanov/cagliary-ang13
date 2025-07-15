@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
-import { recProducts } from 'src/app/core/data/rec-data';
-import { sauces } from 'src/app/core/data/sauces-data';
+import { recProducts } from 'src/app/core/data/backData/rec-data';
+import { sauces } from 'src/app/core/data/backData/sauces-data';
 import Swiper, { Navigation, Pagination } from 'swiper';
 
 Swiper.use([Navigation, Pagination]);

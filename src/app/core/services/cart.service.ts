@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { cartProduct } from '../interfaces/cartProduct';
+import { cartProduct } from '../data/interfaces/cartProduct';
 import { cart } from '../data/cart';
-import { doughType, Product, size } from '../interfaces/product';
+import { doughType, Product, size } from '../data/interfaces/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cartItems$ = new BehaviorSubject<cartProduct[]>(cart);
+  private cartItems$ = new BehaviorSubject<cartProduct[]>(cart.products);
 
-  constructor() {}
-
-  getCart(): Observable<cartProduct[]> {
+  getCartProducts(): Observable<cartProduct[]> {
     return this.cartItems$.asObservable();
   }
 

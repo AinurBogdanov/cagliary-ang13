@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from 'src/app/core/interfaces/product';
+import { Product } from 'src/app/core/data/interfaces/product';
 
 @Component({
   selector: 'app-dish-card',

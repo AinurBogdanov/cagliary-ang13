@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Drink } from '../data/enums/drinks';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PromoService {
-  cartItems$ = new BehaviorSubject<cartProduct[]>(cart);
+  private selectedDrinkSubject = new BehaviorSubject<Drink>(Drink.cola);
+  private promoSelectedSubject = new BehaviorSubject<boolean>(true);
 
-  selectedDrink: string = 'Cola';
-  promoSelected: boolean = true;
+  selectedDrink$: Observable<Drink> = this.selectedDrinkSubject.asObservable();
+  promoSelected$: Observable<boolean> =
+    this.promoSelectedSubject.asObservable();
 
-  selectDrink(val: string) {
-    this.selectedDrink = val;
+  selectDrink(drink: Drink) {
+    this.selectedDrinkSubject.next(drink);
   }
-  togglePromo(event: Event) {
-    this.promoSelected = !this.promoSelected;
-    console.log(this.promoSelected);
-    event.stopPropagation();
+  togglePromo() {
+    this.promoSelectedSubject.next(!this.promoSelectedSubject.value);
   }
 }

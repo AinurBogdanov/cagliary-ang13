@@ -1,0 +1,11 @@
+<app-page-title [title]="'Соленные пиццы'" [showSearch]="true"></app-page-title>
+<div class="dishes-container">
+  <ng-container *ngIf="products">
+    <ng-container *ngFor="let product of products | formatData">
+      <app-dish-card
+        (addedToCart)="addToCart($event)"
+        [product]="product"
+      ></app-dish-card>
+    </ng-container>
+  </ng-container>
+</div>

@@ -1,11 +1,11 @@
-<!-- <h2 class="title">Выберите акцию</h2>
+<h2 class="title">Выберите акцию</h2>
 <div class="promo-wrapper">
   <fieldset class="promo">
     <div>
       <label
         class="promo__main-label"
         [class.checked]="promoSelected"
-        (click)="togglePromo($event)"
+        (click)="togglePromo()"
       >
         <p class="promo__text">
           Напиток в подарок <br /><span class="promo__small"
@@ -18,22 +18,22 @@
     <ng-container *ngIf="promoSelected">
       <div class="promo__options">
         <label
-          (click)="selectDrink('cola')"
-          [class.checked]="selectedDrink === 'cola'"
+          (click)="selectDrink(Drink.cola)"
+          [class.checked]="selectedDrink === Drink.cola"
           class="promo__label"
         >
           Добрый cola </label
         ><br />
         <label
-          (click)="selectDrink('orange')"
-          [class.checked]="selectedDrink === 'orange'"
+          (click)="selectDrink(Drink.orange)"
+          [class.checked]="selectedDrink === Drink.orange"
           class="promo__label"
         >
           Добрый Апельсин </label
         ><br />
         <label
-          (click)="selectDrink('lemon')"
-          [class.checked]="selectedDrink === 'lemon'"
+          (click)="selectDrink(Drink.lemon)"
+          [class.checked]="selectedDrink === Drink.lemon"
           class="promo__label"
         >
           Добрый Лимон-Лайм </label
@@ -41,4 +41,4 @@
       </div>
     </ng-container>
   </fieldset>
-</div> -->
+</div>

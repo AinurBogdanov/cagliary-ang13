@@ -1,7 +1,7 @@
 <app-page-title [title]="'Корзина'"></app-page-title>
 <div class="in">
   <div class="items_list">
-    <ng-container *ngFor="let item of cart$ | async">
+    <ng-container *ngFor="let item of cartItems$ | async">
       <app-item-card
         [item]="item"
         (addPizza)="addPizza($event)"
@@ -10,5 +10,5 @@
   </div>
 
   <app-sliders></app-sliders>
-  <!-- <app-promo></app-promo> -->
+  <app-promo></app-promo>
 </div>

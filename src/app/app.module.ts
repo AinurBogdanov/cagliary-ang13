@@ -11,6 +11,7 @@ import { CartComponent } from './features/cart/cart.component';
 import { Sliders } from './features/cart/sliders/sliders.component';
 import { ItemCardComponent } from './features/cart/item-card/item-card.component';
 import { PromoComponent } from './features/cart/promo/promo.component';
+import { SaltyComponent } from './features/salty/salty.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PromoComponent } from './features/cart/promo/promo.component';
     Sliders,
     ItemCardComponent,
     PromoComponent,
+    SaltyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, CoreModule],
   providers: [],

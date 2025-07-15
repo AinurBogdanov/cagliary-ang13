@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../interfaces/fakeApi';
+import { Product } from '../data/interfaces/fakeApi';
 
 @Pipe({
   name: 'formatData',
 })
 export class FormatDataPipe implements PipeTransform {
-  translit: { [key: string]: string } = {
+  private readonly translit: { [key: string]: string } = {
     а: 'a',
     б: 'b',
     в: 'v',
@@ -67,7 +67,7 @@ export class FormatDataPipe implements PipeTransform {
     });
   }
 
-  transformWord(word: string) {
+  private transformWord(word: string) {
     return word
       .toLowerCase()
       .split('')

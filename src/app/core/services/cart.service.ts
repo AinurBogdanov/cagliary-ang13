@@ -52,6 +52,8 @@ export class CartService {
     }
   }
 
+  removePizza() {}
+
   private transformPizzaData(product: Product): cartProduct {
     const { nutrition, doughTypes, sizes, ...rest } = product;
 

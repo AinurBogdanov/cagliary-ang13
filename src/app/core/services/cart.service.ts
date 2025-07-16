@@ -1,37 +1,52 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { cartProduct } from '../data/interfaces/cartProduct';
 import { cart } from '../data/cart';
 import { doughType, Product, size } from '../data/interfaces/product';
+import { Cart } from '../data/interfaces/cart';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cartItems$ = new BehaviorSubject<cartProduct[]>(cart.products);
+  private cart$ = new BehaviorSubject<Cart>(cart);
 
-  getCartProducts(): Observable<cartProduct[]> {
-    return this.cartItems$.asObservable();
+  getCart(): Observable<Cart> {
+    return this.cart$.asObservable();
   }
 
   addPizza(pizzaOrId: string | Product) {
-    const items = this.cartItems$.getValue();
+    const currentCart = this.cart$.getValue();
+    const currentItems = currentCart.products;
 
     if (typeof pizzaOrId === 'string') {
       const pizzaId = pizzaOrId;
-      const index = items.findIndex((item) => item.id === pizzaId);
+      const index = currentItems.findIndex((item) => item.id === pizzaId);
 
       if (index > -1) {
-        items[index].quantity += 1;
+        currentItems[index].quantity += 1;
+
+        const updatedCart: Cart = {
+          ...currentCart,
+          products: [...currentItems],
+          totalCost: currentItems.reduce((sum, item) => sum + item.price, 0),
+        };
+        this.cart$.next(updatedCart);
       }
     } else {
       const pizza = pizzaOrId;
       const cleanPizzaData = this.transformPizzaData(pizza);
 
-      items.push(cleanPizzaData);
-    }
+      const costUpdated =
+        currentCart.totalCost + cleanPizzaData.price * cleanPizzaData.quantity;
 
-    this.cartItems$.next([...items]);
+      const updatedCart: Cart = {
+        ...currentCart,
+        products: [...currentItems, cleanPizzaData],
+        totalCost: costUpdated,
+      };
+      this.cart$.next(updatedCart);
+    }
   }
 
   private transformPizzaData(product: Product): cartProduct {

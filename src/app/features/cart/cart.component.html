@@ -1,7 +1,7 @@
 <app-page-title [title]="'Корзина'"></app-page-title>
 <div class="in">
   <div class="items_list">
-    <ng-container *ngFor="let item of cartItems$ | async">
+    <ng-container *ngFor="let item of items$ | async">
       <app-item-card
         [item]="item"
         (addPizza)="addPizza($event)"

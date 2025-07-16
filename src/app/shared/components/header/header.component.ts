@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { CartService } from '../../../core/services/cart.service';
+import { map, Observable } from 'rxjs';
+import { Cart } from 'src/app/core/data/interfaces/cart';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +11,12 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   hideBackground = false;
+  cart$: Observable<Cart> = this.cartService.getCart();
+  totalCost$ = this.cart$.pipe(
+    map((cart: Cart) => (cart ? cart.totalCost : 0))
+  );
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private cartService: CartService) {
     this.router.events.subscribe((event) => {
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { cartProduct } from '../data/interfaces/cartProduct';
 import { cart } from '../data/cart';
 import { doughType, Product, size } from '../data/interfaces/product';
@@ -29,7 +29,10 @@ export class CartService {
         const updatedCart: Cart = {
           ...currentCart,
           products: [...currentItems],
-          totalCost: currentItems.reduce((sum, item) => sum + item.price, 0),
+          totalCost: currentItems.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          ),
         };
         this.cart$.next(updatedCart);
       }

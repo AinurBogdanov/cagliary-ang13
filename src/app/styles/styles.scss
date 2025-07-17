@@ -59,6 +59,12 @@ body {
   border: none;
 }
 
+.bottom-underline {
+  height: 1px;
+  background-color: var(--underline-color);
+  margin-top: 50px;
+}
+
 @media (max-width: 1310px) {
   .in {
     width: 1000px;

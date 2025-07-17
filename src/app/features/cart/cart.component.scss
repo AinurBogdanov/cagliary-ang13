@@ -6,3 +6,13 @@
   padding: 10px 10px;
   margin-bottom: 50px;
 }
+.empty-items-list {
+  height: 120px;
+  border: 4px solid var(--card-btn-color);
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

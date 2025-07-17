@@ -1,14 +1,18 @@
 <app-page-title [title]="'Корзина'"></app-page-title>
 <div class="in">
-  <div class="items_list">
-    <ng-container *ngFor="let item of items$ | async">
-      <app-item-card
-        [item]="item"
-        (addPizza)="addPizza($event)"
-      ></app-item-card>
-    </ng-container>
-  </div>
-
-  <app-sliders></app-sliders>
-  <app-promo></app-promo>
+  <ng-container *ngIf="(items$ | async)?.length !== 0">
+    <div class="items_list">
+      <ng-container *ngFor="let item of items$ | async">
+        <app-item-card
+          [item]="item"
+          (addPizza)="addPizza($event)"
+        ></app-item-card>
+      </ng-container>
+    </div>
+    <app-sliders></app-sliders>
+    <app-promo></app-promo>
+  </ng-container>
+  <ng-container *ngIf="(items$ | async)?.length === 0">
+    <div class="empty-items-list">Корзина пуста</div>
+  </ng-container>
 </div>

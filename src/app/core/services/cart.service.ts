@@ -21,7 +21,7 @@ export class CartService {
 
     if (typeof pizzaOrId === 'string') {
       const pizzaId = pizzaOrId;
-      const index = currentItems.findIndex((item) => item.id === pizzaId);
+      const index = this.findIndexById(currentItems, pizzaId);
 
       if (index > -1) {
         currentItems[index].quantity += 1;
@@ -43,12 +43,28 @@ export class CartService {
       const costUpdated =
         currentCart.totalCost + cleanPizzaData.price * cleanPizzaData.quantity;
 
-      const updatedCart: Cart = {
-        ...currentCart,
-        products: [...currentItems, cleanPizzaData],
-        totalCost: costUpdated,
-      };
-      this.cart$.next(updatedCart);
+      const newPizzaId = cleanPizzaData.id;
+
+      const index = this.findIndexById(currentItems, newPizzaId);
+      if (index > -1) {
+        currentItems[index].quantity += 1;
+        const updatedCart: Cart = {
+          ...currentCart,
+          products: [...currentItems],
+          totalCost: currentItems.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          ),
+        };
+        this.cart$.next(updatedCart);
+      } else {
+        const updatedCart: Cart = {
+          ...currentCart,
+          products: [...currentItems, cleanPizzaData],
+          totalCost: costUpdated,
+        };
+        this.cart$.next(updatedCart);
+      }
     }
   }
 
@@ -79,5 +95,8 @@ export class CartService {
     );
 
     return !activeDoughType ? 'Традиционное' : activeDoughType.type;
+  }
+  private findIndexById(array: cartProduct[], id: string) {
+    return array.findIndex((item) => item.id === id);
   }
 }

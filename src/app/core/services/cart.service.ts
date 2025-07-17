@@ -39,36 +39,56 @@ export class CartService {
     } else {
       const pizza = pizzaOrId;
       const cleanPizzaData = this.transformPizzaData(pizza);
-
-      const costUpdated =
-        currentCart.totalCost + cleanPizzaData.price * cleanPizzaData.quantity;
-
       const newPizzaId = cleanPizzaData.id;
 
       const index = this.findIndexById(currentItems, newPizzaId);
       if (index > -1) {
         currentItems[index].quantity += 1;
+
         const updatedCart: Cart = {
           ...currentCart,
           products: [...currentItems],
-          totalCost: currentItems.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-          ),
+          totalCost: this.calcItemsCost(currentItems),
         };
         this.cart$.next(updatedCart);
       } else {
         const updatedCart: Cart = {
           ...currentCart,
           products: [...currentItems, cleanPizzaData],
-          totalCost: costUpdated,
+          totalCost: this.calcItemsCost(currentItems),
         };
         this.cart$.next(updatedCart);
       }
     }
   }
 
-  removePizza() {}
+  deleteFromCart(item: cartProduct) {
+    const currentCart = this.cart$.getValue();
+    const currentItems = currentCart.products;
+
+    const index = this.findIndexById(currentItems, item.id);
+
+    const itemFromCart = currentItems[index];
+    if (itemFromCart.quantity > 1) {
+      currentItems[index].quantity -= 1;
+
+      const updatedCart: Cart = {
+        ...currentCart,
+        products: [...currentItems],
+        totalCost: this.calcItemsCost(currentItems),
+      };
+      this.cart$.next(updatedCart);
+    } else {
+      currentItems.splice(index, 1);
+
+      const updatedCart: Cart = {
+        ...currentCart,
+        products: [...currentItems],
+        totalCost: this.calcItemsCost(currentItems),
+      };
+      this.cart$.next(updatedCart);
+    }
+  }
 
   private transformPizzaData(product: Product): cartProduct {
     const { nutrition, doughTypes, sizes, ...rest } = product;
@@ -98,5 +118,8 @@ export class CartService {
   }
   private findIndexById(array: cartProduct[], id: string) {
     return array.findIndex((item) => item.id === id);
+  }
+  private calcItemsCost(items: cartProduct[]) {
+    return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
 }

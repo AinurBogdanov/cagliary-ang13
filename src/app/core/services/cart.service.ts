@@ -67,6 +67,22 @@ export class CartService {
     const currentItems = currentCart.products;
 
     const index = this.findIndexById(currentItems, item.id);
+    currentItems.splice(index, 1);
+
+    const updatedCart: Cart = {
+      ...currentCart,
+      products: [...currentItems],
+      totalCost: this.calcItemsCost(currentItems),
+    };
+
+    this.cart$.next(updatedCart);
+  }
+
+  minusOne(item: cartProduct) {
+    const currentCart = this.cart$.getValue();
+    const currentItems = currentCart.products;
+
+    const index = this.findIndexById(currentItems, item.id);
 
     const itemFromCart = currentItems[index];
     if (itemFromCart.quantity > 1) {

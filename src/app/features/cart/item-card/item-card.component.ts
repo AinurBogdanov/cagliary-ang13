@@ -11,7 +11,8 @@ export class ItemCardComponent implements OnInit {
   @Input() item!: cartProduct;
   @Output() addPizza = new EventEmitter<string>();
   sauceNames: string = 'не сырный';
-  @Output() deleteFromCart = new EventEmitter<cartProduct>();
+  @Output() minusOneOfCart = new EventEmitter<cartProduct>();
+  @Output() deleteItem = new EventEmitter<cartProduct>();
 
   constructor() {}
 
@@ -21,8 +22,11 @@ export class ItemCardComponent implements OnInit {
     this.addPizza.emit(this.item.id);
   }
 
-  onDeleteFromCart() {
-    this.deleteFromCart.emit(this.item);
+  onMinusOneOfCart() {
+    this.minusOneOfCart.emit(this.item);
+  }
+  onDeleteItem() {
+    this.deleteItem.emit(this.item);
   }
 
   selectSauce() {}

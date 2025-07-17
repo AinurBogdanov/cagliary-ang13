@@ -6,7 +6,8 @@
         <app-item-card
           [item]="item"
           (addPizza)="addPizza($event)"
-          (deleteFromCart)="deleteFromCart($event)"
+          (deleteItem)="deleteItem($event)"
+          (minusOneOfCart)="minusOneItem($event)"
         ></app-item-card>
       </ng-container>
     </div>

@@ -19,7 +19,10 @@ export class CartComponent {
   addPizza(id: string) {
     this.cartService.addPizza(id);
   }
-  deleteFromCart(item: cartProduct) {
+  deleteItem(item: cartProduct) {
     this.cartService.deleteFromCart(item);
+  }
+  minusOneItem(item: cartProduct) {
+    this.cartService.minusOne(item);
   }
 }

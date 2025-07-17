@@ -22,12 +22,12 @@
     <div class="item__summary">
       <div class="plus-one-btn" (click)="onAddPizza()"></div>
       <div class="item__quantity">{{ item.quantity }}</div>
-      <div class="minus-one-btn" (click)="onDeleteFromCart()"></div>
+      <div class="minus-one-btn" (click)="onMinusOneOfCart()"></div>
 
       <div class="item__cost">
         {{ item.price }} <span class="rouble">i</span>
       </div>
-      <div class="item__delete-btn"></div>
+      <div class="item__delete-btn" (click)="onDeleteItem()"></div>
     </div>
   </div>
 </ng-container>

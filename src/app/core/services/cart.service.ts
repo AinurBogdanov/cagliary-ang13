@@ -52,10 +52,11 @@ export class CartService {
         };
         this.cart$.next(updatedCart);
       } else {
+        const updatedItems = [...currentItems, cleanPizzaData];
         const updatedCart: Cart = {
           ...currentCart,
-          products: [...currentItems, cleanPizzaData],
-          totalCost: this.calcItemsCost(currentItems),
+          products: updatedItems,
+          totalCost: this.calcItemsCost(updatedItems),
         };
         this.cart$.next(updatedCart);
       }

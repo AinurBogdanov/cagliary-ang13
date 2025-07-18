@@ -1,1 +1,80 @@
 <app-page-title [title]="'Вход'"></app-page-title>
+<div class="in">
+  <div class="login-wrap">
+    <form
+      class="form"
+      #loginForm="ngForm"
+      (ngSubmit)="submitForm(loginForm.value)"
+    >
+      <!-- <div class="form__section">
+      <label class="form__label mb20">Имя</label>
+      <input
+        class="form__input"
+        type="text"
+        name="name"
+        placeholder="Введите ваше имя"
+        ngModel
+        required
+      />
+    </div> -->
+      <div class="form__section mb20">
+        <label class="form__label mb10">Номер телефона</label>
+        <input
+          class="form__input"
+          type="tel"
+          name="phone"
+          placeholder="Введите номер"
+          mask=" 000-000-00-00"
+          prefix="+7"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form__section mb20">
+        <label class="form__label mb10">пароль</label>
+        <input
+          class="form__input"
+          [type]="(passwordVisible | async) ? 'text' : 'password'"
+          name="password"
+          placeholder="Введите пароль"
+          ngModel
+          required
+        />
+        <button (click)="togglePasswordVisibility()" class="svg-eye-btn">
+          <svg
+            class="invisiblePassword"
+            [class.visiblePassword]="passwordVisible | async"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"
+            />
+          </svg>
+        </button>
+      </div>
+      <button
+        type="submit"
+        class="btn--red form__btn"
+        [class.disabledBtn]="!(familiarized | async)"
+      >
+        Войти</button
+      ><br />
+
+      <div>
+        <div
+          class="checkbox-cont"
+          [class.checked]="familiarized | async"
+          (click)="toggleFamiliarized()"
+        ></div>
+        <p class="text">
+          Согласен с <span class="ref-red"> политикой конфиденциальности</span>
+        </p>
+      </div>
+    </form>
+  </div>
+  <div class="bottom-underline"></div>
+  <!-- name phone password -->
+</div>

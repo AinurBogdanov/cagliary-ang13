@@ -14,6 +14,8 @@ import { PromoComponent } from './features/cart/promo/promo.component';
 import { SaltyComponent } from './features/salty/salty.component';
 import { CreateOrderComponent } from './features/cart/create-order/create-order.component';
 import { LoginComponent } from './features/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,14 @@ import { LoginComponent } from './features/login/login.component';
     CreateOrderComponent,
     LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, CoreModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    CoreModule,
+    FormsModule,
+    NgxMaskModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

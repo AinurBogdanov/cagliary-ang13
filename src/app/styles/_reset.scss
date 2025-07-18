@@ -11,18 +11,35 @@
   padding: 0;
 }
 
+* {
+  user-select: none;
+}
 /* Remove default margin and padding */
 body,
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-dl, dd, ol, ul,
-figure, hr, fieldset, legend {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+hr,
+fieldset,
+legend {
   margin: 0;
   padding: 0;
 }
 
 /* Remove list styles (bullets/numbers) */
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -48,7 +65,10 @@ table {
 }
 
 /* Remove default form styles */
-input, textarea, select, button {
+input,
+textarea,
+select,
+button {
   font: inherit;
   color: inherit;
   border: none;
@@ -62,13 +82,16 @@ img {
 }
 
 /* Remove default quote styles */
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
   content: none;
 }
 

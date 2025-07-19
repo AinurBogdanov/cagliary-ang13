@@ -13,6 +13,7 @@ import { ItemCardComponent } from './features/cart/item-card/item-card.component
 import { PromoComponent } from './features/cart/promo/promo.component';
 import { SaltyComponent } from './features/salty/salty.component';
 import { CreateOrderComponent } from './features/cart/create-order/create-order.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,13 @@ import { CreateOrderComponent } from './features/cart/create-order/create-order.
     SaltyComponent,
     CreateOrderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, CoreModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    CoreModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

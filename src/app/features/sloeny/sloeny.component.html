@@ -1,11 +1,13 @@
 <app-page-title [title]="'Соленные пиццы'" [showSearch]="true"></app-page-title>
 <div class="dishes-container">
   <ng-container *ngIf="products">
-    <ng-container *ngFor="let product of products | formatData">
+    <ng-container *ngFor="let product of products | transformSloeny">
       <app-dish-card
         (addedToCart)="addToCart($event)"
         [product]="product"
+        [folder]="'sloeny'"
       ></app-dish-card>
     </ng-container>
   </ng-container>
 </div>
+bananza-na-sloyonom То что в шаблоне bananza-na-sloenom то что надо

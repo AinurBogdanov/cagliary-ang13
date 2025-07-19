@@ -12,6 +12,6 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrlApi}/salty`);
+    return this.http.get<Product[]>(`${this.baseUrlApi}/sloeny`);
   }
 }

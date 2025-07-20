@@ -1,10 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../data/interfaces/fakeApi';
+import { Product } from '../data/interfaces/product';
 
 @Pipe({
-  name: 'formatData',
+  name: 'transformSloeny',
 })
-export class FormatDataPipe implements PipeTransform {
+export class TransformSloenyPipe implements PipeTransform {
   private readonly translit: { [key: string]: string } = {
     а: 'a',
     б: 'b',
@@ -12,7 +12,7 @@ export class FormatDataPipe implements PipeTransform {
     г: 'g',
     д: 'd',
     е: 'e',
-    ё: 'yo',
+    ё: 'e',
     ж: 'zh',
     з: 'z',
     и: 'i',
@@ -47,8 +47,8 @@ export class FormatDataPipe implements PipeTransform {
 
       const originalImages = { ...dish.images };
       const transformedName = this.transformWord(dish.name);
-      const newMainImage = transformedName + '-main';
-      const newPreviewImage = transformedName + '-preview';
+      const newMainImage = transformedName;
+      const newPreviewImage = transformedName;
 
       newDish.images = {
         ...originalImages, // Сохраняем все оригинальные изображения

@@ -11,8 +11,9 @@ import { CartComponent } from './features/cart/cart.component';
 import { Sliders } from './features/cart/sliders/sliders.component';
 import { ItemCardComponent } from './features/cart/item-card/item-card.component';
 import { PromoComponent } from './features/cart/promo/promo.component';
-import { SaltyComponent } from './features/salty/salty.component';
+import { SloenyComponent } from './features/sloeny/sloeny.component';
 import { CreateOrderComponent } from './features/cart/create-order/create-order.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,10 +24,16 @@ import { CreateOrderComponent } from './features/cart/create-order/create-order.
     Sliders,
     ItemCardComponent,
     PromoComponent,
-    SaltyComponent,
+    SloenyComponent,
     CreateOrderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, CoreModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    CoreModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

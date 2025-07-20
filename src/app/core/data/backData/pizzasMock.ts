@@ -530,6 +530,7 @@ export const fakeApiResp = {
         },
       ],
     },
+
     {
       id: '8',
       name: 'Домашняя',
@@ -1825,3 +1826,4 @@ export const fakeApiResp = {
     },
   ],
 };
+// productsJson = JSON.stringify(fakeApiResp.products, null, 2);

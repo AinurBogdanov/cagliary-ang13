@@ -1,0 +1,66 @@
+.login-wrap {
+  width: 400px;
+  margin: 0 auto;
+}
+.form {
+  &__section {
+    display: block;
+    position: relative;
+  }
+  &__input {
+    border: 1px solid var(--underline-color);
+    border-radius: 30px;
+    width: 390px;
+    height: 50px;
+    padding-left: 30px;
+  }
+  &__label {
+    display: block;
+    text-align: center;
+    color: var(--second-font-color);
+    font-size: 16px;
+  }
+  &__btn {
+    display: block;
+    margin: 0 auto;
+  }
+}
+.checkbox-cont {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 4px;
+    width: 17px;
+    height: 17px;
+    border: 1px solid #999;
+    border-radius: 50%;
+    background: white;
+  }
+  &.checked::before {
+    background-image: url(/assets/images/icons/check-red.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.ref-red {
+  color: red;
+  text-decoration: underline;
+}
+.svg-eye-btn {
+  position: absolute;
+  right: 20px;
+  top: 43px;
+  cursor: pointer;
+}
+.invisiblePassword {
+  fill: rgba(74, 77, 73, 0.548);
+}
+.visiblePassword {
+  fill: rgba(14, 13, 13, 0.836);
+}

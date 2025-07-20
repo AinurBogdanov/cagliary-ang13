@@ -4,11 +4,16 @@ import { HomeComponent } from './features/home/home.component';
 import { PizzaComponent } from './features/pizzas/pizzas.component';
 import { CartComponent } from './features/cart/cart.component';
 import { SloenyComponent } from './features/sloeny/sloeny.component';
+import { LoginComponent } from './features/login/login.component';
 
 const routes: Routes = [
   {
     path: 'pizza',
     component: PizzaComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: '',

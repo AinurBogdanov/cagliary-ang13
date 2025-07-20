@@ -13,6 +13,9 @@ import { ItemCardComponent } from './features/cart/item-card/item-card.component
 import { PromoComponent } from './features/cart/promo/promo.component';
 import { SloenyComponent } from './features/sloeny/sloeny.component';
 import { CreateOrderComponent } from './features/cart/create-order/create-order.component';
+import { LoginComponent } from './features/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -26,13 +29,20 @@ import { HttpClientModule } from '@angular/common/http';
     PromoComponent,
     SloenyComponent,
     CreateOrderComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
+
     AppRoutingModule,
+
     SharedModule,
+
     CoreModule,
     HttpClientModule,
+    ,
+    FormsModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

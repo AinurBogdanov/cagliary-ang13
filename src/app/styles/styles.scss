@@ -32,10 +32,13 @@ body {
 .rouble {
   font-family: "Rouble";
 }
+.text {
+  display: inline;
+}
 .btn {
   background-color: var(--card-btn-color);
   border-radius: 20px;
-  height: 44px;
+  height: 42px;
   cursor: pointer;
   padding: 9px 0 11px 0px;
   color: white;
@@ -47,6 +50,12 @@ body {
     padding: 19px 0;
     width: 251px;
     border-radius: 40px;
+    border: 3px solid red;
+  }
+  &--red:hover {
+    background-color: var(--btn-white-hover-color);
+    color: var(--red-btn-color);
+    border: 3px solid red;
   }
 }
 .btn:hover {
@@ -54,7 +63,10 @@ body {
   color: var(--card-btn-color);
   border: 1px solid var(--card-btn-color);
 }
-
+.disabledBtn {
+  opacity: 0.6;
+  pointer-events: none;
+}
 .plus-one-btn {
   background-image: url(/assets/images/icons/i_plus_grey.png);
 }
@@ -80,7 +92,6 @@ body {
   background-color: var(--underline-color);
   margin-top: 50px;
 }
-
 @media (max-width: 1310px) {
   .in {
     width: 1000px;

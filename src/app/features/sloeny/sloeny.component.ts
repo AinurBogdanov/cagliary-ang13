@@ -17,14 +17,14 @@ export class SloenyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.apiService.getSloenyData().subscribe({
-      next: (pizzaData: Product[]) => {
-        this.products = pizzaData;
-      },
-      error: (err) => {
-        console.error('error пиздец', err);
-      },
-    });
+    // this.apiService.getSloenyData().subscribe({
+    //   next: (pizzaData: Product[]) => {
+    //     this.products = pizzaData;
+    //   },
+    //   error: (err) => {
+    //     console.error('error пиздец', err);
+    //   },
+    // });
   }
   addToCart(pizza: Product) {
     this.cartService.addPizza(pizza);

@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/core/services/api.service';
   styleUrls: ['./pizzas.component.scss'],
 })
 export class PizzaComponent implements OnInit {
-  products!: Product[];
+  products!: Product[][];
 
   constructor(
     private cartService: CartService,
@@ -17,8 +17,8 @@ export class PizzaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.apiService.getPizzaData().subscribe({
-      next: (pizzaData: Product[]) => {
+    this.apiService.getProducts().subscribe({
+      next: (pizzaData: Product[][]) => {
         this.products = pizzaData;
       },
       error: (err) => {

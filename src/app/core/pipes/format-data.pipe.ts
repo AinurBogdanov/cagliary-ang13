@@ -41,17 +41,20 @@ export class FormatDataPipe implements PipeTransform {
     я: 'ja',
   };
 
-  transform(dishes: Product[]): Product[] {
+  transform(dishes: Product[][]): Product[][] {
     return dishes.map((dish) => {
       const newDish = { ...dish };
 
       const originalImages = { ...dish.images };
       const transformedName = this.transformWord(dish.name);
+      if (transformedName === 'error') {
+        console.log(dish.name, dish, 'error name');
+      }
       const newMainImage = transformedName + '-main';
       const newPreviewImage = transformedName + '-preview';
 
       newDish.images = {
-        ...originalImages, // Сохраняем все оригинальные изображения
+        ...originalImages,
         main: newMainImage, // Обновляем main
         preview: newPreviewImage, // Обновляем preview
       };
@@ -67,13 +70,17 @@ export class FormatDataPipe implements PipeTransform {
   }
 
   private transformWord(word: string) {
-    return word
-      .toLowerCase()
-      .split('')
-      .map((char: string) => this.translit[char] || char)
-      .join('')
-      .replace(/\s+/g, '-')
-      .replace(/[^\w-]+/g, '')
-      .replace(/-+/g, '-');
+    if (word) {
+      return word
+        .toLowerCase()
+        .split('')
+        .map((char: string) => this.translit[char] || char)
+        .join('')
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]+/g, '')
+        .replace(/-+/g, '-');
+    } else {
+      return 'error';
+    }
   }
 }

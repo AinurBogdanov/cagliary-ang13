@@ -33,14 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-
     AppRoutingModule,
-
     SharedModule,
-
     CoreModule,
     HttpClientModule,
-    ,
     FormsModule,
     NgxMaskModule.forRoot(),
   ],

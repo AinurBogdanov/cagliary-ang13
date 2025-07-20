@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/core/data/interfaces/fakeApi';
-import { CartService } from '../../core/services/cart.service';
+import { Product } from 'src/app/core/data/interfaces/product';
 import { ApiService } from 'src/app/core/services/api.service';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
-  selector: 'app-pizza',
-  templateUrl: './pizzas.component.html',
-  styleUrls: ['./pizzas.component.scss'],
+  selector: 'app-rimsky',
+  templateUrl: './rimsky.component.html',
+  styleUrls: ['./rimsky.component.scss'],
 })
-export class PizzaComponent implements OnInit {
+export class RimskyComponent implements OnInit {
   products!: Product[][];
 
   constructor(

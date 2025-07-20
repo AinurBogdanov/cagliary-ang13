@@ -1,11 +1,11 @@
-<app-page-title [title]="'Пицца'" [showSearch]="true"></app-page-title>
+<app-page-title [title]="'Римская пицца'" [showSearch]="true"></app-page-title>
 <div class="dishes-container">
   <ng-container *ngIf="products">
-    <ng-container *ngFor="let product of products[0] | formatData">
+    <ng-container *ngFor="let product of products[2] | formatData">
       <app-dish-card
         (addedToCart)="addToCart($event)"
         [product]="product"
-        [folder]="'pizzas'"
+        [folder]="'sloeny'"
       ></app-dish-card>
     </ng-container>
   </ng-container>

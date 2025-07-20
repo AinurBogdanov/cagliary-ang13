@@ -41,7 +41,7 @@ export class FormatDataPipe implements PipeTransform {
     я: 'ja',
   };
 
-  transform(dishes: Product[][]): Product[][] {
+  transform(dishes: Product[]): Product[] {
     return dishes.map((dish) => {
       const newDish = { ...dish };
 
@@ -50,13 +50,11 @@ export class FormatDataPipe implements PipeTransform {
       if (transformedName === 'error') {
         console.log(dish.name, dish, 'error name');
       }
-      const newMainImage = transformedName + '-main';
-      const newPreviewImage = transformedName + '-preview';
+      const newMainImage = transformedName;
 
       newDish.images = {
         ...originalImages,
-        main: newMainImage, // Обновляем main
-        preview: newPreviewImage, // Обновляем preview
+        main: newMainImage,
       };
 
       const activeSize = dish.sizes.filter(

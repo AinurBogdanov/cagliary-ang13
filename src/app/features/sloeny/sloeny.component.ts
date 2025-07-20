@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/core/services/api.service';
   styleUrls: ['./sloeny.component.scss'],
 })
 export class SloenyComponent implements OnInit {
-  products!: Product[];
+  products!: Product[][];
 
   constructor(
     private cartService: CartService,
@@ -17,15 +17,9 @@ export class SloenyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.apiService.getSloenyData().subscribe({
-    //   next: (pizzaData: Product[]) => {
-    //     this.products = pizzaData;
-    //   },
-    //   error: (err) => {
-    //     console.error('error пиздец', err);
-    //   },
-    // });
+    this.products = this.apiService.products;
   }
+
   addToCart(pizza: Product) {
     this.cartService.addPizza(pizza);
   }

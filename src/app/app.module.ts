@@ -17,6 +17,7 @@ import { LoginComponent } from './features/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
+import { RimskyComponent } from './features/rimsky/rimsky.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     SloenyComponent,
     CreateOrderComponent,
     LoginComponent,
+    RimskyComponent,
   ],
   imports: [
     BrowserModule,

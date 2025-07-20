@@ -17,14 +17,14 @@ export class PizzaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.apiService.getData().subscribe({
-    //   next: (pizzaData: Product[]) => {
-    //     this.products = pizzaData;
-    //   },
-    //   error: (err) => {
-    //     console.error('error пиздец', err);
-    //   },
-    // });
+    this.apiService.getPizzaData().subscribe({
+      next: (pizzaData: Product[]) => {
+        this.products = pizzaData;
+      },
+      error: (err) => {
+        console.error('error пиздец', err);
+      },
+    });
   }
 
   addToCart(pizza: Product) {

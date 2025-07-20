@@ -11,7 +11,10 @@ export class ApiService {
     'https://pizza-backend.free.beeceptor.com';
   constructor(private http: HttpClient) {}
 
-  getData(): Observable<Product[]> {
+  getSloenyData(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrlApi}/sloeny`);
+  }
+  getPizzaData(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrlApi}/pizzas`);
   }
 }

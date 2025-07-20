@@ -17,7 +17,7 @@ export class SloenyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.apiService.getData().subscribe({
+    this.apiService.getSloenyData().subscribe({
       next: (pizzaData: Product[]) => {
         this.products = pizzaData;
       },

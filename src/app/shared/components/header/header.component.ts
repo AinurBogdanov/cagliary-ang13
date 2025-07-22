@@ -15,6 +15,13 @@ export class HeaderComponent implements OnInit {
   totalCost$ = this.cart$.pipe(
     map((cart: Cart) => (cart ? cart.totalCost : 0))
   );
+  totalQuantity$ = this.cart$.pipe(
+    map((cart: Cart) =>
+      cart
+        ? cart.products.reduce((sum, product) => sum + product.quantity, 0)
+        : 0
+    )
+  );
 
   constructor(private router: Router, private cartService: CartService) {
     this.router.events.subscribe((event) => {

@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './features/menu/menu.component';
+import { PromoPageComponent } from './features/promo-page/promo-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MenuComponent } from './features/menu/menu.component';
     CreateOrderComponent,
     LoginComponent,
     MenuComponent,
+    PromoPageComponent,
   ],
   imports: [
     BrowserModule,

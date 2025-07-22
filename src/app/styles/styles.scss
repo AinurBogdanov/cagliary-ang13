@@ -24,17 +24,6 @@ body {
   padding: 0 20px;
 }
 
-.title {
-  text-align: center;
-  font-size: 40px;
-  color: var(--second-font-color);
-}
-.rouble {
-  font-family: "Rouble";
-}
-.text {
-  display: inline;
-}
 .btn {
   background-color: var(--card-btn-color);
   border-radius: 20px;
@@ -92,6 +81,23 @@ body {
   background-color: var(--underline-color);
   margin-top: 50px;
 }
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  color: var(--second-font-color);
+}
+.rouble {
+  font-family: "Rouble";
+}
+.text {
+  display: inline;
+}
+.h3 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
 @media (max-width: 1310px) {
   .in {
     width: 1000px;

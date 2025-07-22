@@ -1,0 +1,18 @@
+.promo {
+  color: var(--gray-font-color);
+  &__card {
+    margin-bottom: 100px;
+  }
+  &__image {
+    height: 406px;
+  }
+}
+.promo-card-cont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 50px;
+}
+.name {
+  color: #000;
+  font-size: 30px;
+}

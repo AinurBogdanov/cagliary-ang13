@@ -16,3 +16,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.summary-holder {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color: var(--gray-font-color);
+}
+.cost-summary {
+  font-size: 24px;
+}
+.total-cost {
+  font-size: 45px;
+}

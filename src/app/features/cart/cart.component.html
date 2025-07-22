@@ -18,6 +18,12 @@
     <div class="empty-items-list">Корзина пуста</div>
   </ng-container>
   <ng-container *ngIf="(items$ | async)?.length !== 0">
+    <div class="summary-holder">
+      <h2 class="cost-summary">
+        Итого: <span class="total-cost">{{ totalCost$ | async }}</span
+        ><span class="rouble fs45px">i</span>
+      </h2>
+    </div>
     <app-create-order class="mt20"></app-create-order>
   </ng-container>
   <div class="bottom-underline"></div>

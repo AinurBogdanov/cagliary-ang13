@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { PizzaComponent } from './features/pizzas/pizzas.component';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './features/home/home.component';
 import { CartComponent } from './features/cart/cart.component';
@@ -21,7 +20,6 @@ import { MenuComponent } from './features/menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PizzaComponent,
     HomeComponent,
     CartComponent,
     Sliders,
@@ -38,7 +36,6 @@ import { MenuComponent } from './features/menu/menu.component';
     CoreModule,
     HttpClientModule,
     FormsModule,
-    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

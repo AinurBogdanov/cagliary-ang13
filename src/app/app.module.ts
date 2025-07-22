@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { RimskyComponent } from './features/rimsky/rimsky.component';
+import { MenuComponent } from './features/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RimskyComponent } from './features/rimsky/rimsky.component';
     CreateOrderComponent,
     LoginComponent,
     RimskyComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

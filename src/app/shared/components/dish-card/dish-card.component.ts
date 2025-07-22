@@ -8,8 +8,9 @@ import { Product } from 'src/app/core/data/interfaces/product';
 })
 export class DishCardComponent {
   @Input() product!: Product;
-  @Output() addedToCart = new EventEmitter();
   @Input() folder!: string;
+  @Input() currentPageIndex!: number;
+  @Output() addedToCart = new EventEmitter();
 
   onAddToCart() {
     this.addedToCart.emit(this.product);

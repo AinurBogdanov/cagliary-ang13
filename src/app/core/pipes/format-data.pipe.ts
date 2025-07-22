@@ -12,7 +12,7 @@ export class FormatDataPipe implements PipeTransform {
     г: 'g',
     д: 'd',
     е: 'e',
-    ё: 'yo',
+    ё: 'e',
     ж: 'zh',
     з: 'z',
     и: 'i',
@@ -47,14 +47,13 @@ export class FormatDataPipe implements PipeTransform {
 
       const originalImages = { ...dish.images };
       const transformedName = this.transformWord(dish.name);
-      if (transformedName === 'error') {
-        console.log(dish.name, dish, 'error name');
-      }
       const newMainImage = transformedName;
+      const newPreviewImage = transformedName;
 
       newDish.images = {
-        ...originalImages,
-        main: newMainImage,
+        ...originalImages, // Сохраняем все оригинальные изображения
+        main: newMainImage, // Обновляем main
+        preview: newPreviewImage, // Обновляем preview
       };
 
       const activeSize = dish.sizes.filter(
@@ -68,17 +67,14 @@ export class FormatDataPipe implements PipeTransform {
   }
 
   private transformWord(word: string) {
-    if (word) {
-      return word
-        .toLowerCase()
-        .split('')
-        .map((char: string) => this.translit[char] || char)
-        .join('')
-        .replace(/\s+/g, '-')
-        .replace(/[^\w-]+/g, '')
-        .replace(/-+/g, '-');
-    } else {
-      return 'error';
-    }
+    return word
+      .toLowerCase()
+      .split('')
+      .map((char: string) => this.translit[char] || char)
+      .join('')
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]+/g, '')
+      .replace(/-+/g, '-')
+      .replace(/-+$/, '');
   }
 }

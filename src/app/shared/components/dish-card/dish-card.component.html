@@ -1,60 +1,95 @@
-<ng-container *ngIf="product">
-  <div>
-    <div class="card-img">
-      <img
-        src="/assets/images/dishes/{{ folder }}/{{ product.images.main }}.jpg"
-        alt=""
-      />
-    </div>
-    <h2 class="card-title">{{ product.name }}</h2>
-  </div>
-  <div class="recipe">{{ product.description }}</div>
-  <div class="bottom-card">
-    <div class="size-choose">
-      <p
-        *ngFor="let size of product.sizes; let i = index"
-        class="option"
-        [ngClass]="{
-          'not-available': !size.available,
-          'active-opt': size.active
-        }"
-      >
-        {{ size.size }}
-      </p>
-    </div>
+<ng-container *ngIf="currentPageIndex <= 2">
+  <ng-container *ngIf="product">
+    <div class="card big-card">
+      <div>
+        <div class="card-img card-img-big">
+          <img
+            src="/assets/images/dishes/{{ folder }}/{{
+              product.images.main
+            }}.jpg"
+            alt=""
+            class="img"
+          />
+        </div>
+        <h2 class="card-title">{{ product.name }}</h2>
+      </div>
+      <div class="recipe">{{ product.description }}</div>
+      <div class="bottom-card">
+        <div class="size-choose">
+          <p
+            *ngFor="let size of product.sizes; let i = index"
+            class="option"
+            [ngClass]="{
+              'not-available': !size.available,
+              'active-opt': size.active
+            }"
+          >
+            {{ size.size }}
+          </p>
+        </div>
+        <div
+          class="dough-choose"
+          [ngClass]="{
+            hidden:
+              !product.doughTypes[0].available &&
+              !product.doughTypes[1].available
+          }"
+        >
+          <p
+            class="option"
+            [ngClass]="{
+              'active-opt': product.doughTypes[0].active,
+              'not-available': !product.doughTypes[0].available
+            }"
+          >
+            Традиционное
+          </p>
+          <p
+            class="option"
+            [ngClass]="{
+              'active-opt': product.doughTypes[1].active,
+              'not-available': !product.doughTypes[1].available
+            }"
+          >
+            Толстое
+          </p>
+        </div>
 
-    <div
-      class="dough-choose"
-      [ngClass]="{
-        hidden:
-          !product.doughTypes[0].available && !product.doughTypes[1].available
-      }"
-    >
-      <p
-        class="option"
-        [ngClass]="{
-          'active-opt': product.doughTypes[0].active,
-          'not-available': !product.doughTypes[0].available
-        }"
-      >
-        Традиционное
-      </p>
-      <p
-        class="option"
-        [ngClass]="{
-          'active-opt': product.doughTypes[1].active,
-          'not-available': !product.doughTypes[1].available
-        }"
-      >
-        Толстое
-      </p>
+        <div class="card-summary">
+          <span class="cost">{{ product.price }} Р</span>
+          <span class="weight">{{ product.weight }}</span>
+          <ng-container *ngIf="product.doughTypes.length > 0">
+            <div class="half-choose">1/2</div>
+          </ng-container>
+        </div>
+        <button class="btn" (click)="onAddToCart()">В корзину</button>
+      </div>
     </div>
+  </ng-container>
+</ng-container>
 
-    <div class="card-summary">
-      <span class="cost">{{ product.price }} Р</span>
-      <span class="weight">{{ product.weight }}</span>
-      <div class="half-choose">1/2</div>
+<ng-container *ngIf="currentPageIndex > 2">
+  <ng-container *ngIf="product">
+    <div class="card small-card">
+      <div>
+        <div class="card-img">
+          <img
+            src="/assets/images/dishes/{{ folder }}/{{
+              product.images.main
+            }}.jpg"
+            alt=""
+            class="img"
+          />
+        </div>
+        <h2 class="card-title card-title-small">{{ product.name }}</h2>
+      </div>
+      <div class="bottom-card">
+        <div class="card-summary card-summary-small">
+          <span class="cost">{{ product.price }} Р</span>
+          <span class="weight wight-small">{{ product.weight }}</span>
+        </div>
+        <button class="btn" (click)="onAddToCart()">В корзину</button>
+      </div>
     </div>
-    <button class="btn" (click)="onAddToCart()">В корзину</button>
-  </div>
+  </ng-container>
 </ng-container>

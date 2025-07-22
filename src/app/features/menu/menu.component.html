@@ -1,0 +1,13 @@
+<app-page-title [title]="title" [showSearch]="true"></app-page-title>
+<div class="dishes-container">
+  <ng-container *ngIf="products">
+    <ng-container *ngFor="let product of products[arrayIndex] | formatData">
+      <app-dish-card
+        (addedToCart)="addToCart($event)"
+        [product]="product"
+        [folder]="category"
+        [currentPageIndex]="arrayIndex"
+      ></app-dish-card>
+    </ng-container>
+  </ng-container>
+</div>

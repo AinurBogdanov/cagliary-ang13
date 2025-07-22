@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
-import { PizzaComponent } from './features/pizzas/pizzas.component';
 import { CartComponent } from './features/cart/cart.component';
-import { SloenyComponent } from './features/sloeny/sloeny.component';
 import { LoginComponent } from './features/login/login.component';
-import { RimskyComponent } from './features/rimsky/rimsky.component';
+import { MenuComponent } from './features/menu/menu.component';
 
 const routes: Routes = [
   {
@@ -13,16 +11,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'pizza',
-    component: PizzaComponent,
-  },
-  {
-    path: 'sloeny',
-    component: SloenyComponent,
-  },
-  {
-    path: 'rimsky',
-    component: RimskyComponent,
+    path: 'menu/:category',
+    component: MenuComponent,
   },
   {
     path: 'cart',

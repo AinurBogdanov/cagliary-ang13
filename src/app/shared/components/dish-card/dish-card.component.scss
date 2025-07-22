@@ -1,13 +1,15 @@
-:host {
-  display: flex;
-  flex-direction: column;
+.big-card {
   width: 300px;
   height: 745px;
   padding: 40px 18px 0;
+}
+.card {
   border-radius: 50px;
   border: 3px solid transparent;
+  display: flex;
+  flex-direction: column;
 }
-:host:hover {
+.card:hover {
   border: 3px solid var(--card-btn-color);
 }
 .card-title {
@@ -16,6 +18,10 @@
 }
 .card-img img {
   height: 230px;
+  object-fit: contain;
+}
+.card-img-big .img {
+  object-fit: cover;
 }
 .card-img {
   display: flex;
@@ -76,6 +82,7 @@
 }
 .cost {
   font-size: 36px;
+  color: var(--gray-font-color);
 }
 .weight {
   font-size: 16px;
@@ -94,4 +101,19 @@
 }
 .hidden {
   visibility: hidden;
+}
+
+//small card
+.small-card {
+  width: 300px;
+  padding: 40px 18px 0;
+}
+.card-title-small {
+  height: 70px;
+}
+.card-summary-small {
+  justify-content: flex-start;
+}
+.wight-small {
+  margin-left: 30px;
 }

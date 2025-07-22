@@ -8,14 +8,16 @@ import { Product } from '../data/interfaces/product';
 })
 export class ApiService implements OnInit {
   private readonly baseUrlApi: string =
-    'https://pizza-backend.free.beeceptor.com';
+    'https://projectpizzasecondback.free.beeceptor.com';
+  // 'https://pizza-backend.free.beeceptor.com';
+  // '';
 
   products!: Product[][];
 
   constructor(private http: HttpClient) {
-    this.getProducts().subscribe((products) => {
-      this.products = products;
-    });
+    // this.getProducts().subscribe((products) => {
+    //   this.products = products;
+    // });
   }
 
   ngOnInit(): void {}

@@ -21,6 +21,6 @@ export class PizzaComponent implements OnInit {
   }
 
   addToCart(pizza: Product) {
-    this.cartService.addPizza(pizza);
+    this.cartService.addPizza(pizza, -1);
   }
 }

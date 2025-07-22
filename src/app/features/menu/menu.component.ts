@@ -38,8 +38,8 @@ export class MenuComponent implements OnInit {
       this.loadMenuData(this.category);
     });
   }
-  addToCart(pizza: Product) {
-    this.cartService.addPizza(pizza);
+  addToCart(pizza: Product, currentPageIndex: number) {
+    this.cartService.addPizza(pizza, currentPageIndex);
   }
 
   private loadMenuData(category: string) {

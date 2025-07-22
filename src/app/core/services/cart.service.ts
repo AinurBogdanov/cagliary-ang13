@@ -4,18 +4,20 @@ import { cartProduct } from '../data/interfaces/cartProduct';
 import { cart } from '../data/cart';
 import { doughType, Product, size } from '../data/interfaces/product';
 import { Cart } from '../data/interfaces/cart';
+import { pagesData } from '../data/pages';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   private cart$ = new BehaviorSubject<Cart>(cart);
+  private pagesData = pagesData;
 
   getCart(): Observable<Cart> {
     return this.cart$.asObservable();
   }
 
-  addPizza(pizzaOrId: string | Product) {
+  addPizza(pizzaOrId: string | Product, currentPageIndex: number) {
     const currentCart = this.cart$.getValue();
     const currentItems = currentCart.products;
 
@@ -38,7 +40,7 @@ export class CartService {
       }
     } else {
       const pizza = pizzaOrId;
-      const cleanPizzaData = this.transformPizzaData(pizza);
+      const cleanPizzaData = this.transformPizzaData(pizza, currentPageIndex);
       const newPizzaId = cleanPizzaData.id;
 
       const index = this.findIndexById(currentItems, newPizzaId);
@@ -107,11 +109,18 @@ export class CartService {
     }
   }
 
-  private transformPizzaData(product: Product): cartProduct {
+  private transformPizzaData(
+    product: Product,
+    currentPageIndex: number
+  ): cartProduct {
     const { nutrition, doughTypes, sizes, ...rest } = product;
 
     const size = this.defineSize(product.sizes);
     const doughType = this.defineDoughType(product.doughTypes);
+
+    const page = this.pagesData.find(
+      (page) => page.arrayIndex === currentPageIndex
+    );
 
     return {
       ...rest,
@@ -119,6 +128,7 @@ export class CartService {
       doughType,
       saucesIds: [8],
       quantity: 1,
+      category: page!.category,
     };
   }
 

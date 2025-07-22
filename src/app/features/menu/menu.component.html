@@ -3,7 +3,7 @@
   <ng-container *ngIf="products">
     <ng-container *ngFor="let product of products[arrayIndex] | formatData">
       <app-dish-card
-        (addedToCart)="addToCart($event)"
+        (addedToCart)="addToCart(product, arrayIndex)"
         [product]="product"
         [folder]="category"
         [currentPageIndex]="arrayIndex"

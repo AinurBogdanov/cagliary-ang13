@@ -11,13 +11,11 @@ import { CartComponent } from './features/cart/cart.component';
 import { Sliders } from './features/cart/sliders/sliders.component';
 import { ItemCardComponent } from './features/cart/item-card/item-card.component';
 import { PromoComponent } from './features/cart/promo/promo.component';
-import { SloenyComponent } from './features/sloeny/sloeny.component';
 import { CreateOrderComponent } from './features/cart/create-order/create-order.component';
 import { LoginComponent } from './features/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
-import { RimskyComponent } from './features/rimsky/rimsky.component';
 import { MenuComponent } from './features/menu/menu.component';
 
 @NgModule({
@@ -29,10 +27,8 @@ import { MenuComponent } from './features/menu/menu.component';
     Sliders,
     ItemCardComponent,
     PromoComponent,
-    SloenyComponent,
     CreateOrderComponent,
     LoginComponent,
-    RimskyComponent,
     MenuComponent,
   ],
   imports: [

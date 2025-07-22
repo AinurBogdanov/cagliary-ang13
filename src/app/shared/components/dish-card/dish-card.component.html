@@ -62,7 +62,9 @@
             <div class="half-choose">1/2</div>
           </ng-container>
         </div>
-        <button class="btn" (click)="onAddToCart()">В корзину</button>
+        <button class="btn" (click)="onAddToCart(product, currentPageIndex)">
+          В корзину
+        </button>
       </div>
     </div>
   </ng-container>
@@ -88,7 +90,9 @@
           <span class="cost">{{ product.price }} Р</span>
           <span class="weight wight-small">{{ product.weight }}</span>
         </div>
-        <button class="btn" (click)="onAddToCart()">В корзину</button>
+        <button class="btn" (click)="onAddToCart(product, currentPageIndex)">
+          В корзину
+        </button>
       </div>
     </div>
   </ng-container>

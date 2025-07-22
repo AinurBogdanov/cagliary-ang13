@@ -17,7 +17,7 @@ export class CartComponent {
   constructor(private cartService: CartService) {}
 
   addPizza(id: string) {
-    this.cartService.addPizza(id);
+    this.cartService.addPizza(id, -1);
   }
   deleteItem(item: cartProduct) {
     this.cartService.deleteFromCart(item);

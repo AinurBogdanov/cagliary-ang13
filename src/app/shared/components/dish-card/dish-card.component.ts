@@ -12,7 +12,8 @@ export class DishCardComponent {
   @Input() currentPageIndex!: number;
   @Output() addedToCart = new EventEmitter();
 
-  onAddToCart() {
-    this.addedToCart.emit(this.product);
+  onAddToCart(product: Product, currentPageIndex: number) {
+    const data = { product, currentPageIndex };
+    this.addedToCart.emit(data);
   }
 }

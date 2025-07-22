@@ -12,4 +12,5 @@ export interface cartProduct {
   doughType: string;
   saucesIds: number[];
   quantity: number;
+  category: string;
 }

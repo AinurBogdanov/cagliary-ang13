@@ -1,11 +1,7 @@
 <app-page-title [title]="'Вход'"></app-page-title>
 <div class="in">
   <div class="login-wrap">
-    <form
-      class="form"
-      #loginForm="ngForm"
-      (ngSubmit)="submitForm(loginForm.value)"
-    >
+    <form class="form" #loginForm="ngForm" (ngSubmit)="submitForm(loginForm)">
       <div class="form__section mb20">
         <label class="form__label mb10">Номер телефона</label>
         <input
@@ -15,9 +11,14 @@
           placeholder="Введите номер"
           mask=" 000-000-00-00"
           prefix="+7"
+          minlength="10"
           ngModel
           required
+          #phoneModel="ngModel"
         />
+        <div *ngIf="submitted && phoneModel.invalid">
+          Ошибка при заполнении номера (минимум 10 символов)
+        </div>
       </div>
       <div class="form__section mb20">
         <label class="form__label mb10">пароль</label>
@@ -28,6 +29,8 @@
           placeholder="Введите пароль"
           ngModel
           required
+          minlength="4"
+          #passwordModule="ngModel"
         />
         <button
           type="button"
@@ -47,6 +50,9 @@
             />
           </svg>
         </button>
+        <div *ngIf="submitted && passwordModule.invalid">
+          Ошибка при заполнении пароля (минимум 4 символа)
+        </div>
       </div>
       <button
         type="submit"

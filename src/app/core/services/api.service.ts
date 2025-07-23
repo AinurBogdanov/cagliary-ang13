@@ -36,6 +36,7 @@ export class ApiService implements OnInit {
         next: (res) => console.log('registered', res),
         error: (error) => console.error(error),
       });
+    console.log('posted data');
   }
   sentOrder(order: any) {
     this.http
@@ -45,7 +46,7 @@ export class ApiService implements OnInit {
 }
 
 // {
-//         orderId: 'someIdssss',
+//         orderId: '',
 //         products: [
 //           {
 //             productId: 123,

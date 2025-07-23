@@ -5,6 +5,7 @@ import { cart } from '../data/cart';
 import { doughType, Product, size } from '../data/interfaces/product';
 import { Cart } from '../data/interfaces/cart';
 import { pagesData } from '../data/pages';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,8 @@ import { pagesData } from '../data/pages';
 export class CartService {
   private cart$ = new BehaviorSubject<Cart>(cart);
   private pagesData = pagesData;
+
+  constructor(private apiService: ApiService) {}
 
   getCart(): Observable<Cart> {
     return this.cart$.asObservable();
@@ -107,6 +110,10 @@ export class CartService {
       };
       this.cart$.next(updatedCart);
     }
+  }
+
+  sendOrder() {
+    // this.apiService.sentOrder();
   }
 
   private transformPizzaData(

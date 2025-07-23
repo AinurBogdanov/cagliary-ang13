@@ -29,7 +29,11 @@
           ngModel
           required
         />
-        <button (click)="togglePasswordVisibility()" class="svg-eye-btn">
+        <button
+          type="button"
+          (click)="togglePasswordVisibility()"
+          class="svg-eye-btn"
+        >
           <svg
             class="invisiblePassword"
             [class.visiblePassword]="passwordVisible | async"

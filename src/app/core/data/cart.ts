@@ -2,13 +2,6 @@ import { Drink } from './enums/drinks';
 import { Cart } from './interfaces/cart';
 import { Product } from 'src/app/core/data/interfaces/fakeApi';
 
-export const cart: Cart = {
-  products: [],
-  additionalSaucesIds: [],
-  promo: Drink.cola,
-  totalCost: 0,
-};
-
 // {
 //       id: '178',
 //       name: 'Capriccio',

@@ -1,21 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { cartProduct } from '../data/interfaces/cartProduct';
-import { cart } from '../data/cart';
 import { doughType, Product, size } from '../data/interfaces/product';
 import { Cart } from '../data/interfaces/cart';
 import { pagesData } from '../data/pages';
 import { ApiService } from './api.service';
+import { Drink } from '../data/enums/drinks';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CartService {
-  private cart$ = new BehaviorSubject<Cart>(cart);
+export class CartService implements OnInit {
+  private readonly defaultCart: Cart = {
+    products: [],
+    additionalSaucesIds: [],
+    promo: Drink.cola,
+    totalCost: 0,
+  };
+  private cart!: Cart;
+  private cart$!: BehaviorSubject<Cart>;
   private pagesData = pagesData;
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private localStorageService: LocalStorageService
+  ) {
+    const storedCart = this.localStorageService.getCartFromStorage();
+    const initialCart = storedCart ? storedCart : this.defaultCart;
 
+    this.cart$ = new BehaviorSubject<Cart>(initialCart);
+  }
+
+  ngOnInit(): void {
+    const result = this.localStorageService.getCartFromStorage();
+    if (result) this.cart = result;
+  }
   getCart(): Observable<Cart> {
     return this.cart$.asObservable();
   }

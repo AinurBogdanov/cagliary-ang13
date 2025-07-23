@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../data/interfaces/product';
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,14 @@ export class ApiService implements OnInit {
     return this.http.get<Product[][]>(`${this.baseUrlApi}/products`);
   }
 
+  login(formData: any) {
+    this.http
+      .post('https://pizza-backend3.free.beeceptor.com/login', formData)
+      .subscribe({
+        next: (res) => console.log('registered', res),
+        error: (error) => console.error(error),
+      });
+  }
   sentOrder(order: any) {
     this.http
       .post('https://pizza-backend3.free.beeceptor.com/order', order)

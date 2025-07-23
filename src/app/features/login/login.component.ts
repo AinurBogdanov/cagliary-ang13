@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +11,13 @@ export class LoginComponent implements OnInit {
   familiarized = new BehaviorSubject<boolean>(false);
   passwordVisible = new BehaviorSubject<boolean>(false);
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {}
-  submitForm(val: any) {
-    console.log(val);
+  submitForm(formData: any) {
+    this.apiService.login(formData);
   }
+
   toggleFamiliarized() {
     this.familiarized.next(!this.familiarized.value);
   }

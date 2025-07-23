@@ -38,6 +38,7 @@ import { PromoPageComponent } from './features/promo-page/promo-page.component';
     CoreModule,
     HttpClientModule,
     FormsModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

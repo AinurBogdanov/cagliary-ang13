@@ -8,8 +8,8 @@ import { error } from 'console';
   providedIn: 'root',
 })
 export class ApiService implements OnInit {
-  private readonly baseUrlApi: string =
-    'https://pizza-backend.free.beeceptor.com';
+  // private readonly baseUrlApi: string =
+  // 'https://pizza-backend.free.beeceptor.com';
   // https://pizza-backend3.free.beeceptor.com // 2 RULES
   // 'https://433e2e4e-a634-4095-8eca-df41aa00b4dc.mock.pstmn.io';
   // 'https://projectpizzasecondback.free.beeceptor.com';
@@ -26,7 +26,9 @@ export class ApiService implements OnInit {
   ngOnInit(): void {}
 
   getProducts(): Observable<Product[][]> {
-    return this.http.get<Product[][]>(`${this.baseUrlApi}/products`);
+    return this.http.get<Product[][]>(
+      `https://433e2e4e-a634-4095-8eca-df41aa00b4dc.mock.pstmn.io/products`
+    );
   }
 
   login(formData: any) {

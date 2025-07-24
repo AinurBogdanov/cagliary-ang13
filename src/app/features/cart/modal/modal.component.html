@@ -1,0 +1,29 @@
+<div class="modal">
+  <p class="modal__title">Выберите соус для корочек</p>
+  <img
+    (click)="onCloseModal()"
+    class="modal__close"
+    src="/assets/images/icons/close_sauce-select.png"
+    alt=""
+  />
+  <div class="modal__sauces-cont">
+    <ng-container *ngFor="let sauce of sauces">
+      <div class="modal__sauce">
+        <img
+          class="modal__image"
+          src="/assets/images/dishes/souses/souse-{{ sauce.id }}.jpg"
+        />
+        <label class="modal__custom-checkbox">
+          <p class="modal__sauce-name">{{ sauce.name }}</p>
+          <input
+            class="modal__input"
+            type="checkbox"
+            [checked]="sauce.id === selectedId"
+            (change)="onSelectSauce(sauce.id)"
+          />
+          <span class="modal__checkmark"></span>
+        </label>
+      </div>
+    </ng-container>
+  </div>
+</div>

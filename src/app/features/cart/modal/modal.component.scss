@@ -1,0 +1,85 @@
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100dvh;
+  width: 100dvw;
+  background-color: rgba(0, 0, 0, 0.781);
+}
+.modal {
+  background-color: var(--modal-background-color);
+  width: 1200px;
+  height: 340px;
+  margin: 400px auto 0;
+  padding: 38px 56px;
+  border-radius: 20px;
+  position: relative;
+  &__close {
+    height: 21px;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  &__title {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  &__sauces-cont {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__sauce {
+    width: fit-content;
+    margin-right: 30px;
+  }
+  &__image {
+    width: 84px;
+    height: 65px;
+    margin: 0 auto;
+  }
+  &__sauce-name {
+    font-size: 16px;
+    text-align: center;
+    color: var(--second-font-color);
+    white-space: nowrap;
+  }
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  &__custom-checkbox {
+    position: relative;
+    cursor: pointer;
+    height: 40px;
+  }
+  &__checkmark {
+    display: block;
+    position: relative;
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid var(--card-btn-color);
+    margin: 0 auto;
+    top: -20px;
+  }
+}
+.modal__custom-checkbox .modal__input:checked ~ .modal__checkmark::after {
+  display: block;
+  content: "";
+  background-color: var(--card-btn-color);
+  width: 7px;
+  height: 7px;
+  border-radius: 5px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}

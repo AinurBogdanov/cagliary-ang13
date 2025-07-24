@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CartService } from '../../core/services/cart.service';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { cartProduct } from 'src/app/core/data/interfaces/cartProduct';
 import { Cart } from 'src/app/core/data/interfaces/cart';
 import { LocalStorageService } from '../../core/services/local-storage.service';
@@ -15,14 +15,14 @@ export class CartComponent implements OnInit {
   items$ = this.cartService
     .getCart()
     .pipe(map((cart) => (cart ? cart.products : [])));
-
   cart$: Observable<Cart> = this.cartService.getCart();
-
   totalCost$ = this.cart$.pipe(
     map((cart: Cart) => {
       return cart ? cart.totalCost : 0;
     })
   );
+  modalVisibleSubject = new BehaviorSubject<boolean>(false);
+  modalVisible$ = this.modalVisibleSubject.asObservable();
 
   constructor(
     private cartService: CartService,
@@ -43,5 +43,8 @@ export class CartComponent implements OnInit {
   }
   minusOneItem(item: cartProduct) {
     this.cartService.minusOne(item);
+  }
+  toggleSauceModal() {
+    this.modalVisibleSubject.next(!this.modalVisibleSubject.value);
   }
 }

@@ -17,6 +17,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './features/menu/menu.component';
 import { PromoPageComponent } from './features/promo-page/promo-page.component';
+import { ModalComponent } from './features/cart/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PromoPageComponent } from './features/promo-page/promo-page.component';
     LoginComponent,
     MenuComponent,
     PromoPageComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

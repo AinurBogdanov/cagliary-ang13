@@ -8,6 +8,7 @@
           (addPizza)="addPizza($event)"
           (deleteItem)="deleteItem($event)"
           (minusOneOfCart)="minusOneItem($event)"
+          (showModal)="toggleSauceModal()"
         ></app-item-card>
       </ng-container>
     </div>
@@ -28,3 +29,6 @@
   </ng-container>
   <div class="bottom-underline"></div>
 </div>
+<ng-container *ngIf="modalVisible$ | async">
+  <app-modal (closeModal)="toggleSauceModal()"></app-modal>
+</ng-container>

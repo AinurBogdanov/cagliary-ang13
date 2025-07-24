@@ -11,7 +11,6 @@ export class LocalStorageService {
   constructor() {}
 
   saveCart(cart: Cart) {
-    console.log('cart saved');
     localStorage.setItem(this.cartStorageKey, JSON.stringify(cart));
   }
   getCartFromStorage() {

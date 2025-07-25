@@ -1,5 +1,13 @@
 <div class="modal">
-  <p class="modal__title">Выберите соус для корочек</p>
+  <p class="modal__title">
+    Выберите соус для корочек.
+    <ng-container *ngIf="freePick > 1">
+      <span
+        >У вас <span class="modal__pick">{{ freePick }}</span> бесплатных
+        соусов</span
+      >
+    </ng-container>
+  </p>
   <img
     (click)="onCloseModal()"
     class="modal__close"
@@ -13,16 +21,27 @@
           class="modal__image"
           src="/assets/images/dishes/souses/souse-{{ sauce.id }}.jpg"
         />
-        <label class="modal__custom-checkbox">
+        <ng-container *ngIf="freePick <= 1">
+          <label class="modal__custom-checkbox">
+            <p class="modal__sauce-name">{{ sauce.name }}</p>
+            <input
+              class="modal__input"
+              type="checkbox"
+              [checked]="productSauces.includes(sauce)"
+              (change)="onSelectSauce(sauce)"
+            />
+            <span class="modal__checkmark"></span>
+          </label>
+        </ng-container>
+
+        <ng-container *ngIf="freePick > 1">
           <p class="modal__sauce-name">{{ sauce.name }}</p>
-          <input
-            class="modal__input"
-            type="checkbox"
-            [checked]="sauce.id === selectedId"
-            (change)="onSelectSauce(sauce.id)"
-          />
-          <span class="modal__checkmark"></span>
-        </label>
+          <div class="modal__pick-controller">
+            <div class="plus-one-btn"></div>
+            <div class="pickedQuantity">{{ sauce.count }}</div>
+            <div class="minus-one-btn"></div>
+          </div>
+        </ng-container>
       </div>
     </ng-container>
   </div>

@@ -71,6 +71,21 @@
     margin: 0 auto;
     top: -20px;
   }
+  &__pick-controller {
+    display: flex;
+    justify-content: space-between;
+    width: 90px;
+    margin: 0 auto;
+  }
+  &__pick {
+    background-color: var(--active-option-color);
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+  }
 }
 .modal__custom-checkbox .modal__input:checked ~ .modal__checkmark::after {
   display: block;

@@ -21,7 +21,7 @@ export class ItemCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.sauceNames = this.findSauceNames(this.item.saucesIds);
+    this.sauceNames = this.findSauceNames(this.item.sauces);
   }
 
   onAddPizza() {
@@ -35,26 +35,32 @@ export class ItemCardComponent implements OnInit {
     this.deleteItem.emit(this.item);
   }
   onShowModal() {
-    this.showModal.emit();
+    this.showModal.emit(this.item.id);
   }
   selectSauce() {
     this.onShowModal();
   }
 
-  findSauceNames(ids: number[] | number): string {
-    if (Array.isArray(ids)) {
-      const sauces = ids
-        .map((id) => {
-          const sauce = this.sauceOptions.find((sauce) => sauce.id === id);
-          return sauce?.name ?? null;
-        })
-        .filter((name) => name !== null);
-
-      return sauces.join(', ');
-    } else if (typeof ids === 'number') {
-      const sauce = this.sauceOptions.find((option) => option.id === ids);
-      return sauce?.name ?? '';
-    }
-    return '';
+  findSauceNames(sauces: Sauce[]): string {
+    const namesArray = sauces.map((sauce) => {
+      console.log(sauce); // {id: 8, name: 'Сырный', price: 25, count: 0}
+      return sauce.name;
+    });
+    return namesArray.join(', ');
   }
 }
+//   if (Array.isArray(ids)) {
+//     const sauces = ids
+//       .map((id) => {
+//         const sauce = this.sauceOptions.find((sauce) => sauce.id === id);
+//         return sauce?.name ?? null;
+//       })
+//       .filter((name) => name !== null);
+
+//     return sauces.join(', ');
+//   } else if (typeof ids === 'number') {
+//     const sauce = this.sauceOptions.find((option) => option.id === ids);
+//     return sauce?.name ?? '';
+//   }
+//   return '';
+//

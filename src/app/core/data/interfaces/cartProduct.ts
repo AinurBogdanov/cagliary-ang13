@@ -1,3 +1,5 @@
+import { Sauce } from './sauce';
+
 export interface cartProduct {
   id: string;
   name: string;
@@ -10,7 +12,7 @@ export interface cartProduct {
   };
   size: string;
   doughType: string;
-  saucesIds: number[];
+  sauces: Sauce[];
   quantity: number;
   category: string;
 }

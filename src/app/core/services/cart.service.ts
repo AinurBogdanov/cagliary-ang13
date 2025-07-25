@@ -7,6 +7,7 @@ import { pagesData } from '../data/pages';
 import { ApiService } from './api.service';
 import { Drink } from '../data/enums/drinks';
 import { LocalStorageService } from './local-storage.service';
+import { sauces } from '../data/backData/sauces-data';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,7 @@ export class CartService implements OnInit {
   private cart!: Cart;
   private cart$!: BehaviorSubject<Cart>;
   private pagesData = pagesData;
+  private sauces = sauces;
 
   constructor(
     private apiService: ApiService,
@@ -49,11 +51,20 @@ export class CartService implements OnInit {
       const index = this.findIndexById(currentItems, pizzaId);
 
       if (index > -1) {
-        currentItems[index].quantity += 1;
+        const product = currentItems[index];
+
+        const updatedProduct = {
+          ...product,
+          sauces: [...product.sauces, this.sauces[7]],
+          quantity: product.quantity + 1,
+        };
+
+        const updatedProducts = [...currentItems];
+        updatedProducts[index] = updatedProduct;
 
         const updatedCart: Cart = {
           ...currentCart,
-          products: [...currentItems],
+          products: updatedProducts,
           totalCost: currentItems.reduce(
             (sum, item) => sum + item.price * item.quantity,
             0
@@ -68,7 +79,9 @@ export class CartService implements OnInit {
 
       const index = this.findIndexById(currentItems, newPizzaId);
       if (index > -1) {
-        currentItems[index].quantity += 1;
+        const product = currentItems[index];
+        product.quantity += 1;
+        product.sauces.push(this.sauces[7]);
 
         const updatedCart: Cart = {
           ...currentCart,
@@ -112,11 +125,20 @@ export class CartService implements OnInit {
 
     const itemFromCart = currentItems[index];
     if (itemFromCart.quantity > 1) {
-      currentItems[index].quantity -= 1;
+      const product = currentItems[index];
+
+      const updatedProduct = {
+        ...product,
+        saucesIds: product.sauces.slice(1),
+        quantity: product.quantity - 1,
+      };
+
+      const updatedProducts = [...currentItems];
+      updatedProducts[index] = updatedProduct;
 
       const updatedCart: Cart = {
         ...currentCart,
-        products: [...currentItems],
+        products: updatedProducts,
         totalCost: this.calcItemsCost(currentItems),
       };
       this.cart$.next(updatedCart);
@@ -130,6 +152,28 @@ export class CartService implements OnInit {
       };
       this.cart$.next(updatedCart);
     }
+  }
+
+  changeProductSauce(productId: string, newSauceIds: number[]) {
+    const currentCart = this.cart$.getValue();
+    const currentItems = currentCart.products;
+
+    const updatedProducts = currentItems.map((product) => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          saucesIds: newSauceIds,
+        };
+      }
+      return product;
+    });
+
+    const updatedCart: Cart = {
+      ...currentCart,
+      products: updatedProducts,
+    };
+    console.log(updatedCart);
+    this.cart$.next(updatedCart);
   }
 
   sendOrder() {
@@ -153,7 +197,7 @@ export class CartService implements OnInit {
       ...rest,
       size,
       doughType,
-      saucesIds: [8],
+      sauces: [this.sauces[7]],
       quantity: 1,
       category: page!.category,
     };

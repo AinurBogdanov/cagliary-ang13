@@ -22,7 +22,10 @@ export class CartComponent implements OnInit {
     })
   );
   modalVisibleSubject = new BehaviorSubject<boolean>(false);
+  visibleForProductSubject = new BehaviorSubject('');
+
   modalVisible$ = this.modalVisibleSubject.asObservable();
+  visibleForProduct$ = this.visibleForProductSubject.asObservable();
 
   constructor(
     private cartService: CartService,
@@ -44,7 +47,16 @@ export class CartComponent implements OnInit {
   minusOneItem(item: cartProduct) {
     this.cartService.minusOne(item);
   }
-  toggleSauceModal() {
+  toggleSauceModal(productId?: string) {
+    if (productId) {
+      this.visibleForProductSubject.next(productId);
+    } else {
+      this.visibleForProductSubject.next('');
+    }
     this.modalVisibleSubject.next(!this.modalVisibleSubject.value);
+  }
+  selectSauce(sauceIds: number[]) {
+    const productId = this.visibleForProductSubject.getValue();
+    this.cartService.changeProductSauce(productId, sauceIds);
   }
 }

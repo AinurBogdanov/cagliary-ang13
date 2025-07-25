@@ -68,6 +68,15 @@ body {
 .minus-one-btn:hover {
   background-image: url(/assets/images/icons/i_minus_orange.png);
 }
+.plus-one-btn,
+.minus-one-btn {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+}
+
 .link {
   text-decoration: underline;
 }

@@ -19,6 +19,11 @@
             sauceNames
           }}</span>
         </div>
+        <ng-container *ngIf="!sauceNames">
+          <span (click)="selectSauce()" class="item__souse-name"
+            >выбрать соус</span
+          >
+        </ng-container>
       </div>
     </div>
     <div class="item__summary">

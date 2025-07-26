@@ -157,7 +157,7 @@ export class CartService implements OnInit {
     }
   }
 
-  changeProductSauce(productId: string, newSauceIds: number[]) {
+  changeProductSauce(productId: string, sauces: Sauce[]) {
     const currentCart = this.cart$.getValue();
     const currentItems = currentCart.products;
 
@@ -165,7 +165,7 @@ export class CartService implements OnInit {
       if (product.id === productId) {
         return {
           ...product,
-          saucesIds: newSauceIds,
+          sauces: sauces,
         };
       }
       return product;
@@ -175,7 +175,6 @@ export class CartService implements OnInit {
       ...currentCart,
       products: updatedProducts,
     };
-    console.log(updatedCart);
     this.cart$.next(updatedCart);
   }
 

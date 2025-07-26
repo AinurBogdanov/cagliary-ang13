@@ -1,7 +1,7 @@
 <div class="modal">
   <p class="modal__title">
     Выберите соус для корочек.
-    <ng-container *ngIf="freePick > 1">
+    <ng-container *ngIf="productQuantity > 1">
       <span
         >У вас <span class="modal__pick">{{ freePick }}</span> бесплатных
         соусов</span
@@ -21,25 +21,25 @@
           class="modal__image"
           src="/assets/images/dishes/souses/souse-{{ sauce.id }}.jpg"
         />
-        <ng-container *ngIf="freePick <= 1">
+        <ng-container *ngIf="productQuantity <= 1">
           <label class="modal__custom-checkbox">
             <p class="modal__sauce-name">{{ sauce.name }}</p>
             <input
               class="modal__input"
               type="checkbox"
-              [checked]="productSauces.includes(sauce)"
+              [checked]="sauce.count >= 1"
               (change)="onSelectSauce(sauce)"
             />
             <span class="modal__checkmark"></span>
           </label>
         </ng-container>
 
-        <ng-container *ngIf="freePick > 1">
+        <ng-container *ngIf="productQuantity > 1">
           <p class="modal__sauce-name">{{ sauce.name }}</p>
           <div class="modal__pick-controller">
-            <div class="plus-one-btn"></div>
+            <div class="plus-one-btn" (click)="addOneSauce(sauce.id)"></div>
             <div class="pickedQuantity">{{ sauce.count }}</div>
-            <div class="minus-one-btn"></div>
+            <div class="minus-one-btn" (click)="removeOneSauce(sauce.id)"></div>
           </div>
         </ng-container>
       </div>

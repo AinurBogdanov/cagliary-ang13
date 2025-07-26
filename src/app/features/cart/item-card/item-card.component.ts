@@ -41,7 +41,6 @@ export class ItemCardComponent implements OnInit {
   }
 
   findSauceNames(sauces: Sauce[]): string {
-    console.log(sauces);
     const namesArray = sauces.map((sauce) => {
       return Array(sauce.count).fill(sauce.name).join(', ');
     });

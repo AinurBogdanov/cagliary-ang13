@@ -4,6 +4,7 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 import { cartProduct } from 'src/app/core/data/interfaces/cartProduct';
 import { Cart } from 'src/app/core/data/interfaces/cart';
 import { LocalStorageService } from '../../core/services/local-storage.service';
+import { Sauce } from 'src/app/core/data/interfaces/sauce';
 
 @Component({
   selector: 'app-cart',
@@ -55,8 +56,8 @@ export class CartComponent implements OnInit {
     }
     this.modalVisibleSubject.next(!this.modalVisibleSubject.value);
   }
-  selectSauce(sauceIds: number[]) {
+  selectSauce(sauces: Sauce[]) {
     const productId = this.visibleForProductSubject.getValue();
-    this.cartService.changeProductSauce(productId, sauceIds);
+    this.cartService.changeProductSauce(productId, sauces);
   }
 }

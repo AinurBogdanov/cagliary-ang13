@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, retry } from 'rxjs';
 import { cartProduct } from '../data/interfaces/cartProduct';
 import { doughType, Product, size } from '../data/interfaces/product';
 import { Cart } from '../data/interfaces/cart';
@@ -8,6 +8,7 @@ import { ApiService } from './api.service';
 import { Drink } from '../data/enums/drinks';
 import { LocalStorageService } from './local-storage.service';
 import { sauces } from '../data/backData/sauces-data';
+import { Sauce } from '../data/interfaces/sauce';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +56,7 @@ export class CartService implements OnInit {
 
         const updatedProduct = {
           ...product,
-          sauces: [...product.sauces, this.sauces[7]],
+          sauces: this.addSauce(product.sauces),
           quantity: product.quantity + 1,
         };
 
@@ -78,16 +79,18 @@ export class CartService implements OnInit {
       const newPizzaId = cleanPizzaData.id;
 
       const index = this.findIndexById(currentItems, newPizzaId);
+
       if (index > -1) {
         const product = currentItems[index];
         product.quantity += 1;
-        product.sauces.push(this.sauces[7]);
+        product.sauces = this.addSauce(product.sauces);
 
         const updatedCart: Cart = {
           ...currentCart,
           products: [...currentItems],
           totalCost: this.calcItemsCost(currentItems),
         };
+
         this.cart$.next(updatedCart);
       } else {
         const updatedItems = [...currentItems, cleanPizzaData];
@@ -129,7 +132,7 @@ export class CartService implements OnInit {
 
       const updatedProduct = {
         ...product,
-        saucesIds: product.sauces.slice(1),
+        sauces: this.removeSauce(product.sauces),
         quantity: product.quantity - 1,
       };
 
@@ -178,6 +181,40 @@ export class CartService implements OnInit {
 
   sendOrder() {
     // this.apiService.sentOrder();
+  }
+
+  private addSauce(sauceArray: Sauce[]): Sauce[] {
+    const saucesCopy = [...sauceArray];
+    const newSauce = this.sauces[7];
+    const existingIndex = saucesCopy.findIndex((s) => s.id === newSauce.id);
+
+    if (existingIndex !== -1) {
+      saucesCopy[existingIndex] = {
+        ...saucesCopy[existingIndex],
+        count: saucesCopy[existingIndex].count + 1,
+      };
+    } else {
+      saucesCopy.push({ ...newSauce, count: 1 });
+    }
+    return saucesCopy;
+  }
+
+  private removeSauce(sauces: Sauce[]) {
+    let sauceRemove = 1;
+
+    return sauces.map((sauce) => {
+      if (sauceRemove === 1) {
+        if (sauce.count === 1) {
+          sauceRemove -= 1;
+          return { ...sauce, count: 0 };
+        }
+        if (sauce.count > 1) {
+          sauceRemove -= 1;
+          return { ...sauce, count: sauce.count - 1 };
+        }
+      }
+      return sauce;
+    });
   }
 
   private transformPizzaData(

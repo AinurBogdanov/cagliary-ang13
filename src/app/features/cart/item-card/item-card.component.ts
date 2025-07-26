@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { cartProduct } from 'src/app/core/data/interfaces/cartProduct';
 import { sauces } from '../../../core/data/backData/sauces-data';
 import { Sauce } from 'src/app/core/data/interfaces/sauce';
@@ -42,13 +41,14 @@ export class ItemCardComponent implements OnInit {
   }
 
   findSauceNames(sauces: Sauce[]): string {
+    console.log(sauces);
     const namesArray = sauces.map((sauce) => {
-      console.log(sauce); // {id: 8, name: 'Сырный', price: 25, count: 0}
-      return sauce.name;
+      return Array(sauce.count).fill(sauce.name).join(', ');
     });
     return namesArray.join(', ');
   }
 }
+
 //   if (Array.isArray(ids)) {
 //     const sauces = ids
 //       .map((id) => {

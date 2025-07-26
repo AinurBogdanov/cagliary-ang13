@@ -1,12 +1,15 @@
 <app-page-title [title]="title" [showSearch]="true"></app-page-title>
 <div class="dishes-container">
-  <ng-container *ngIf="products">
-    <ng-container *ngFor="let product of products[arrayIndex] | formatData">
+  <ng-container *ngIf="products$ | async as products">
+    <ng-container
+      *ngFor="let product of products[arrayIndex] || [] | formatData"
+    >
       <app-dish-card
         (addedToCart)="addToCart(product, arrayIndex)"
         [product]="product"
         [folder]="category"
         [currentPageIndex]="arrayIndex"
+        (choseSize)="choseSize($event)"
       ></app-dish-card>
     </ng-container>
   </ng-container>

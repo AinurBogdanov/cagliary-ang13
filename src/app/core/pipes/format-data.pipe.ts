@@ -61,6 +61,7 @@ export class FormatDataPipe implements PipeTransform {
       );
 
       newDish.price = activeSize[0].price;
+      newDish.weight = activeSize[0].weight;
 
       return newDish;
     });

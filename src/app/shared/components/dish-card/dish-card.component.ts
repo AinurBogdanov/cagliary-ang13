@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from 'src/app/core/data/interfaces/product';
+import { Product, size } from 'src/app/core/data/interfaces/product';
 
 @Component({
   selector: 'app-dish-card',
@@ -11,9 +11,14 @@ export class DishCardComponent {
   @Input() folder!: string;
   @Input() currentPageIndex!: number;
   @Output() addedToCart = new EventEmitter();
+  @Output() choseSize = new EventEmitter();
 
   onAddToCart(product: Product, currentPageIndex: number) {
     const data = { product, currentPageIndex };
     this.addedToCart.emit(data);
+  }
+  onChoseSize(size: size, productId: string) {
+    const sizeAndId = { size, productId };
+    this.choseSize.emit(sizeAndId);
   }
 }

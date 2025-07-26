@@ -65,6 +65,7 @@
 .not-available {
   color: rgb(99, 99, 99);
   cursor: default;
+  pointer-events: none;
 }
 
 .dough-choose {

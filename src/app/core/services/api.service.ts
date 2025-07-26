@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../data/interfaces/product';
 import { error } from 'console';
 
@@ -15,13 +15,7 @@ export class ApiService implements OnInit {
   // 'https://projectpizzasecondback.free.beeceptor.com';
   // '';
 
-  products!: Product[][];
-
-  constructor(private http: HttpClient) {
-    // this.getProducts().subscribe((products) => {
-    //   this.products = products;
-    // });
-  }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {}
 
@@ -29,8 +23,8 @@ export class ApiService implements OnInit {
     return this.http.get<Product[][]>(
       'https://pizza-backend3.free.beeceptor.com/products'
     );
+    // `https://433e2e4e-a634-4095-8eca-df41aa00b4dc.mock.pstmn.io/products`
   }
-  // `https://433e2e4e-a634-4095-8eca-df41aa00b4dc.mock.pstmn.io/products`
 
   login(formData: any) {
     this.http

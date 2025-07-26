@@ -14,6 +14,7 @@
         <h2 class="card-title">{{ product.name }}</h2>
       </div>
       <div class="recipe">{{ product.description }}</div>
+
       <div class="bottom-card">
         <div class="size-choose">
           <p
@@ -23,6 +24,7 @@
               'not-available': !size.available,
               'active-opt': size.active
             }"
+            (click)="onChoseSize(size, product.id)"
           >
             {{ size.size }}
           </p>
@@ -58,6 +60,7 @@
         <div class="card-summary">
           <span class="cost">{{ product.price }} Р</span>
           <span class="weight">{{ product.weight }}</span>
+
           <ng-container *ngIf="product.doughTypes.length > 0">
             <div class="half-choose">1/2</div>
           </ng-container>

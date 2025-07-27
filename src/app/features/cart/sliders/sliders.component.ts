@@ -1,13 +1,8 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Output,
-} from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
 import { recProducts } from 'src/app/core/data/backData/rec-data';
 import { sauces } from 'src/app/core/data/backData/sauces-data';
 import { Sauce } from 'src/app/core/data/interfaces/sauce';
+import { CartService } from 'src/app/core/services/cart.service';
 import Swiper, { Navigation, Pagination } from 'swiper';
 
 Swiper.use([Navigation, Pagination]);
@@ -21,6 +16,22 @@ export class Sliders implements AfterViewInit {
   saucesData = sauces;
   rec = recProducts;
   @Output() onAdditionSauce = new EventEmitter();
+
+  constructor(private cartService: CartService) {
+    this.cartService.getCart().subscribe((cart) => {
+      this.saucesData = this.saucesData.map((sauce) => {
+        const foundSauce = cart.additionalSauces.find((additionSauce) => {
+          return additionSauce.id === sauce.id;
+        });
+        if (foundSauce) {
+          return foundSauce;
+        } else {
+          sauce.count = 0;
+          return sauce;
+        }
+      });
+    });
+  }
 
   ngAfterViewInit() {
     new Swiper('.swiper1', {

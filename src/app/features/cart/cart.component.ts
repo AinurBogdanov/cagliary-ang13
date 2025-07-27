@@ -5,6 +5,7 @@ import { cartProduct } from 'src/app/core/data/interfaces/cartProduct';
 import { Cart } from 'src/app/core/data/interfaces/cart';
 import { LocalStorageService } from '../../core/services/local-storage.service';
 import { Sauce } from 'src/app/core/data/interfaces/sauce';
+import { sauces } from '../../core/data/backData/sauces-data';
 
 @Component({
   selector: 'app-cart',
@@ -59,5 +60,15 @@ export class CartComponent implements OnInit {
   selectSauce(sauces: Sauce[]) {
     const productId = this.visibleForProductSubject.getValue();
     this.cartService.changeProductSauce(productId, sauces);
+  }
+
+  additionalSauceChange(sauceAndIncrement: {
+    sauce: Sauce;
+    increment: number;
+  }) {
+    this.cartService.additionalSauceChange(
+      sauceAndIncrement.sauce,
+      sauceAndIncrement.increment
+    );
   }
 }

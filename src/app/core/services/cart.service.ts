@@ -16,11 +16,11 @@ import { Sauce } from '../data/interfaces/sauce';
 export class CartService implements OnInit {
   private readonly defaultCart: Cart = {
     products: [],
-    additionalSaucesIds: [],
+    additionalSauces: [],
     promo: Drink.cola,
     totalCost: 0,
   };
-  private cart!: Cart;
+
   private cart$!: BehaviorSubject<Cart>;
   private pagesData = pagesData;
   private sauces = sauces;
@@ -37,7 +37,7 @@ export class CartService implements OnInit {
 
   ngOnInit(): void {
     const result = this.localStorageService.getCartFromStorage();
-    if (result) this.cart = result;
+    if (result) this.cart$.next(result);
   }
   getCart(): Observable<Cart> {
     return this.cart$.asObservable();
@@ -237,6 +237,28 @@ export class CartService implements OnInit {
       quantity: 1,
       category: page!.category,
     };
+  }
+
+  additionalSauceChange(newSauce: Sauce, increment: number) {
+    const cart = this.cart$.value;
+    const existingSauceIndex = cart.additionalSauces.findIndex(
+      (s) => s.id === newSauce.id
+    );
+
+    if (existingSauceIndex !== -1) {
+      cart.additionalSauces = cart.additionalSauces.map((sauce) =>
+        sauce.id === newSauce.id
+          ? { ...sauce, count: sauce.count + increment }
+          : sauce
+      );
+    } else {
+      cart.additionalSauces.push({ ...newSauce, count: increment });
+    }
+
+    cart.additionalSauces = cart.additionalSauces.filter((s) => s.count > 0);
+
+    console.log(cart);
+    this.cart$.next(cart);
   }
 
   private defineSize(sizes: size[]): string {

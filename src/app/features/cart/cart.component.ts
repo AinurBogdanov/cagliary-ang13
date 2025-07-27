@@ -71,4 +71,7 @@ export class CartComponent implements OnInit {
       sauceAndIncrement.increment
     );
   }
+  addProduct(productId: string) {
+    this.cartService.addPizza(productId, -1);
+  }
 }

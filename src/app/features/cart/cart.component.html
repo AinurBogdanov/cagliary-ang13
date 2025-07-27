@@ -13,6 +13,7 @@
       </ng-container>
     </div>
     <app-sliders
+      (addProduct)="addProduct($event)"
       (onAdditionSauce)="additionalSauceChange($event)"
     ></app-sliders>
     <app-promo></app-promo>

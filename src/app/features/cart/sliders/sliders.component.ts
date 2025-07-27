@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
 import { recProducts } from 'src/app/core/data/backData/rec-data';
 import { sauces } from 'src/app/core/data/backData/sauces-data';
+import { Product } from 'src/app/core/data/interfaces/product';
 import { Sauce } from 'src/app/core/data/interfaces/sauce';
 import { CartService } from 'src/app/core/services/cart.service';
 import Swiper, { Navigation, Pagination } from 'swiper';
@@ -16,6 +17,7 @@ export class Sliders implements AfterViewInit {
   saucesData = sauces;
   rec = recProducts;
   @Output() onAdditionSauce = new EventEmitter();
+  @Output() addProduct = new EventEmitter();
 
   constructor(private cartService: CartService) {
     this.cartService.getCart().subscribe((cart) => {
@@ -67,5 +69,8 @@ export class Sliders implements AfterViewInit {
   additionSauceChange(sauce: Sauce, increment: number) {
     const sauceAndIncrement = { sauce, increment };
     this.onAdditionSauce.emit(sauceAndIncrement);
+  }
+  onAddProduct(productId: number) {
+    //id не корректен
   }
 }

@@ -50,7 +50,9 @@
             <div class="rec__name">{{ product.name }}</div>
             <div class="rec__summary">
               <div class="rec__cost">{{ product.price }}i</div>
-              <button class="btn rec__btn">В корзину</button>
+              <button class="btn rec__btn" (click)="onAddProduct(product.id)">
+                В корзину
+              </button>
             </div>
           </div>
         </div>

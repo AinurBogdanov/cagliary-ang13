@@ -10,14 +10,14 @@ import { CartComponent } from './features/cart/cart.component';
 import { Sliders } from './features/cart/sliders/sliders.component';
 import { ItemCardComponent } from './features/cart/item-card/item-card.component';
 import { PromoComponent } from './features/cart/promo/promo.component';
-import { CreateOrderComponent } from './features/cart/create-order/create-order.component';
 import { LoginComponent } from './features/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './features/menu/menu.component';
 import { PromoPageComponent } from './features/promo-page/promo-page.component';
 import { ModalComponent } from './features/cart/modal/modal.component';
+import { CreateOrderComponent } from './features/create-order/create-order.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +27,11 @@ import { ModalComponent } from './features/cart/modal/modal.component';
     Sliders,
     ItemCardComponent,
     PromoComponent,
-    CreateOrderComponent,
     LoginComponent,
     MenuComponent,
     PromoPageComponent,
     ModalComponent,
+    CreateOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +41,7 @@ import { ModalComponent } from './features/cart/modal/modal.component';
     HttpClientModule,
     FormsModule,
     NgxMaskModule.forRoot(),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

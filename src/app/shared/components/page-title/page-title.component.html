@@ -22,5 +22,10 @@
     <ng-container *ngIf="breadCrumb === 'promo'">
       <span class="breadcrumb">Все акции</span>
     </ng-container>
+    <ng-container *ngIf="breadCrumb === 'order'">
+      <span [routerLink]="['/cart']" class="breadcrumb link">Корзина</span>
+      <span class="separator-icon"></span>
+      <span class="breadcrumb">Оформление заказа</span>
+    </ng-container>
   </div>
 </ng-container>

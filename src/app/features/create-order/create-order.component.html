@@ -1,0 +1,104 @@
+<app-page-title [title]="'Оформление заказа'"></app-page-title>
+<div class="in">
+  <form class="form" [formGroup]="orderForm" (submit)="submitForm()">
+    <h3 class="form__input-heading h4">Личные данные</h3>
+    <div class="form__section mb20">
+      <input
+        formControlName="phone"
+        minlength="10"
+        prefix="+7"
+        placeholder="+7"
+        mask=" 000-000-00-00"
+        class="form__input"
+        type="phone"
+      />
+    </div>
+
+    <h3 class="form__input-heading h4">Адрес доставки</h3>
+    <div class="form__section">
+      <input
+        formControlName="street"
+        class="form__input"
+        type="text"
+        placeholder="Улица*"
+      />
+    </div>
+    <div class="form__section mt20">
+      <input formControlName="house" class="form__input" placeholder="Дом*" />
+      <input
+        formControlName="building"
+        class="form__input"
+        placeholder="Корпус"
+      />
+      <input
+        formControlName="apartment"
+        class="form__input"
+        placeholder="Квартира"
+      />
+    </div>
+    <div class="form__section mt20">
+      <input
+        formControlName="entrance"
+        class="form__input"
+        placeholder="Подъезд"
+      />
+      <input class="form__input" placeholder="Этаж" />
+    </div>
+    <div class="form__section mt20 mb20">
+      <input
+        formControlName="comment"
+        class="form__input"
+        placeholder="Комментарий"
+      />
+    </div>
+
+    <p class="small-text">С какой суммы подготовить сдачу:</p>
+    <div class="form__section mb20">
+      <input formControlName="change" class="form__input" />
+    </div>
+
+    <p class="form__order-summary">
+      Сумма вашего заказа: <span class="rouble">1935i</span>
+    </p>
+
+    <h4 class="h4 mt40 mb20">Способ оплаты</h4>
+    <div
+      [class.active]="orderForm['value'].paymentMethod === 'cash'"
+      class="form__payment-option"
+      (click)="selectPaymentMethod(paymentMethods.CASH)"
+    >
+      <img src="/assets/images/create-order-page/payment1.png" alt="картинка" />
+      <p class="payment-text">Наличными курьеру</p>
+    </div>
+    <div
+      [class.active]="orderForm['value'].paymentMethod === 'card'"
+      class="form__payment-option"
+      (click)="selectPaymentMethod(paymentMethods.CARD)"
+    >
+      <img src="/assets/images/create-order-page/payment2.png" alt="картинка" />
+      <p class="payment-text">Банковской картой курьеру</p>
+    </div>
+    <div
+      [class.active]="orderForm['value'].paymentMethod === 'online'"
+      class="form__payment-option"
+      (click)="selectPaymentMethod(paymentMethods.ONLINE)"
+    >
+      <img src="/assets/images/create-order-page/payment3.png" alt="картинка" />
+      <p class="payment-text">Онлайн оплата</p>
+    </div>
+
+    <div class="btn-cont mt20 mb20">
+      <button class="btn--red">Оформить заказ</button>
+    </div>
+  </form>
+  <div class="politic">
+    <div
+      class="checkbox-cont"
+      [class.checked]="familiarized | async"
+      (click)="toggleFamiliarized()"
+    ></div>
+    <p class="text">
+      Согласен с <span class="ref-red"> политикой конфиденциальности</span>
+    </p>
+  </div>
+</div>

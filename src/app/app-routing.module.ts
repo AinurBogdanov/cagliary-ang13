@@ -5,6 +5,7 @@ import { CartComponent } from './features/cart/cart.component';
 import { LoginComponent } from './features/login/login.component';
 import { MenuComponent } from './features/menu/menu.component';
 import { PromoPageComponent } from './features/promo-page/promo-page.component';
+import { CreateOrderComponent } from './features/create-order/create-order.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'promo',
     component: PromoPageComponent,
+  },
+  {
+    path: 'order',
+    component: CreateOrderComponent,
   },
 ];
 

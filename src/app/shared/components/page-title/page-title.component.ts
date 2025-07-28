@@ -17,5 +17,8 @@ export class PageTitleComponent implements OnInit {
     const url = this.router.url;
     const paths = url.split('/');
     this.breadCrumb = paths[paths.length - 1];
+
+    if (this.breadCrumb === 'order') {
+    }
   }
 }

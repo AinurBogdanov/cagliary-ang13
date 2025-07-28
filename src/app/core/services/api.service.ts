@@ -36,9 +36,10 @@ export class ApiService implements OnInit {
     console.log('posted data');
   }
   sentOrder(order: any) {
-    this.http
-      .post('https://pizza-backend3.free.beeceptor.com/order', order)
-      .subscribe((res) => console.log(res));
+    return this.http.post(
+      'https://pizza-backend3.free.beeceptor.com/order',
+      order
+    );
   }
 }
 

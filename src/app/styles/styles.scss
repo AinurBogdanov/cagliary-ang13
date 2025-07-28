@@ -79,6 +79,7 @@ body {
 
 .link {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .items_list app-item-card:first-child .item {
@@ -106,8 +107,41 @@ body {
   font-size: 28px;
   font-weight: 600;
 }
+.h4 {
+  font-size: 16px;
+  color: var(--second-font-color);
+  font-weight: normal;
+}
 .fs45px {
   font-size: 45px;
+}
+
+.checkbox-cont {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 4px;
+    width: 17px;
+    height: 17px;
+    border: 1px solid #999;
+    border-radius: 50%;
+    background: white;
+  }
+  &.checked::before {
+    background-image: url(/assets/images/icons/check-red.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.ref-red {
+  color: red;
+  text-decoration: underline;
 }
 
 @media (max-width: 1310px) {

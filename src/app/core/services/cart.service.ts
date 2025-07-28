@@ -39,67 +39,44 @@ export class CartService implements OnInit {
     const result = this.localStorageService.getCartFromStorage();
     if (result) this.cart = result;
   }
+
   getCart(): Observable<Cart> {
     return this.cart$.asObservable();
   }
 
-  addPizza(pizzaOrId: string | Product, currentPageIndex: number) {
-    const currentCart = this.cart$.getValue();
+  addPizza(pizzaOrId: string | Product, currentPageIndex: number): void {
+    const currentCart: Cart = this.cart$.getValue();
     const currentItems = currentCart.products;
 
     if (typeof pizzaOrId === 'string') {
       const pizzaId = pizzaOrId;
+
       const index = this.findIndexById(currentItems, pizzaId);
 
       if (index > -1) {
-        const product = currentItems[index];
-
-        const updatedProduct = {
-          ...product,
-          sauces: this.addSauce(product.sauces),
-          quantity: product.quantity + 1,
-        };
-
-        const updatedProducts = [...currentItems];
-        updatedProducts[index] = updatedProduct;
-
-        const updatedCart: Cart = {
-          ...currentCart,
-          products: updatedProducts,
-          totalCost: currentItems.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-          ),
-        };
-        this.cart$.next(updatedCart);
+        const updatedProducts = this.updateProductQuantityAndSauces(
+          currentItems,
+          index
+        );
+        this.updateCart(updatedProducts, currentCart);
       }
     } else {
       const pizza = pizzaOrId;
       const cleanPizzaData = this.transformPizzaData(pizza, currentPageIndex);
-      const newPizzaId = cleanPizzaData.id;
 
+      const newPizzaId = cleanPizzaData.id;
       const index = this.findIndexById(currentItems, newPizzaId);
 
       if (index > -1) {
-        const product = currentItems[index];
-        product.quantity += 1;
-        product.sauces = this.addSauce(product.sauces);
-
-        const updatedCart: Cart = {
-          ...currentCart,
-          products: [...currentItems],
-          totalCost: this.calcItemsCost(currentItems),
-        };
-
-        this.cart$.next(updatedCart);
+        const updatedProducts = this.updateProductQuantityAndSauces(
+          currentItems,
+          index
+        );
+        this.updateCart(updatedProducts, currentCart);
       } else {
-        const updatedItems = [...currentItems, cleanPizzaData];
-        const updatedCart: Cart = {
-          ...currentCart,
-          products: updatedItems,
-          totalCost: this.calcItemsCost(updatedItems),
-        };
-        this.cart$.next(updatedCart);
+        const updatedProducts = [...currentItems, cleanPizzaData];
+
+        this.updateCart(updatedProducts, currentCart);
       }
     }
   }
@@ -239,6 +216,32 @@ export class CartService implements OnInit {
     };
   }
 
+  private updateProductQuantityAndSauces(
+    items: cartProduct[],
+    index: number
+  ): cartProduct[] {
+    const product = items[index];
+    const updatedProduct: cartProduct = {
+      ...product,
+      sauces: this.addSauce(product.sauces),
+      quantity: product.quantity + 1,
+    };
+
+    const updatedProducts = [...items];
+    updatedProducts[index] = updatedProduct;
+    return updatedProducts;
+  }
+
+  private updateCart(updatedProducts: cartProduct[], currentCart: Cart) {
+    const updatedCart = {
+      ...currentCart,
+      products: updatedProducts,
+      totalCost: this.calcItemsCost(updatedProducts),
+    };
+
+    this.cart$.next(updatedCart);
+  }
+
   private defineSize(sizes: size[]): string {
     const activeSize = sizes.find((size) => size.active === true);
     return !activeSize ? '30 см' : activeSize.size;
@@ -250,7 +253,7 @@ export class CartService implements OnInit {
 
     return !activeDoughType ? 'Традиционное' : activeDoughType.type;
   }
-  private findIndexById(array: cartProduct[], id: string) {
+  private findIndexById(array: Product[] | cartProduct[], id: string) {
     return array.findIndex((item) => item.id === id);
   }
   private calcItemsCost(items: cartProduct[]) {

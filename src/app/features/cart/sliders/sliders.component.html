@@ -13,9 +13,15 @@
           <div class="slide-bottom">
             <div class="souse__cost">{{ sauce.price }}i</div>
             <div class="souse__summary">
-              <div class="plus-one-btn"></div>
+              <div
+                class="plus-one-btn"
+                (click)="additionSauceChange(sauce, +1)"
+              ></div>
               <div class="souse__quantity">{{ sauce.count }}</div>
-              <div class="minus-one-btn"></div>
+              <div
+                class="minus-one-btn"
+                (click)="additionSauceChange(sauce, -1)"
+              ></div>
             </div>
           </div>
         </div>
@@ -44,7 +50,9 @@
             <div class="rec__name">{{ product.name }}</div>
             <div class="rec__summary">
               <div class="rec__cost">{{ product.price }}i</div>
-              <button class="btn rec__btn">В корзину</button>
+              <button class="btn rec__btn" (click)="onAddProduct(product.id)">
+                В корзину
+              </button>
             </div>
           </div>
         </div>

@@ -12,17 +12,28 @@
     <div class="item__info">
       <div class="item__title">{{ item.name }}</div>
       <div class="item__main">
-        <div class="item__text">{{ item.size }}, {{ item.doughType }}</div>
-        <div *ngIf="sauceNames" class="item__souse">
-          Соусы:
-          <span (click)="selectSauce()" class="item__souse-name">{{
-            sauceNames
-          }}</span>
-        </div>
-        <ng-container *ngIf="!sauceNames">
-          <span (click)="selectSauce()" class="item__souse-name"
-            >выбрать соус</span
-          >
+        <ng-container *ngIf="item.size">
+          <div class="item__text">{{ item.size }}, {{ item.doughType }}</div>
+        </ng-container>
+        <ng-container
+          *ngIf="
+            item.category === 'snaks' ||
+            item.category === 'pizzas' ||
+            item.category === 'rimskay' ||
+            item.category === 'sloeny'
+          "
+        >
+          <div class="item__souse">
+            Соусы:
+            <span (click)="selectSauce()" class="item__souse-name">{{
+              sauceNames
+            }}</span>
+          </div>
+          <ng-container *ngIf="!sauceNames">
+            <span (click)="selectSauce()" class="item__souse-name"
+              >выбрать соус</span
+            >
+          </ng-container>
         </ng-container>
       </div>
     </div>

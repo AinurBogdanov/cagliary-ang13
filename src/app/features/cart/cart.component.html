@@ -12,7 +12,10 @@
         ></app-item-card>
       </ng-container>
     </div>
-    <app-sliders></app-sliders>
+    <app-sliders
+      (addProduct)="addProduct($event)"
+      (onAdditionSauce)="additionalSauceChange($event)"
+    ></app-sliders>
     <app-promo></app-promo>
   </ng-container>
   <ng-container *ngIf="(items$ | async)?.length === 0">

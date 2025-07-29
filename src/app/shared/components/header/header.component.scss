@@ -1,5 +1,5 @@
 .header-baner {
-  background-image: url(/assets/images/banner.jpg);
+  background-image: url(~assets/images/banner.jpg);
   max-width: 1905px;
   width: 100%;
   position: relative;
@@ -29,7 +29,7 @@
   box-sizing: border-box;
 }
 .header_adress-title {
-  background-image: url(/assets/images/map-point.png);
+  background-image: url(~assets/images/map-point.png);
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 20px;

@@ -1,5 +1,5 @@
 .header-baner {
-  background-image: url(assets/images/banner.jpg);
+  background-image: url(./assets/images/banner.jpg);
   max-width: 1905px;
   width: 100%;
   position: relative;
@@ -54,7 +54,7 @@ li {
 .header-logo {
   width: 120px;
   height: 120px;
-  background-image: url(/assets/images/header-logo.png);
+  background-image: url(assets/images/header-logo.png);
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center;

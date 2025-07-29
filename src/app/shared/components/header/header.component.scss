@@ -1,5 +1,7 @@
+$assets-path: "../../../../assets/images";
+
 .header-baner {
-  background-image: url(assets/images/banner.jpg);
+  background-image: url(#{$assets-path}/banner.jpg);
   max-width: 1905px;
   width: 100%;
   position: relative;
@@ -29,7 +31,7 @@
   box-sizing: border-box;
 }
 .header_adress-title {
-  background-image: url(/assets/images/map-point.png);
+  background-image: url(#{$assets-path}/map-point.png);
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 20px;
@@ -44,7 +46,7 @@ li {
   list-style-type: none;
 }
 .left-section ul {
-  background-image: url(/assets/images/clock.png);
+  background-image: url(#{$assets-path}/clock.png);
   margin: 0;
   background-size: 20px;
   background-repeat: no-repeat;
@@ -54,7 +56,7 @@ li {
 .header-logo {
   width: 120px;
   height: 120px;
-  background-image: url(/assets/images/header-logo.png);
+  background-image: url(#{$assets-path}/header-logo.png);
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center;

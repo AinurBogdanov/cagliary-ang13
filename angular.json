@@ -40,6 +40,7 @@
       "prefix": "app",
       "architect": {
         "build": {
+          "deployUrl": "/cagliary-ang13",
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/cagliary-ang13",

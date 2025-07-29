@@ -27,13 +27,10 @@ export class ApiService implements OnInit {
   }
 
   login(formData: any) {
-    this.http
-      .post('https://pizza-backend3.free.beeceptor.com/login', formData)
-      .subscribe({
-        next: (res) => console.log('registered', res),
-        error: (error) => console.error(error),
-      });
-    console.log('posted data');
+    return this.http.post(
+      'https://pizza-backend3.free.beeceptor.com/login',
+      formData
+    );
   }
   sentOrder(order: any) {
     return this.http.post(

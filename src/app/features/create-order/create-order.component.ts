@@ -33,6 +33,14 @@ export class CreateOrderComponent implements OnInit {
       panelClass: ['custom-snackbar'],
     });
   }
+  showError(message: string) {
+    this.snackBar.open(message, 'Закрыть', {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['error-snackbar'],
+    });
+  }
 
   createForm() {
     this.orderForm = this.fb.group({
@@ -56,7 +64,7 @@ export class CreateOrderComponent implements OnInit {
           this.openSnackBar('Заказ успешно отправлен!', 'Закрыть');
         },
         error: (error) => {
-          console.log('Ошибка', error);
+          this.showError('Возникла ошибка');
         },
       });
     }

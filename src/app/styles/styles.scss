@@ -144,6 +144,10 @@ body {
   text-decoration: underline;
 }
 
+.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}
 @media (max-width: 1310px) {
   .in {
     width: 1000px;

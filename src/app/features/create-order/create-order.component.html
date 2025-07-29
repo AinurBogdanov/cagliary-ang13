@@ -1,6 +1,11 @@
 <app-page-title [title]="'Оформление заказа'"></app-page-title>
 <div class="in">
-  <form class="form" [formGroup]="orderForm" (submit)="submitForm()">
+  <form
+    class="form"
+    [formGroup]="orderForm"
+    (keydown.enter)="$event.preventDefault()"
+    (submit)="submitForm()"
+  >
     <h3 class="form__input-heading h4">Личные данные</h3>
     <div class="form__section mb20">
       <input
@@ -88,7 +93,9 @@
     </div>
 
     <div class="btn-cont mt20 mb20">
-      <button class="btn--red">Оформить заказ</button>
+      <button [class.inactive]="!(familiarized | async)" class="btn--red">
+        Оформить заказ
+      </button>
     </div>
   </form>
   <div class="politic">

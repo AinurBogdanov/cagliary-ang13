@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { error } from 'console';
 import { BehaviorSubject } from 'rxjs';
 import { PaymentMethod } from 'src/app/core/data/enums/paymentMethod';
@@ -15,23 +16,35 @@ export class CreateOrderComponent implements OnInit {
   orderForm!: FormGroup;
   paymentMethods = PaymentMethod;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiService,
+    private snackBar: MatSnackBar
+  ) {
     this.createForm();
   }
 
   ngOnInit(): void {}
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['custom-snackbar'],
+    });
+  }
+
   createForm() {
     this.orderForm = this.fb.group({
-      phone: ['', [Validators.required, Validators.minLength(10)]],
-      street: ['', [Validators.required]],
-      house: ['', [Validators.required]],
-      building: [''],
-      apartment: [''],
-      entrance: [''],
-      floor: [''],
-      comment: [''],
-      change: [''],
+      phone: ['1111111111', [Validators.required, Validators.minLength(10)]],
+      street: ['2', [Validators.required]],
+      house: ['2', [Validators.required]],
+      building: ['2'],
+      apartment: ['2'],
+      entrance: ['11'],
+      floor: ['1'],
+      comment: ['11'],
+      change: ['11'],
       paymentMethod: ['cash', Validators.required],
     });
   }
@@ -40,7 +53,7 @@ export class CreateOrderComponent implements OnInit {
     if (this.orderForm.valid && this.familiarized.value) {
       this.apiService.sentOrder(this.orderForm.value).subscribe({
         next: (response) => {
-          console.log('Успешно отправлено:', response);
+          this.openSnackBar('Заказ успешно отправлен!', 'Закрыть');
         },
         error: (error) => {
           console.log('Ошибка', error);

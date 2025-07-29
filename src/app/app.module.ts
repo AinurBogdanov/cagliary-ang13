@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { MenuComponent } from './features/menu/menu.component';
 import { PromoPageComponent } from './features/promo-page/promo-page.component';
 import { ModalComponent } from './features/cart/modal/modal.component';
 import { CreateOrderComponent } from './features/create-order/create-order.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { CreateOrderComponent } from './features/create-order/create-order.compo
     FormsModule,
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

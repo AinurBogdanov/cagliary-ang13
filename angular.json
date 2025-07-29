@@ -74,6 +74,9 @@
               ],
               "outputHashing": "all"
             },
+            "github-pages": {
+              "baseHref": "/cagliary-ang13/"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,

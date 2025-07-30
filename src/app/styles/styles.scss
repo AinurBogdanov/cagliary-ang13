@@ -36,6 +36,8 @@ $cagliary-ang13-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 
+$assets-path-glob: "../../assets/";
+
 @import "swiper/scss";
 @import "swiper/scss/navigation";
 @import "swiper/scss/pagination";
@@ -106,16 +108,16 @@ body {
   pointer-events: none;
 }
 .plus-one-btn {
-  background-image: url(/assets/images/icons/i_plus_grey.png);
+  background-image: url(#{$assets-path-glob}images/icons/i_plus_grey.png);
 }
 .minus-one-btn {
-  background-image: url(/assets/images/icons/minus.png);
+  background-image: url(#{$assets-path-glob}images/icons/minus.png);
 }
 .plus-one-btn:hover {
-  background-image: url(/assets/images/icons/i_plus_orange.png);
+  background-image: url(#{$assets-path-glob}images/icons/i_plus_orange.png);
 }
 .minus-one-btn:hover {
-  background-image: url(/assets/images/icons/i_minus_orange.png);
+  background-image: url(#{$assets-path-glob}images/icons/i_minus_orange.png);
 }
 .plus-one-btn,
 .minus-one-btn {
@@ -181,7 +183,7 @@ body {
     background: white;
   }
   &.checked::before {
-    background-image: url(/assets/images/icons/check-red.png);
+    background-image: url(#{$assets-path-glob}images/icons/check-red.png);
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;

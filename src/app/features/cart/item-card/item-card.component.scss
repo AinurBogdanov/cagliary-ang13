@@ -1,3 +1,5 @@
+$assets-path: "../../../../assets/";
+
 .item {
   font-family: "Open Sans";
   display: grid;
@@ -43,7 +45,7 @@
     font-weight: normal;
   }
   &__delete-btn {
-    background-image: url(/assets/images/icons/i-cross.png);
+    background-image: url(#{$assets-path}images/icons/i-cross.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80%;
@@ -53,6 +55,6 @@
     cursor: pointer;
   }
   &__delete-btn:hover {
-    background-image: url(/assets/images/icons/i-cross-orange.png);
+    background-image: url(#{$assets-path}images/icons/i-cross-orange.png);
   }
 }

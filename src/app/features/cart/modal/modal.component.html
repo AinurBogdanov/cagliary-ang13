@@ -11,7 +11,7 @@
   <img
     (click)="onCloseModal()"
     class="modal__close"
-    src="./assets/images/icons/close_sauce-select.png"
+    src="~/assets/images/icons/close_sauce-select.png"
     alt=""
   />
   <div class="modal__sauces-cont">
@@ -19,7 +19,7 @@
       <div class="modal__sauce">
         <img
           class="modal__image"
-          src="assets/images/dishes/souses/souse-{{ sauce.id }}.jpg"
+          src="./assets/images/dishes/souses/souse-{{ sauce.id }}.jpg"
         />
         <ng-container *ngIf="productQuantity <= 1">
           <label class="modal__custom-checkbox">

@@ -2,6 +2,8 @@
   display: block;
   width: 100%;
 }
+
+$assets-path: "../../../../assets/";
 .footer-holder {
   width: fit-content;
   margin: 0 auto;
@@ -15,7 +17,7 @@
   float: left;
 }
 .footer_logo {
-  background-image: url(/assets/images/footer-logo.png);
+  background-image: url(#{$assets-path}images/footer-logo.png);
   width: 151px;
   height: 191px;
   background-position: center;
@@ -77,14 +79,14 @@
   margin-bottom: 25px;
 }
 .phone_footer_one {
-  background-image: url(/assets/images/phone-footer.png);
+  background-image: url(#{$assets-path}images/phone-footer.png);
   background-repeat: no-repeat;
   font-size: 25px;
   font-weight: 600;
   padding-left: 30px;
 }
 .phone_footer_two {
-  background-image: url(/assets/images/mobile-footer.png);
+  background-image: url(#{$assets-path}images/mobile-footer.png);
   background-repeat: no-repeat;
   font-size: 25px;
   font-weight: 600;
@@ -93,7 +95,7 @@
 
 .footer_adress {
   padding-left: 33px;
-  background-image: url(/assets/images/map-pointer-footer.png);
+  background-image: url(#{$assets-path}images/map-pointer-footer.png);
   background-position: center left;
   background-repeat: no-repeat;
   line-height: 33px;
@@ -102,11 +104,11 @@
   margin-bottom: 20px;
 }
 .work_time_footer {
-  background-image: url(/assets/images/footer-clock.png);
+  background-image: url(#{$assets-path}images/footer-clock.png);
   background-repeat: no-repeat;
 }
 .work-hours {
- padding-left: 30px; 
+  padding-left: 30px;
 }
 .partners {
   margin-top: 30px;
@@ -121,7 +123,7 @@
   font-size: 25px;
 }
 .wk {
-  background-image: url(/assets/images/vk.png);
+  background-image: url(#{$assets-path}images/vk.png);
   border-radius: 50%;
   background-repeat: no-repeat;
   background-size: contain !important;
@@ -131,14 +133,14 @@
 }
 
 .wk:hover {
-  background-image: url(/assets/images/vk2.png);
+  background-image: url(#{$assets-path}images/vk2.png);
 }
 .download_btn {
   height: 100px;
 }
 
 .db_one {
-  background-image: url(/assets/images/i-appstore.png);
+  background-image: url(#{$assets-path}images/i-appstore.png);
   background-repeat: no-repeat;
   width: 120px;
   height: 50px;
@@ -148,7 +150,7 @@
 }
 
 .db_two {
-  background-image: url(/assets/images/i-googleplay.png);
+  background-image: url(#{$assets-path}images/i-googleplay.png);
   background-repeat: no-repeat;
   width: 120px;
   height: 50px;
@@ -171,32 +173,31 @@
 .metrika {
   width: 50px;
   height: 40px;
-  background-image: url(/assets/images/metrika.jpg);
+  background-image: url(#{$assets-path}images/metrika.jpg);
   background-repeat: no-repeat;
 }
 
+@media (max-width: 1200px) {
+  .footer_right {
+    float: left;
+    margin-top: 50px;
+  }
+  .footer_right_midle {
+    margin: 10px 0 0 20px;
+    left: 40px;
+    width: 250px;
+    float: left;
+  }
+  .footer_left {
+    margin-top: 40px;
+    float: left;
+  }
+  .footer_left_midle {
+    float: left;
+    margin: 10px 0 0 30px;
+    width: 190px;
+  }
+}
 
-@media (max-width : 1200px) {
- .footer_right {
-  float: left;
-  margin-top: 50px;
-}
-.footer_right_midle {
-  margin: 10px 0 0 20px;
-  left: 40px;
-  width: 250px;
-  float: left;
-}
-.footer_left {
-  margin-top: 40px;
-  float: left;
-}
-.footer_left_midle {
-  float: left;
-  margin: 10px 0 0 30px;
-  width: 190px;
-}
-}
-
-@media (max-width : 1100px) {
+@media (max-width: 1100px) {
 }

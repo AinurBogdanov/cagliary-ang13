@@ -1,3 +1,4 @@
+$assets-path: "../../../../assets/";
 .search-container {
   border-bottom: 1px solid rgb(161, 161, 161);
   width: 630px;
@@ -28,7 +29,7 @@
   color: var(--light-gray-font-color);
 }
 .separator-icon {
-  background-image: url(/assets/images/icons/separator.png);
+  background-image: url(#{$assets-path}images/icons/separator.png);
   background-repeat: no-repeat;
   background-position: center;
   width: 25px;

@@ -1,7 +1,6 @@
-$assets-path: "../../../../";
-
+$assets-path: "../../../../assets/";
 .header-baner {
-  background-image: url(#{$assets-path}assets/images/banner.jpg);
+  background-image: url(#{$assets-path}images/banner.jpg);
   max-width: 1905px;
   width: 100%;
   position: relative;
@@ -31,7 +30,7 @@ $assets-path: "../../../../";
   box-sizing: border-box;
 }
 .header_adress-title {
-  background-image: url(#{$assets-path}assets/images/map-point.png);
+  background-image: url(#{$assets-path}images/map-point.png);
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 20px;
@@ -46,7 +45,7 @@ li {
   list-style-type: none;
 }
 .left-section ul {
-  background-image: url(#{$assets-path}assets/images/clock.png);
+  background-image: url(#{$assets-path}images/clock.png);
   margin: 0;
   background-size: 20px;
   background-repeat: no-repeat;
@@ -56,7 +55,7 @@ li {
 .header-logo {
   width: 120px;
   height: 120px;
-  background-image: url(#{$assets-path}assets/images/header-logo.png);
+  background-image: url(#{$assets-path}images/header-logo.png);
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center;
@@ -79,11 +78,11 @@ li {
   padding-left: 30px;
 }
 .hf_1 {
-  background-image: url(../../../../assets/images/mobile4.png);
+  background-image: url(#{$assets-path}images/mobile4.png);
   margin-bottom: 10px;
 }
 .hf_2 {
-  background-image: url(/assets/images/phone4.png);
+  background-image: url(#{$assets-path}images/phone4.png);
 }
 /* frourth section */
 .header_minicart {
@@ -120,7 +119,7 @@ li {
   background-color: red;
 }
 .mc_icon {
-  background-image: url(/assets/images/minicart1.png);
+  background-image: url(#{$assets-path}images/minicart1.png);
   background-repeat: no-repeat;
   background-position: bottom;
   object-fit: cover;
@@ -158,7 +157,7 @@ li {
 }
 @font-face {
   font-family: "Rouble";
-  src: url("/assets/fonts/rouble.woff") format("woff");
+  src: url("#{$assets-path}fonts/rouble.woff") format("woff");
 }
 .rouble {
   font-family: "Rouble", Arial;

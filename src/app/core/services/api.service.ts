@@ -21,9 +21,9 @@ export class ApiService implements OnInit {
 
   getProducts(): Observable<Product[][]> {
     return this.http.get<Product[][]>(
-      `https://433e2e4e-a634-4095-8eca-df41aa00b4dc.mock.pstmn.io/products`
+      'https://pizza-backend3.free.beeceptor.com/products'
     );
-    ('https://pizza-backend3.free.beeceptor.com/products');
+    // `https://433e2e4e-a634-4095-8eca-df41aa00b4dc.mock.pstmn.io/products`
   }
 
   login(formData: any) {

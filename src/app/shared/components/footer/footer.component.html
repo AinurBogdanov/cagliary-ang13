@@ -1,84 +1,143 @@
 <div class="footer-holder">
-  <div class="top_footer_wrap">
-    <div class="footer_left">
-      <div class="footer_logo"></div>
-      <div class="footer_buttons"></div>
-      <button class="btn btn_one">Написать директру</button>
-      <button class="btn">Проверить заказ</button>
-    </div>
-    <div class="footer_left_midle">
-      <div class="title">Меню</div>
-      <ul>
-        <li><a class="footer-link" href="#">Пиццы</a></li>
-        <li><a class="footer-link" href="#">Солёные</a></li>
-        <li><a class="footer-link" href="#">Римская</a></li>
-        <li><a class="footer-link" href="#">Постное</a></li>
-        <li><a class="footer-link" href="#">Роллы</a></li>
-        <li><a class="footer-link" href="#">Закуски</a></li>
-        <li><a class="footer-link" href="#">Салатес</a></li>
-        <li><a class="footer-link" href="#">Десерты</a></li>
-        <li><a class="footer-link" href="#">Напитки</a></li>
-        <li><a class="footer-link" href="#">Горячие напитки</a></li>
-        <li><a class="footer-link" href="#">Детское</a></li>
-        <li><a class="footer-link" href="#">Сувениры</a></li>
-        <li><a class="footer-link" href="#">Акции</a></li>
-        <li><a class="footer-link" href="#">Инструкции</a></li>
-        <li><a class="footer-link" href="#">О нас</a></li>
-        <li><a class="footer-link" href="#">Оплата/Доставка</a></li>
-        <li><a class="footer-link" href="#">Контакты</a></li>
-      </ul>
-    </div>
-    <div class="footer_right_midle">
-      <div class="right_midle_title">Сделать заказ</div>
-      <div class="phone_footer_one">4-04-77</div>
-      <div class="phone_footer_two">+7 902 127-77-72</div>
-      <div class="footer_adress">
-        г. Димитровград ,ул.Севостопольская
-        <br />
-        <br />
-        <b>Реквизиты:</b>
-        <br />
-        ИП Борисова Д.А.
-        <br />
-        <br />
-        ОГРН: 322730000015324
-        <br />
-        ИНН:73202068926241
+  <div class="footer-wrap">
+    <div class="footer-layout">
+      <div>
+        <div class="footer_logo"></div>
+        <div class="footer_buttons"></div>
+        <button class="btn btn_one">Написать директру</button>
+        <button class="btn">Проверить заказ</button>
       </div>
-      <div class="work_time_footer">
-        <div class="clock_footer"></div>
-        <ul class="work-hours">
-          <li>ВС - чт:С 10:00 до 22:00</li>
-          <li>Пт - сб:С 10:00 до 22:30</li>
+
+      <div>
+        <div class="footer-menu-title footer-title">Меню</div>
+        <ul class="footer-menu-list">
+          <li>
+            <a
+              class="footer-link"
+              routerLink="/menu/pizzas"
+              routerLinkActive="active"
+              >Пиццы</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer-link"
+              routerLink="/menu/sloeny"
+              routerLinkActive="active"
+              >Слоёные</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer-link"
+              routerLink="/menu/rimskay"
+              routerLinkActive="active"
+              >Римская</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer-link"
+              routerLink="/menu/snaks"
+              routerLinkActive="active"
+              >Закуски</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer-link"
+              routerLink="/menu/salad"
+              routerLinkActive="active"
+              >Салаты</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer-link"
+              routerLink="/menu/deserts"
+              routerLinkActive="active"
+              >Десерты</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer-link"
+              routerLink="/menu/drink"
+              routerLinkActive="active"
+              >Напитки</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer-link"
+              routerLink="/menu/hot-drinks"
+              routerLinkActive="active"
+              >Горячие Напитки</a
+            >
+          </li>
+          <li>
+            <a class="footer-link" routerLink="/promo" routerLinkActive="active"
+              >Акции</a
+            >
+          </li>
         </ul>
       </div>
-      <div class="partners">
-        <b>Партнёры:</b>
-        <br />
-        <br />
-        <a href="#">ОГБПОУ ДТПТ</a>
+
+      <div class="footer-info">
+        <div class="footer-title">Сделать заказ</div>
+        <div class="phone_footer-one">
+          <div class="phone-image-one bg-image-info"></div>
+          4-04-77
+        </div>
+        <div class="phone_footer-two mb20">
+          <div class="phone-image-two bg-image-info"></div>
+          +7 902 127-77-72
+        </div>
+        <div class="footer_adress mb20">
+          <div class="footer-address-image bg-image-info"></div>
+          г. Димитровград ул.Севостопольская
+        </div>
+
+        <div class="mb20">
+          <span class="footer-title">Реквизиты:</span>
+          <br />
+          ИП Борисова Д.А.
+          <br />
+          ОГРН: 322730000015324
+          <br />
+          ИНН:73202068926241
+        </div>
+
+        <div class="work_time_footer mb20">
+          <div class="work-time-image bg-image-info"></div>
+          <div class="clock_footer"></div>
+          <ul class="work-hours">
+            <li>ВС - чт:С 10:00 до 22:00</li>
+            <li>Пт - сб:С 10:00 до 22:30</li>
+          </ul>
+        </div>
+        <div class="partners">
+          <p class="footer-title">Партнёры:</p>
+          <a href="#">ОГБПОУ ДТПТ</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Следите за нами</div>
+        <div class="wk"></div>
+        <div class="presuade">скачивайте приложение в</div>
+        <div class="download_btns">
+          <a class="db_one" href="#"></a>
+          <a class="db_two" href="#"></a>
+        </div>
       </div>
     </div>
-    <div class="footer_right">
-      <div class="follow">Следите за нами</div>
-      <div class="wk"></div>
-      <div class="presuade">скачивайте приложение в</div>
-      <div class="download_btns">
-        <a class="db_one" href="#"></a>
-        <a class="db_two" href="#"></a>
-      </div>
+
+    <div class="footer-bottom">
+      <div>Пиццерия Кальяри 2018 - 2025</div>
+      <a class="footer-link" href="#"> Политика конфиденциальности </a>
+      <div class="metrika"></div>
+      <a class="footer-link" href="#"> Создание сайта </a>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <div>
-      Пиццерия Кальяри 2018 - 2025
-    </div>
-    <a class="footer-link" href="#">
-      Политика конфиденциальности
-    </a>
-    <div class="metrika"></div>
-    <a class="footer-link" href="#">
-      Создание сайта
-    </a>
   </div>
 </div>

@@ -41,9 +41,6 @@ $assets-path: "../../../../assets/";
   margin-bottom: 14px;
 }
 
-li {
-  list-style-type: none;
-}
 .left-section ul {
   background-image: url(#{$assets-path}images/clock.png);
   margin: 0;
@@ -51,6 +48,7 @@ li {
   background-repeat: no-repeat;
   padding-left: 25px;
 }
+
 /* second section */
 .header-logo {
   width: 120px;
@@ -64,56 +62,56 @@ li {
   margin: 10px 0 0 118px;
 }
 /* third section */
-.header-phone-number {
+.header-phone-numbers {
   float: left;
   margin: 35px 0 0 90px;
   font-size: 20px;
   font-weight: bold;
 }
-.header-phone-number a {
-  text-decoration: none;
-  display: block;
-  color: black;
+.phone-number-one,
+.phone-number-two {
   background-repeat: no-repeat;
+  display: block;
   padding-left: 30px;
+  background-size: contain;
 }
-.hf_1 {
+.phone-number-one {
   background-image: url(#{$assets-path}images/mobile4.png);
-  margin-bottom: 10px;
 }
-.hf_2 {
+.phone-number-two {
   background-image: url(#{$assets-path}images/phone4.png);
 }
 /* frourth section */
 .header_minicart {
   float: left;
-  margin: 35px 0 0 94px;
+  margin: 30px 0 0 94px;
 }
 
-.header_reg_login a {
+.enter-link {
   color: black;
+  text-decoration: underline;
+  font-size: 18px;
+}
+.enter-link:hover {
+  color: rgb(238, 0, 20);
 }
 
 .header_reg_login {
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
-.header_reg_login a:hover {
-  color: rgb(238, 0, 20);
-}
+
 .minicart_info {
   width: 150px;
   height: 40px;
   background-color: #eeeeee;
   display: block;
   border-radius: 20px;
+  border: 1px solid transparent;
 }
 .minicart_info:hover {
   background: none;
 
   border: 1px solid green;
-}
-.minicart_info:hover span {
-  color: rgb(250, 250, 250) !important;
 }
 .minicart_info:hover .mc_count {
   background-color: red;
@@ -178,26 +176,27 @@ li {
   align-items: center;
   width: 100%;
 }
+
 .menu-box {
   display: flex;
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
   justify-content: space-around;
-  padding: 0 20px;
+  padding: 0 50px;
 }
 
-.header_menu a {
+.header-link {
   color: black;
+  font-size: 15px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
   float: left;
   cursor: pointer;
 }
-.header_menu a:hover {
+.header-link:hover {
   color: rgb(67, 151, 67);
 }
-
 .no-background {
   background-image: none;
   height: 230px;

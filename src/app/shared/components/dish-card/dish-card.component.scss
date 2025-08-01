@@ -51,6 +51,7 @@
   border-radius: 20px;
 }
 .option {
+  margin-bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,6 +76,7 @@
   height: 35px;
   background-color: var(--interactive-background-color);
   border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 .card-summary {

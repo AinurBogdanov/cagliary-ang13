@@ -1,9 +1,24 @@
-<app-page-title [title]="title" [showSearch]="true"></app-page-title>
+<app-page-title
+  (searchChange)="searchProducts($event)"
+  [title]="title"
+  [showSearch]="true"
+></app-page-title>
 <div class="dishes-container">
-  <ng-container *ngIf="products$ | async as products">
-    <ng-container
-      *ngFor="let product of products[arrayIndex] || [] | formatData"
-    >
+  <ng-container *ngIf="!filteredProducts">
+    <ng-container *ngIf="products$ | async as products">
+      <ng-container *ngFor="let product of products | formatData">
+        <app-dish-card
+          (addedToCart)="addToCart(product, arrayIndex)"
+          [product]="product"
+          [folder]="category"
+          [currentPageIndex]="arrayIndex"
+          (choseSize)="choseSize($event)"
+        ></app-dish-card>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="filteredProducts">
+    <!-- <ng-container *ngFor="let product of filteredProducts | formatData">
       <app-dish-card
         (addedToCart)="addToCart(product, arrayIndex)"
         [product]="product"
@@ -11,6 +26,6 @@
         [currentPageIndex]="arrayIndex"
         (choseSize)="choseSize($event)"
       ></app-dish-card>
-    </ng-container>
+    </ng-container> -->
   </ng-container>
 </div>

@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Page } from 'src/app/core/data/interfaces/page';
-import { Product, size } from 'src/app/core/data/interfaces/product';
+import { Product } from 'src/app/core/data/interfaces/product';
 import { pagesData } from 'src/app/core/data/pages';
-import { ApiService } from 'src/app/core/services/api.service';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductService } from '../../core/services/product.service';
 
@@ -14,9 +13,9 @@ import { ProductService } from '../../core/services/product.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  // products!: Product[][];
   products$!: Observable<Product[][]>;
-
+  allProducts!: Product[][];
+  filteredProducts: Product[] | null = null;
   pages: Page[];
 
   category: string = '';
@@ -33,6 +32,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.productService.products$;
+    this.products$.subscribe((products) => (this.allProducts = products));
 
     this.route.paramMap.subscribe((params) => {
       this.category = params.get('category') || '';
@@ -47,12 +47,46 @@ export class MenuComponent implements OnInit {
     this.productService.changeSize(sizeAndID.size, sizeAndID.productId);
   }
 
+  searchProducts(value: string) {
+    const query = value.toLowerCase();
+    if (!query) {
+      this.filteredProducts = null;
+      return;
+    }
+    const queryWord = query.split(/\s+/).filter((q) => q.length > 0);
+
+    function scoreProduct(productName: string): number {
+      let score = 0;
+
+      for (const word of queryWord) {
+        if (!word) continue;
+        if (productName.toLowerCase().includes(word)) {
+          score += word.length;
+        }
+      }
+      return score;
+    }
+
+    const filteredProducts = this.allProducts
+      .map((subProducts) => {
+        return subProducts.filter((product) => {
+          return product.name.toLowerCase().includes(query);
+        });
+      })
+      .flat();
+
+    filteredProducts.sort(
+      (a, b) => scoreProduct(b.name) - scoreProduct(a.name)
+    );
+
+    this.filteredProducts = filteredProducts;
+  }
+
   private loadMenuData(category: string) {
     const page = this.pages.find((page) => page.category === category);
     if (page !== undefined) {
       this.title = page.title;
       this.arrayIndex = page.arrayIndex;
-      console.log(this.arrayIndex);
     }
   }
 }

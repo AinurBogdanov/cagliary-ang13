@@ -39,14 +39,4 @@ export const pagesData = [
     title: 'Горячие напитки',
     arrayIndex: 7,
   },
-  {
-    category: 'for-kids',
-    title: 'Детское',
-    arrayIndex: 8,
-  },
-  {
-    category: 'suvenirs',
-    title: 'Сувениры',
-    arrayIndex: 9,
-  },
 ];

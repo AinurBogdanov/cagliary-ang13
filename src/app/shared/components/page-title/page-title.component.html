@@ -2,7 +2,12 @@
 
 <ng-container *ngIf="showSearch">
   <div class="search-container">
-    <input name="search" type="text" class="search-input" />
+    <input
+      (input)="onInput($event)"
+      name="search"
+      type="text"
+      class="search-input"
+    />
     <img class="search-icon" src="assets/images/search-icon.png" alt="" />
   </div>
 </ng-container>

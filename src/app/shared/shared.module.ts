@@ -5,6 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DishCardComponent } from './components/dish-card/dish-card.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { PageTitleComponent } from './components/page-title/page-title.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { PageTitleComponent } from './components/page-title/page-title.component
     DishCardComponent,
     PageTitleComponent,
   ],
-  imports: [CommonModule, AppRoutingModule],
+  imports: [CommonModule, AppRoutingModule, ReactiveFormsModule],
 })
 export class SharedModule {}

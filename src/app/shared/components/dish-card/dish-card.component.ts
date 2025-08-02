@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product, size } from 'src/app/core/data/interfaces/product';
+import {
+  Product,
+  ProductWithCategory,
+  size,
+} from 'src/app/core/data/interfaces/product';
 
 @Component({
   selector: 'app-dish-card',
@@ -7,7 +11,7 @@ import { Product, size } from 'src/app/core/data/interfaces/product';
   styleUrls: ['./dish-card.component.scss'],
 })
 export class DishCardComponent {
-  @Input() product!: Product;
+  @Input() product!: ProductWithCategory;
   @Input() folder!: string;
   @Input() currentPageIndex!: number;
   @Output() addedToCart = new EventEmitter();

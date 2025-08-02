@@ -1,10 +1,16 @@
-<ng-container *ngIf="currentPageIndex <= 2">
-  <ng-container *ngIf="product">
+<ng-container *ngIf="product">
+  <ng-container
+    *ngIf="
+      product.category === 'pizzas' ||
+      product.category === 'sloeny' ||
+      product.category === 'rimskay'
+    "
+  >
     <div class="card big-card">
       <div>
         <div class="card-img card-img-big">
           <img
-            src="assets/images/dishes/{{ folder }}/{{
+            src="assets/images/dishes/{{ product.category }}/{{
               product.images.main
             }}.jpg"
             alt=""
@@ -71,15 +77,18 @@
       </div>
     </div>
   </ng-container>
-</ng-container>
-
-<ng-container *ngIf="currentPageIndex > 2">
-  <ng-container *ngIf="product">
+  <ng-container
+    *ngIf="
+      product.category !== 'pizzas' &&
+      product.category !== 'sloeny' &&
+      product.category !== 'rimskay'
+    "
+  >
     <div class="card small-card">
       <div>
         <div class="card-img">
           <img
-            src="assets/images/dishes/{{ folder }}/{{
+            src="assets/images/dishes/{{ product.category }}/{{
               product.images.main
             }}.jpg"
             alt=""

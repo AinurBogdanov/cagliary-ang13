@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../data/interfaces/fakeApi';
+import { Product, ProductWithCategory } from '../data/interfaces/product';
+import { pagesData } from '../data/pages';
 
 @Pipe({
   name: 'formatData',
@@ -40,9 +41,22 @@ export class FormatDataPipe implements PipeTransform {
     ю: 'ju',
     я: 'ja',
   };
+  pagesData = pagesData;
 
-  transform(dishes: Product[]): Product[] {
-    return dishes.map((dish) => {
+  transform(dishes: Product[][]): ProductWithCategory[] {
+    const result: ProductWithCategory[] = [];
+    dishes.forEach((category, indexOfCategory) => {
+      const page = this.pagesData.find(
+        (page) => page.arrayIndex === indexOfCategory
+      );
+      category.forEach((product) => {
+        if (page) {
+          result.push({ ...product, category: page?.category });
+        }
+      });
+    });
+
+    return result.map((dish) => {
       const newDish = { ...dish };
 
       const originalImages = { ...dish.images };

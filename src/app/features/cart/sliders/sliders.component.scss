@@ -9,12 +9,10 @@
 .swiper1 {
   margin-bottom: 70px;
 }
-.swiper-slide {
+.souse {
   border: 3px solid var(--card-btn-color);
   border-radius: 20px;
   position: relative;
-}
-.souse {
   height: 310px;
   color: var(--gray-font-color);
   &__img {
@@ -53,21 +51,43 @@
 }
 
 .holder {
+  padding: 0 40px;
   position: relative;
 }
-.swiper-button-prev,
-.swiper-button-next {
-  color: var(--card-btn-color);
+.custom-swiper-button-prev,
+.custom-swiper-button-next {
+  position: absolute;
+  top: 135px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  color: var(--orange-color);
+
+.custom-swiper-button-prev::after,
+.custom-swiper-button-next::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  border: solid var(--card-btn-color);
+  width: 25px;
+  height: 25px;
+  border-width: 0 3px 3px 0;
+  padding: 5px;
 }
-.swiper-button-prev {
-  left: -50px;
+
+.custom-swiper-button-next {
+  right: 0;
 }
-.swiper-button-next {
-  right: -50px;
+.custom-swiper-button-prev {
+  left: 0;
+}
+.custom-swiper-button-prev::after {
+  transform: translateY(-50%) rotate(130deg);
+}
+.custom-swiper-button-next::after {
+  transform: translateY(-50%) rotate(-45deg);
 }
 
 //second swiper styles

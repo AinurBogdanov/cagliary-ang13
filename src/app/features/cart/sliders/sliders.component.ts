@@ -1,9 +1,16 @@
-import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { recProducts } from 'src/app/core/data/backData/rec-data';
 import { sauces } from 'src/app/core/data/backData/sauces-data';
 import { Sauce } from 'src/app/core/data/interfaces/sauce';
 import { CartService } from 'src/app/core/services/cart.service';
 import Swiper, { Navigation, Pagination } from 'swiper';
+import { SwiperComponent } from 'swiper/angular';
 
 Swiper.use([Navigation, Pagination]);
 
@@ -17,6 +24,8 @@ export class Sliders implements AfterViewInit {
   rec = recProducts;
   @Output() onAdditionSauce = new EventEmitter();
   @Output() addProduct = new EventEmitter();
+
+  @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
 
   constructor(private cartService: CartService) {
     this.cartService.getCart().subscribe((cart) => {
@@ -34,36 +43,17 @@ export class Sliders implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    new Swiper('.swiper1', {
-      direction: 'horizontal',
-      slidesPerView: 6,
-      spaceBetween: 12,
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper1-button-next',
-        prevEl: '.swiper1-button-prev',
-      },
-    });
-    new Swiper('.swiper2', {
-      direction: 'horizontal',
-      slidesPerView: 3,
-      spaceBetween: 12,
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper2-button-next',
-        prevEl: '.swiper2-button-prev',
-      },
-    });
-  }
+  config = {
+    slidesPerView: 6,
+    spaceBetween: 12,
+    navigation: {
+      nextEl: '.custom-swiper-button-next',
+      prevEl: '.custom-swiper-button-prev',
+    },
+    loop: true,
+  };
+
+  ngAfterViewInit() {}
 
   additionSauceChange(sauce: Sauce, increment: number) {
     const sauceAndIncrement = { sauce, increment };
@@ -73,3 +63,31 @@ export class Sliders implements AfterViewInit {
     //id не корректен
   }
 }
+// new Swiper('.swiper1', {
+//       direction: 'horizontal',
+//       slidesPerView: 6,
+//       spaceBetween: 12,
+//       loop: true,
+//       pagination: {
+//         el: '.swiper-pagination',
+//         clickable: true,
+//       },
+//       navigation: {
+//         nextEl: '.swiper1-button-next',
+//         prevEl: '.swiper1-button-prev',
+//       },
+//     });
+//     new Swiper('.swiper2', {
+//       direction: 'horizontal',
+//       slidesPerView: 3,
+//       spaceBetween: 12,
+//       loop: true,
+//       pagination: {
+//         el: '.swiper-pagination',
+//         clickable: true,
+//       },
+//       navigation: {
+//         nextEl: '.swiper2-button-next',
+//         prevEl: '.swiper2-button-prev',
+//       },
+//     });

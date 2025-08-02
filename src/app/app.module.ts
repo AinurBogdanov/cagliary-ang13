@@ -22,6 +22,7 @@ import { CreateOrderComponent } from './features/create-order/create-order.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FormatDataPipe } from './core/pipes/format-data.pipe';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FormatDataPipe } from './core/pipes/format-data.pipe';
     MatButtonModule,
     ReactiveFormsModule,
     FormsModule,
+    SwiperModule,
   ],
   providers: [FormatDataPipe],
   bootstrap: [AppComponent],

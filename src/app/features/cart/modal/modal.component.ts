@@ -58,36 +58,39 @@ export class ModalComponent implements OnInit {
 
   addOneSauce(id: number) {
     if (this.freePick > 0) {
-      const index = this.sauces.findIndex((sauce) => {
-        return sauce.id === id;
-      });
+      const index = this.sauces.findIndex((sauce) => sauce.id === id);
       if (index !== -1) {
-        this.sauces[index].count += 1;
+        const sauce = this.sauces[index];
+        const updatedSauce = { ...sauce, count: sauce.count + 1 };
+        this.sauces = [
+          ...this.sauces.slice(0, index),
+          updatedSauce,
+          ...this.sauces.slice(index + 1),
+        ];
         this.freePick -= 1;
       }
     }
   }
   removeOneSauce(id: number) {
-    const index = this.sauces.findIndex((sauce) => {
-      return sauce.id === id;
-    });
-    if (index !== -1) {
-      if (this.sauces[index].count >= 1) {
-        this.sauces[index].count -= 1;
-        this.freePick += 1;
-      }
-      console.log(this.sauces);
+    const index = this.sauces.findIndex((sauce) => sauce.id === id);
+    if (index !== -1 && this.sauces[index].count >= 1) {
+      const sauce = this.sauces[index];
+      const updatedSauce = { ...sauce, count: sauce.count - 1 };
+      this.sauces = [
+        ...this.sauces.slice(0, index),
+        updatedSauce,
+        ...this.sauces.slice(index + 1),
+      ];
+      this.freePick += 1;
     }
   }
 
   onSelectSauce(newSauce: Sauce) {
     this.sauces = this.sauces.map((sauce) => {
       if (sauce.id === newSauce.id) {
-        sauce.count = 1;
-        return sauce;
+        return { ...sauce, count: 1 };
       } else {
-        sauce.count = 0;
-        return sauce;
+        return { ...sauce, count: 0 };
       }
     });
     const cleanSauces = this.sauces.filter((sauce) => sauce.count >= 1);

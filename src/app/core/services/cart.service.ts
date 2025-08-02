@@ -206,11 +206,13 @@ export class CartService implements OnInit {
       (page) => page.arrayIndex === currentPageIndex
     );
 
+    const sauce = { ...this.sauces[7], count: 1 };
+
     return {
       ...rest,
       size,
       doughType,
-      sauces: [this.sauces[7]],
+      sauces: [sauce],
       quantity: 1,
       category: page!.category,
     };
@@ -261,6 +263,7 @@ export class CartService implements OnInit {
       totalCost: this.calcItemsCost(updatedProducts),
     };
 
+    console.log(updatedCart);
     this.cart$.next(updatedCart);
   }
 

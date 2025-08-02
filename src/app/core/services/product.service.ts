@@ -20,7 +20,6 @@ export class ProductService {
     const updatedProducts = this.productsSubject.value.map((productsArray) =>
       productsArray.map((product) => {
         if (product.id !== productId) return product;
-        console.log(product);
         return {
           ...product,
           sizes: product.sizes.map((size) => ({

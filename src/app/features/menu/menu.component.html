@@ -18,7 +18,7 @@
     </ng-container>
   </ng-container>
   <ng-container *ngIf="filteredProducts">
-    <!-- <ng-container *ngFor="let product of filteredProducts | formatData">
+    <ng-container *ngFor="let product of filteredProducts">
       <app-dish-card
         (addedToCart)="addToCart(product, arrayIndex)"
         [product]="product"
@@ -26,6 +26,6 @@
         [currentPageIndex]="arrayIndex"
         (choseSize)="choseSize($event)"
       ></app-dish-card>
-    </ng-container> -->
+    </ng-container>
   </ng-container>
 </div>

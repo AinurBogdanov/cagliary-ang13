@@ -21,6 +21,7 @@ import { ModalComponent } from './features/cart/modal/modal.component';
 import { CreateOrderComponent } from './features/create-order/create-order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { FormatDataPipe } from './core/pipes/format-data.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [FormatDataPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

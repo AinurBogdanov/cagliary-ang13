@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Page } from 'src/app/core/data/interfaces/page';
-import { Product } from 'src/app/core/data/interfaces/product';
+import {
+  Product,
+  ProductWithCategory,
+} from 'src/app/core/data/interfaces/product';
 import { pagesData } from 'src/app/core/data/pages';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductService } from '../../core/services/product.service';
+import { FormatDataPipe } from '../../core/pipes/format-data.pipe';
 
 @Component({
   selector: 'app-menu',
@@ -14,8 +18,8 @@ import { ProductService } from '../../core/services/product.service';
 })
 export class MenuComponent implements OnInit {
   products$!: Observable<Product[][]>;
-  allProducts!: Product[][];
-  filteredProducts: Product[] | null = null;
+  allProducts!: ProductWithCategory[];
+  filteredProducts: ProductWithCategory[] | null = null;
   pages: Page[];
 
   category: string = '';
@@ -23,6 +27,7 @@ export class MenuComponent implements OnInit {
   arrayIndex: number = 0;
 
   constructor(
+    private formatDataPipe: FormatDataPipe,
     private route: ActivatedRoute,
     private cartService: CartService,
     private productService: ProductService
@@ -32,7 +37,9 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.productService.products$;
-    this.products$.subscribe((products) => (this.allProducts = products));
+    this.products$.subscribe((products) => {
+      this.allProducts = this.formatDataPipe.transform(products);
+    });
 
     this.route.paramMap.subscribe((params) => {
       this.category = params.get('category') || '';
@@ -67,13 +74,10 @@ export class MenuComponent implements OnInit {
       return score;
     }
 
-    const filteredProducts = this.allProducts
-      .map((subProducts) => {
-        return subProducts.filter((product) => {
-          return product.name.toLowerCase().includes(query);
-        });
-      })
-      .flat();
+    const filteredProducts = this.allProducts;
+    this.allProducts.filter((product) => {
+      return product.name.toLowerCase().includes(query);
+    });
 
     filteredProducts.sort(
       (a, b) => scoreProduct(b.name) - scoreProduct(a.name)

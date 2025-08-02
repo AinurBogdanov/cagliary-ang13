@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
 
   submitForm(form: NgForm) {
     this.submitted = true;
-    console.log('clicked', form.valid);
     if (form.valid) {
       this.apiService.login(form.value).subscribe({
         next: (res) => {

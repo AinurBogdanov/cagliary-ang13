@@ -236,7 +236,6 @@ export class CartService implements OnInit {
 
     cart.additionalSauces = cart.additionalSauces.filter((s) => s.count > 0);
 
-    console.log(cart);
     this.cart$.next(cart);
   }
 
@@ -263,7 +262,6 @@ export class CartService implements OnInit {
       totalCost: this.calcItemsCost(updatedProducts),
     };
 
-    console.log(updatedCart);
     this.cart$.next(updatedCart);
   }
 

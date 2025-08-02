@@ -1,7 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/core/data/interfaces/product';
 
 @Component({
   selector: 'app-page-title',
@@ -13,6 +19,7 @@ export class PageTitleComponent implements OnInit {
   @Input() showSearch: boolean = false;
   breadCrumb = '';
   @Output() searchChange = new EventEmitter<string>();
+  @ViewChild('searchInput') searchInput!: ElementRef;
 
   constructor(private router: Router) {}
 
@@ -28,5 +35,12 @@ export class PageTitleComponent implements OnInit {
   onInput(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.searchChange.emit(value);
+  }
+  focusInput() {
+    this.searchInput.nativeElement.focus();
+  }
+  clearInput() {
+    this.searchInput.nativeElement.value = '';
+    this.searchChange.emit('');
   }
 }

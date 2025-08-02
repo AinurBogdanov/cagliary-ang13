@@ -3,12 +3,19 @@
 <ng-container *ngIf="showSearch">
   <div class="search-container">
     <input
+      #searchInput
+      (blur)="clearInput()"
       (input)="onInput($event)"
       name="search"
       type="text"
       class="search-input"
     />
-    <img class="search-icon" src="assets/images/search-icon.png" alt="" />
+    <img
+      class="search-icon"
+      src="assets/images/search-icon.png"
+      alt=""
+      (click)="focusInput()"
+    />
   </div>
 </ng-container>
 

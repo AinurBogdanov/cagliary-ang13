@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BackendProduct } from 'src/app/core/interfaces/product';
+import { Order } from '../interfaces/order';
+import { LoginForm } from '../interfaces/form';
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +20,13 @@ export class ApiService implements OnInit {
     );
   }
 
-  login(formData: any) {
+  login(formData: LoginForm) {
     return this.http.post(
       'https://pizza-backend3.free.beeceptor.com/login',
       formData
     );
   }
-  sentOrder(order: any) {
+  sentOrder(order: Order) {
     return this.http.post(
       'https://pizza-backend3.free.beeceptor.com/order',
       order

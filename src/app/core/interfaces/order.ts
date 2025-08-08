@@ -1,8 +1,8 @@
-import { Product } from './product';
+import { cartProduct } from './product';
 
 export interface Order {
   orderId: string;
-  items: Product[];
+  items: cartProduct[];
   promoDrink: 'Cola';
 }
 

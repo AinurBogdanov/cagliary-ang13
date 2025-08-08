@@ -13,31 +13,18 @@ import type { cartProduct } from 'src/app/core/interfaces/product';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent implements OnInit {
-  items$ = this.cartService
-    .getCart()
-    .pipe(map((cart) => (cart ? cart.products : [])));
-  cart$: Observable<Cart> = this.cartService.getCart();
-  totalCost$ = this.cart$.pipe(
-    map((cart: Cart) => {
-      return cart ? cart.totalCost : 0;
-    })
-  );
+  items$ = this.cartService.getCart().pipe(map((cart) => cart?.products ?? []));
+  cart$: Observable<Cart | null> = this.cartService.getCart();
+  totalCost$ = this.cart$.pipe(map((cart) => cart?.totalCost ?? 0));
+
   modalVisibleSubject = new BehaviorSubject<boolean>(false);
   visibleForProductSubject = new BehaviorSubject('');
-
   modalVisible$ = this.modalVisibleSubject.asObservable();
   visibleForProduct$ = this.visibleForProductSubject.asObservable();
 
-  constructor(
-    private cartService: CartService,
-    private localStorageService: LocalStorageService
-  ) {}
+  constructor(private cartService: CartService) {}
 
-  ngOnInit(): void {
-    this.cart$.subscribe((cart) => {
-      this.localStorageService.saveCart(cart);
-    });
-  }
+  ngOnInit(): void {}
 
   addPizza(id: string) {
     this.cartService.addPizza(id, -1);

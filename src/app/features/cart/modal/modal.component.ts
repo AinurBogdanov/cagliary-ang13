@@ -10,7 +10,7 @@ import type { Sauce } from 'src/app/core/interfaces/sauce';
 })
 export class ModalComponent implements OnInit {
   sauces: Sauce[] = sauces;
-  productSauces: Sauce[] = []; //заменить на соусы из товара
+  productSauces: Sauce[] = [];
   productQuantity: number = 0;
 
   freePick: number = 0;

@@ -2,7 +2,6 @@ import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart } from 'src/app/core/interfaces/cart';
 import { pagesData } from '../data/pages';
-import { ApiService } from './api.service';
 import { Drink } from '../interfaces/drinks';
 import { LocalStorageService } from './local-storage.service';
 import { sauces } from '../data/sauces-data';
@@ -18,35 +17,41 @@ import type { Sauce } from 'src/app/core/interfaces/sauce';
   providedIn: 'root',
 })
 export class CartService implements OnInit {
+  private cartSubject: BehaviorSubject<Cart>;
+  private cart$: Observable<Cart>;
   private readonly defaultCart: Cart = {
     products: [],
     additionalSauces: [],
     promo: Drink.cola,
     totalCost: 0,
   };
-
-  private cart$: BehaviorSubject<Cart>;
-  private pagesData = pagesData;
   private sauces = sauces;
+  private pagesData = pagesData;
 
   constructor(private localStorageService: LocalStorageService) {
     const storedCart = this.localStorageService.getCartFromStorage();
     const initialCart = storedCart ? storedCart : this.defaultCart;
 
-    this.cart$ = new BehaviorSubject<Cart>(initialCart);
+    this.cartSubject = new BehaviorSubject<Cart>(initialCart);
+    this.cart$ = this.cartSubject.asObservable();
+    this.cart$.subscribe((cart) => {
+      if (cart) {
+        this.localStorageService.saveCart(cart);
+      }
+    });
   }
 
   ngOnInit(): void {
     const result = this.localStorageService.getCartFromStorage();
-    if (result) this.cart$.next(result);
+    if (result) this.cartSubject.next(result);
   }
 
   getCart(): Observable<Cart> {
-    return this.cart$.asObservable();
+    return this.cartSubject.asObservable();
   }
 
   addPizza(pizzaOrId: string | BackendProduct, currentPageIndex: number): void {
-    const currentCart: Cart = this.cart$.getValue();
+    const currentCart: Cart = this.cartSubject.getValue();
     const currentItems = currentCart.products;
 
     if (typeof pizzaOrId === 'string') {
@@ -83,7 +88,7 @@ export class CartService implements OnInit {
   }
 
   deleteFromCart(item: cartProduct) {
-    const currentCart = this.cart$.getValue();
+    const currentCart = this.cartSubject.getValue();
     const currentItems = currentCart.products;
 
     const index = this.findIndexById(currentItems, item.id);
@@ -95,11 +100,11 @@ export class CartService implements OnInit {
       totalCost: this.calcItemsCost(currentItems),
     };
 
-    this.cart$.next(updatedCart);
+    this.cartSubject.next(updatedCart);
   }
 
   minusOne(item: cartProduct) {
-    const currentCart = this.cart$.getValue();
+    const currentCart = this.cartSubject.getValue();
     const currentItems = currentCart.products;
 
     const index = this.findIndexById(currentItems, item.id);
@@ -122,7 +127,7 @@ export class CartService implements OnInit {
         products: updatedProducts,
         totalCost: this.calcItemsCost(currentItems),
       };
-      this.cart$.next(updatedCart);
+      this.cartSubject.next(updatedCart);
     } else {
       currentItems.splice(index, 1);
 
@@ -131,12 +136,12 @@ export class CartService implements OnInit {
         products: [...currentItems],
         totalCost: this.calcItemsCost(currentItems),
       };
-      this.cart$.next(updatedCart);
+      this.cartSubject.next(updatedCart);
     }
   }
 
   changeProductSauce(productId: string, sauces: Sauce[]) {
-    const currentCart = this.cart$.getValue();
+    const currentCart = this.cartSubject.getValue();
     const currentItems = currentCart.products;
 
     const updatedProducts = currentItems.map((product) => {
@@ -153,7 +158,7 @@ export class CartService implements OnInit {
       ...currentCart,
       products: updatedProducts,
     };
-    this.cart$.next(updatedCart);
+    this.cartSubject.next(updatedCart);
   }
 
   sendOrder() {
@@ -220,7 +225,7 @@ export class CartService implements OnInit {
   }
 
   additionalSauceChange(newSauce: Sauce, increment: number) {
-    const cart = this.cart$.value;
+    const cart = this.cartSubject.value;
     const existingSauceIndex = cart.additionalSauces.findIndex(
       (s) => s.id === newSauce.id
     );
@@ -237,7 +242,7 @@ export class CartService implements OnInit {
 
     cart.additionalSauces = cart.additionalSauces.filter((s) => s.count > 0);
 
-    this.cart$.next(cart);
+    this.cartSubject.next(cart);
   }
 
   private updateProductQuantityAndSauces(
@@ -263,7 +268,7 @@ export class CartService implements OnInit {
       totalCost: this.calcItemsCost(updatedProducts),
     };
 
-    this.cart$.next(updatedCart);
+    this.cartSubject.next(updatedCart);
   }
 
   private defineSize(sizes: size[]): string {

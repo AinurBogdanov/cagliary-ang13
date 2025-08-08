@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Drink } from '../data/enums/drinks';
+import { Drink } from '../interfaces/drinks';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { cartProduct } from 'src/app/core/data/interfaces/cartProduct';
-import { sauces } from '../../../core/data/backData/sauces-data';
-import { Sauce } from 'src/app/core/data/interfaces/sauce';
+import { sauces } from '../../../core/data/sauces-data';
+import type { Sauce } from 'src/app/core/interfaces/sauce';
+import type { cartProduct } from 'src/app/core/interfaces/product';
 
 @Component({
   selector: 'app-item-card',

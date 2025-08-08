@@ -1,7 +1,3 @@
-import { Drink } from './enums/drinks';
-import { Cart } from './interfaces/cart';
-import { Product } from 'src/app/core/data/interfaces/fakeApi';
-
 // {
 //       id: '178',
 //       name: 'Capriccio',

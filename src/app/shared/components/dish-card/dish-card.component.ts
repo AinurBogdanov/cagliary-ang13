@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
-  Product,
+  BackendProduct,
   ProductWithCategory,
   size,
-} from 'src/app/core/data/interfaces/product';
+} from 'src/app/core/interfaces/product';
 
 @Component({
   selector: 'app-dish-card',
@@ -17,7 +17,7 @@ export class DishCardComponent {
   @Output() addedToCart = new EventEmitter();
   @Output() choseSize = new EventEmitter();
 
-  onAddToCart(product: Product, currentPageIndex: number) {
+  onAddToCart(product: BackendProduct, currentPageIndex: number) {
     const data = { product, currentPageIndex };
     this.addedToCart.emit(data);
   }

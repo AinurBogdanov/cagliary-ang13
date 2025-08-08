@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product, ProductWithCategory } from '../data/interfaces/product';
 import { pagesData } from '../data/pages';
+import type {
+  BackendProduct,
+  ProductWithCategory,
+} from 'src/app/core/interfaces/product';
 
 @Pipe({
   name: 'formatData',
@@ -43,7 +46,7 @@ export class FormatDataPipe implements PipeTransform {
   };
   pagesData = pagesData;
 
-  transform(dishes: Product[][]): ProductWithCategory[] {
+  transform(dishes: BackendProduct[][]): ProductWithCategory[] {
     const result: ProductWithCategory[] = [];
     dishes.forEach((category, indexOfCategory) => {
       const page = this.pagesData.find(

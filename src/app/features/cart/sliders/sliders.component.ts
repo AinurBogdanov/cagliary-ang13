@@ -5,9 +5,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { recProducts } from 'src/app/core/data/backData/rec-data';
-import { sauces } from 'src/app/core/data/backData/sauces-data';
-import { Sauce } from 'src/app/core/data/interfaces/sauce';
+import { recProducts } from 'src/app/core/data/rec-data';
+import { sauces } from 'src/app/core/data/sauces-data';
+import { Sauce } from 'src/app/core/interfaces/sauce';
 import { CartService } from 'src/app/core/services/cart.service';
 import Swiper, { Navigation, Pagination } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
@@ -30,9 +30,11 @@ export class Sliders implements AfterViewInit {
   constructor(private cartService: CartService) {
     this.cartService.getCart().subscribe((cart) => {
       this.saucesData = this.saucesData.map((sauce) => {
-        const foundSauce = cart.additionalSauces.find((additionSauce) => {
-          return additionSauce.id === sauce.id;
-        });
+        const foundSauce = cart.additionalSauces.find(
+          (additionSauce: Sauce) => {
+            return additionSauce.id === sauce.id;
+          }
+        );
         if (foundSauce) {
           return foundSauce;
         } else {

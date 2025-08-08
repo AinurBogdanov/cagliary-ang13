@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Drink } from 'src/app/core/data/enums/drinks';
+import { Drink } from 'src/app/core/interfaces/drinks';
 import { PromoService } from 'src/app/core/services/promo.service';
 
 @Component({

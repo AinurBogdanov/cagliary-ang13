@@ -1,14 +1,18 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, retry } from 'rxjs';
-import { cartProduct } from '../data/interfaces/cartProduct';
-import { doughType, Product, size } from '../data/interfaces/product';
-import { Cart } from '../data/interfaces/cart';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Cart } from 'src/app/core/interfaces/cart';
 import { pagesData } from '../data/pages';
 import { ApiService } from './api.service';
-import { Drink } from '../data/enums/drinks';
+import { Drink } from '../interfaces/drinks';
 import { LocalStorageService } from './local-storage.service';
-import { sauces } from '../data/backData/sauces-data';
-import { Sauce } from '../data/interfaces/sauce';
+import { sauces } from '../data/sauces-data';
+import type {
+  cartProduct,
+  doughType,
+  BackendProduct,
+  size,
+} from 'src/app/core/interfaces/product';
+import type { Sauce } from 'src/app/core/interfaces/sauce';
 
 @Injectable({
   providedIn: 'root',
@@ -44,7 +48,7 @@ export class CartService implements OnInit {
     return this.cart$.asObservable();
   }
 
-  addPizza(pizzaOrId: string | Product, currentPageIndex: number): void {
+  addPizza(pizzaOrId: string | BackendProduct, currentPageIndex: number): void {
     const currentCart: Cart = this.cart$.getValue();
     const currentItems = currentCart.products;
 
@@ -194,7 +198,7 @@ export class CartService implements OnInit {
   }
 
   private transformPizzaData(
-    product: Product,
+    product: BackendProduct,
     currentPageIndex: number
   ): cartProduct {
     const { nutrition, doughTypes, sizes, ...rest } = product;
@@ -276,7 +280,7 @@ export class CartService implements OnInit {
 
     return !activeDoughType ? 'Традиционное' : activeDoughType.type;
   }
-  private findIndexById(array: Product[] | cartProduct[], id: string) {
+  private findIndexById(array: BackendProduct[] | cartProduct[], id: string) {
     return array.findIndex((item) => item.id === id);
   }
   private calcItemsCost(items: cartProduct[]) {

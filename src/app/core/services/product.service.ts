@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { BehaviorSubject, map } from 'rxjs';
-import { Product, size } from '../data/interfaces/product';
+import { BehaviorSubject } from 'rxjs';
+import type { BackendProduct, size } from 'src/app/core/interfaces/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  productsSubject = new BehaviorSubject<Product[][]>([]);
+  productsSubject = new BehaviorSubject<BackendProduct[][]>([]);
   readonly products$ = this.productsSubject.asObservable();
 
   constructor(private apiService: ApiService) {

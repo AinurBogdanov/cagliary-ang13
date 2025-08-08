@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Page } from 'src/app/core/data/interfaces/page';
-import {
-  Product,
-  ProductWithCategory,
-} from 'src/app/core/data/interfaces/product';
 import { pagesData } from 'src/app/core/data/pages';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductService } from '../../core/services/product.service';
 import { FormatDataPipe } from '../../core/pipes/format-data.pipe';
+import type { Page } from 'src/app/core/interfaces/page';
+import type {
+  BackendProduct,
+  ProductWithCategory,
+  size,
+} from 'src/app/core/interfaces/product';
 
 @Component({
   selector: 'app-menu',
@@ -17,8 +18,8 @@ import { FormatDataPipe } from '../../core/pipes/format-data.pipe';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  products$!: Observable<Product[][]>;
-  allProducts!: ProductWithCategory[];
+  products$: Observable<BackendProduct[][]>;
+  allProducts: ProductWithCategory[] = [];
   filteredProducts: ProductWithCategory[] | null = null;
   pages: Page[];
 
@@ -32,11 +33,11 @@ export class MenuComponent implements OnInit {
     private cartService: CartService,
     private productService: ProductService
   ) {
+    this.products$ = this.productService.products$;
     this.pages = pagesData;
   }
 
-  ngOnInit(): void {
-    this.products$ = this.productService.products$;
+  ngOnInit() {
     this.products$.subscribe((products) => {
       this.allProducts = this.formatDataPipe.transform(products);
     });
@@ -46,11 +47,11 @@ export class MenuComponent implements OnInit {
       this.loadMenuData(this.category);
     });
   }
-  addToCart(pizza: Product, currentPageIndex: number) {
+  addToCart(pizza: BackendProduct, currentPageIndex: number) {
     this.cartService.addPizza(pizza, currentPageIndex);
   }
 
-  choseSize(sizeAndID: any) {
+  choseSize(sizeAndID: { size: size; productId: string }) {
     this.productService.changeSize(sizeAndID.size, sizeAndID.productId);
   }
 

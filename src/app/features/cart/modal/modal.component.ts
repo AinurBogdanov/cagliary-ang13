@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { sauces } from 'src/app/core/data/backData/sauces-data';
-import { cartProduct } from 'src/app/core/data/interfaces/cartProduct';
-import { Sauce } from 'src/app/core/data/interfaces/sauce';
-import { Cart } from '../../../core/data/interfaces/cart';
+import { sauces } from 'src/app/core/data/sauces-data';
+
+import type { cartProduct } from 'src/app/core/interfaces/product';
+import type { Sauce } from 'src/app/core/interfaces/sauce';
+import type { Cart } from 'src/app/core/interfaces/cart';
 
 @Component({
   selector: 'app-modal',

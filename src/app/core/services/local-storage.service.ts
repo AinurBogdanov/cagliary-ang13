@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cart } from '../data/interfaces/cart';
-import { stringify } from 'querystring';
+import type { Cart } from 'src/app/core/interfaces/cart';
 
 @Injectable({
   providedIn: 'root',

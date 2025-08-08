@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from '../../../core/services/cart.service';
 import { map, Observable } from 'rxjs';
-import { Cart } from 'src/app/core/data/interfaces/cart';
+import type { Cart } from 'src/app/core/interfaces/cart';
 
 @Component({
   selector: 'app-header',

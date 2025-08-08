@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { error } from 'console';
+import { PaymentMethod } from 'src/app/core/interfaces/paymentMethod';
 import { BehaviorSubject } from 'rxjs';
-import { PaymentMethod } from 'src/app/core/data/enums/paymentMethod';
 import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({

@@ -11,9 +11,23 @@ import {
   styleUrls: ['./dish-card.component.scss'],
 })
 export class DishCardComponent {
-  @Input() product!: ProductWithCategory;
-  @Input() folder!: string;
-  @Input() currentPageIndex!: number;
+  @Input() product: ProductWithCategory = {
+    id: '',
+    name: '',
+    description: '',
+    price: 0,
+    weight: '',
+    images: {
+      main: '',
+      preview: '',
+    },
+    nutrition: {},
+    sizes: [],
+    doughTypes: [],
+    category: '',
+  };
+  @Input() folder: string = '';
+  @Input() currentPageIndex: number = 0;
   @Output() addedToCart = new EventEmitter();
   @Output() choseSize = new EventEmitter();
 

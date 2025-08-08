@@ -11,7 +11,22 @@ import type { cartProduct } from 'src/app/core/interfaces/product';
 export class ItemCardComponent implements OnInit {
   sauceNames: string = '';
   sauceOptions: Sauce[] = sauces;
-  @Input() item!: cartProduct;
+  @Input() item: cartProduct = {
+    id: '',
+    name: '',
+    description: '',
+    price: 0,
+    weight: '',
+    images: {
+      main: '',
+      preview: '',
+    },
+    size: '',
+    doughType: '',
+    sauces: [],
+    quantity: 0,
+    category: '',
+  };
   @Output() addPizza = new EventEmitter<string>();
   @Output() minusOneOfCart = new EventEmitter<cartProduct>();
   @Output() deleteItem = new EventEmitter<cartProduct>();
@@ -48,19 +63,3 @@ export class ItemCardComponent implements OnInit {
     return result;
   }
 }
-
-//   if (Array.isArray(ids)) {
-//     const sauces = ids
-//       .map((id) => {
-//         const sauce = this.sauceOptions.find((sauce) => sauce.id === id);
-//         return sauce?.name ?? null;
-//       })
-//       .filter((name) => name !== null);
-
-//     return sauces.join(', ');
-//   } else if (typeof ids === 'number') {
-//     const sauce = this.sauceOptions.find((option) => option.id === ids);
-//     return sauce?.name ?? '';
-//   }
-//   return '';
-//

@@ -17,8 +17,8 @@ import { PromoService } from 'src/app/core/services/promo.service';
 export class PromoComponent implements OnInit, OnDestroy {
   readonly Drink = Drink;
 
-  selectedDrink!: Drink;
-  promoSelected!: boolean;
+  selectedDrink: Drink = Drink.cola;
+  promoSelected: boolean = true;
 
   private subscription = new Subscription();
 

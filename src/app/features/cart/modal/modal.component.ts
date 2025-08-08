@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { sauces } from 'src/app/core/data/sauces-data';
-
 import type { cartProduct } from 'src/app/core/interfaces/product';
 import type { Sauce } from 'src/app/core/interfaces/sauce';
-import type { Cart } from 'src/app/core/interfaces/cart';
 
 @Component({
   selector: 'app-modal',
@@ -12,14 +10,14 @@ import type { Cart } from 'src/app/core/interfaces/cart';
 })
 export class ModalComponent implements OnInit {
   sauces: Sauce[] = sauces;
-  productSauces!: Sauce[]; //заменить на соусы из товара
-  productQuantity!: number;
+  productSauces: Sauce[] = []; //заменить на соусы из товара
+  productQuantity: number = 0;
 
-  freePick!: number;
-  saucesPicked!: number;
+  freePick: number = 0;
+  saucesPicked: number = 0;
 
-  @Input() productId!: string | null;
-  @Input() cartProducts!: cartProduct[] | null;
+  @Input() productId: string | null = '';
+  @Input() cartProducts: cartProduct[] | null = null;
 
   @Output() selectSauce = new EventEmitter();
   @Output() closeModal = new EventEmitter();

@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CartService } from '../../core/services/cart.service';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { LocalStorageService } from '../../core/services/local-storage.service';
-import { sauces } from '../../core/data/sauces-data';
 import type { Cart } from 'src/app/core/interfaces/cart';
 import type { Sauce } from 'src/app/core/interfaces/sauce';
 import type { cartProduct } from 'src/app/core/interfaces/product';

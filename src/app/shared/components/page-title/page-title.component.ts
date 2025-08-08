@@ -19,7 +19,7 @@ export class PageTitleComponent implements OnInit {
   @Input() showSearch: boolean = false;
   breadCrumb = '';
   @Output() searchChange = new EventEmitter<string>();
-  @ViewChild('searchInput') searchInput!: ElementRef;
+  @ViewChild('searchInput') searchInput: ElementRef | null = null;
 
   constructor(private router: Router) {}
 
@@ -37,9 +37,11 @@ export class PageTitleComponent implements OnInit {
     this.searchChange.emit(value);
   }
   focusInput() {
+    if (!this.searchInput) return;
     this.searchInput.nativeElement.focus();
   }
   clearInput() {
+    if (!this.searchInput) return;
     this.searchInput.nativeElement.value = '';
     this.searchChange.emit('');
   }

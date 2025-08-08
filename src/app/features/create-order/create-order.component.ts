@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 })
 export class CreateOrderComponent implements OnInit {
   familiarized = new BehaviorSubject<boolean>(false);
-  orderForm!: FormGroup;
+  orderForm: FormGroup | null = null;
   paymentMethods = PaymentMethod;
 
   constructor(
@@ -43,26 +43,29 @@ export class CreateOrderComponent implements OnInit {
 
   createForm() {
     this.orderForm = this.fb.group({
-      phone: ['1111111111', [Validators.required, Validators.minLength(10)]],
-      street: ['2', [Validators.required]],
-      house: ['2', [Validators.required]],
-      building: ['2'],
-      apartment: ['2'],
-      entrance: ['11'],
-      floor: ['1'],
-      comment: ['11'],
-      change: ['11'],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
+      street: ['', [Validators.required]],
+      house: ['', [Validators.required]],
+      building: [''],
+      apartment: [''],
+      entrance: [''],
+      floor: [''],
+      comment: [''],
+      change: [''],
       paymentMethod: ['cash', Validators.required],
     });
   }
 
   submitForm() {
+    if (!this.orderForm) {
+      return;
+    }
     if (this.orderForm.valid && this.familiarized.value) {
       this.apiService.sentOrder(this.orderForm.value).subscribe({
-        next: (response) => {
+        next: () => {
           this.openSnackBar('Заказ успешно отправлен!', 'Закрыть');
         },
-        error: (error) => {
+        error: () => {
           this.showError('Возникла ошибка');
         },
       });
@@ -70,6 +73,9 @@ export class CreateOrderComponent implements OnInit {
   }
 
   selectPaymentMethod(method: PaymentMethod) {
+    if (!this.orderForm) {
+      return;
+    }
     this.orderForm.patchValue({
       paymentMethod: method,
     });

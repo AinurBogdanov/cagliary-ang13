@@ -25,14 +25,11 @@ export class CartService implements OnInit {
     totalCost: 0,
   };
 
-  private cart$!: BehaviorSubject<Cart>;
+  private cart$: BehaviorSubject<Cart>;
   private pagesData = pagesData;
   private sauces = sauces;
 
-  constructor(
-    private apiService: ApiService,
-    private localStorageService: LocalStorageService
-  ) {
+  constructor(private localStorageService: LocalStorageService) {
     const storedCart = this.localStorageService.getCartFromStorage();
     const initialCart = storedCart ? storedCart : this.defaultCart;
 

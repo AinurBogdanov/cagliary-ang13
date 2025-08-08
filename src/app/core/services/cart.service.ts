@@ -16,7 +16,7 @@ import type { Sauce } from 'src/app/core/interfaces/sauce';
 @Injectable({
   providedIn: 'root',
 })
-export class CartService implements OnInit {
+export class CartService {
   private cartSubject: BehaviorSubject<Cart>;
   private cart$: Observable<Cart>;
   private readonly defaultCart: Cart = {
@@ -39,11 +39,6 @@ export class CartService implements OnInit {
         this.localStorageService.saveCart(cart);
       }
     });
-  }
-
-  ngOnInit(): void {
-    const result = this.localStorageService.getCartFromStorage();
-    if (result) this.cartSubject.next(result);
   }
 
   getCart(): Observable<Cart> {
